@@ -1,180 +1,391 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+    import Navigation from '../components/Navigation.astro';
+    import Footer from '../components/Footer.astro';
+    import '../styles/global.css';
+    // Import the image from the assets directory
+    import planetHorizonImage from '../assets/Planet-horizon.jpg';
+    // Import icons needed for the modal
+    import { Mail, MapPin } from 'lucide-astro';
 
-interface Props {
-  title?: string;
-  description?: string;
-}
+    interface Props {
+      title?: string;
+      description?: string;
+    }
 
-const {
-  title = "ALBOR SPACE - Advanced Satellite Communication Systems",
-  description = "Next generation satellite communication systems for space exploration."
-} = Astro.props;
----
+    const {
+      title = "ALBOR SPACE - Advanced Satellite Communication Systems",
+      description = "Next generation satellite communication systems for space exploration."
+    } = Astro.props;
+    ---
 
-<!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>{title}</title>
-  </head>
-  <body class="bg-black text-white min-h-screen overflow-x-hidden">
-    <!-- Fixed background that will remain on all pages -->
-    <div class="fixed inset-0 bg-black z-[-10]"></div>
+    <!doctype html>
+    <html lang="en" class="dark">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <title>{title}</title>
+      </head>
+      <body class="bg-black text-white min-h-screen overflow-x-hidden">
+        <!-- Fixed background that will remain on all pages -->
+        <div class="fixed inset-0 bg-black z-[-10]"></div>
 
-    <!-- Fixed background image instead of CSS-generated horizon -->
-    <div class="fixed inset-0 z-[-8] overflow-hidden">
-      <!-- Background image with planet horizon -->
-      <div id="horizon-container" class="absolute inset-0 w-full h-full bg-image-container">
-        {/* Removed transform translate-y-[25%] class from the image below */}
-        <img src="/images/planet-horizon.jpg" alt="Planet horizon" class="w-full h-full object-cover object-bottom" id="horizon-image">
+        <!-- Fixed background image instead of CSS-generated horizon -->
+        <div class="fixed inset-0 z-[-8] overflow-hidden">
+          <!-- Background image with planet horizon -->
+          <div id="horizon-container" class="absolute inset-0 w-full h-full bg-image-container">
+            {/* Use the imported image variable */}
+            <img src={planetHorizonImage.src} alt="Planet horizon" class="w-full h-full object-cover object-bottom" id="horizon-image">
 
-        <!-- Sun point has been removed -->
-      </div>
-    </div>
+            <!-- Sun point has been removed -->
+          </div>
+        </div>
 
-    <!-- Star field background -->
-    <div id="star-field" class="fixed inset-0 z-[-5]"></div>
+        <!-- Star field background -->
+        <div id="star-field" class="fixed inset-0 z-[-5]"></div>
 
-    <!-- Sunrise effect for navigation -->
-    <div id="nav-sunrise" class="nav-sunrise"></div>
+        <!-- Sunrise effect for navigation -->
+        <div id="nav-sunrise" class="nav-sunrise"></div>
 
-    <Navigation />
+        <Navigation />
 
-    <main>
-      <slot />
-    </main>
+        <main>
+          <slot />
+        </main>
 
-    <Footer />
+        <Footer />
 
-    <style>
-      /* Background image container with position control */
-      .bg-image-container {
-        position: relative;
-        overflow: hidden;
-      }
+        <!-- Modal for expanded member details - MOVED HERE FROM team.astro -->
+        <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
+          <div class="absolute inset-0 bg-dark-900/98 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
+          <div class="relative bg-dark-800/70 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
+            <button id="close-modal" class="absolute top-4 right-4 text-white/50 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
 
-      /* Sun point style has been removed */
-    </style>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="w-full md:w-1/3">
+                <div class="rounded-xl overflow-hidden mb-6 ring-1 ring-white/10 shadow-xl">
+                  <img id="modal-image" src="" alt="" class="w-full aspect-square object-cover">
+                </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Create stars background animation
-        const starField = document.getElementById('star-field');
-        if (starField) {
-          // Clear existing stars
-          starField.innerHTML = '';
+                <!-- Contact info -->
+                <div class="space-y-4 p-4 bg-dark-900/50 rounded-xl border border-white/5">
+                  <h4 class="text-sm uppercase tracking-wider text-white/50 mb-3">Contact Information</h4>
 
-          // Create stars with document fragment for better performance
-          const fragment = document.createDocumentFragment();
-          for (let i = 0; i < 150; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
+                  <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white group">
+                    <Mail size={20} class="mr-2 text-orange-400/70" /> {/* Icon orange-400 */}
+                    <span class="text-sm group-hover:text-orange-400 transition-colors duration-200"></span> {/* Hover text orange-400 */}
+                  </a>
 
-            // Random star size with a few larger ones
-            const size = Math.random() > 0.9 ? Math.random() * 2 + 1.5 :
-                     Math.random() > 0.7 ? Math.random() * 1.5 + 0.8 :
-                     Math.random() * 0.8 + 0.2;
+                  <div class="flex items-start text-white/50">
+                    <MapPin size={20} class="mr-2 shrink-0 text-orange-400/70 mt-0.5" /> {/* Icon orange-400 */}
+                    <div>
+                      <p class="text-sm">Departamento de Ingeniería de Comunicaciones</p>
+                      <p class="text-sm">ETSI Telecomunicación</p>
+                      <p class="text-sm">Universidad de Málaga</p>
+                      <p class="text-sm">Campus de Teatinos, 29071 Málaga, Spain</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            // Star coloring - most stars are white, with occasional orange tint
-            const color = Math.random() > 0.90 ?
-              'rgba(255, 180, 120, 0.8)' :
-              'rgba(255, 255, 255, 0.8)';
+              <div class="w-full md:w-2/3">
+                <h3 id="modal-name" class="text-2xl font-light mb-2 text-gradient-orange-soft"></h3> {/* Softer gradient */}
+                <p id="modal-role" class="text-orange-400/90 text-sm tracking-wider uppercase mb-6"></p> {/* Role orange-400 */}
 
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.backgroundColor = color;
+                <div class="prose prose-invert prose-sm max-w-none">
+                  <p id="modal-bio" class="text-white/70 leading-relaxed mb-8"></p>
 
-            star.style.animationDelay = `${Math.random() * 5}s`;
-            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                  <!-- Education -->
+                  <div class="mb-8">
+                    <h4 class="text-lg font-light mb-4 text-white">Education</h4>
+                    <ul id="modal-education" class="space-y-2 text-white/60"></ul>
+                  </div>
 
-            // Add occasional glow to larger stars
-            if (size > 1.5) {
-              star.style.boxShadow = `0 0 ${size}px ${color}`;
-            }
+                  <!-- Expertise -->
+                  <div class="mb-8">
+                    <h4 class="text-lg font-light mb-4 text-white">Areas of Expertise</h4>
+                    <div id="modal-expertise" class="flex flex-wrap gap-2"></div>
+                  </div>
 
-            fragment.appendChild(star);
+                  <!-- Stats -->
+                  <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10"> {/* Background/border orange-400 */}
+                      <div id="modal-publications" class="text-2xl font-light text-orange-400 mb-2"></div> {/* Text orange-400 */}
+                      <div class="text-sm text-white/50">Publications</div>
+                    </div>
+                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10"> {/* Background/border orange-400 */}
+                      <div id="modal-patents" class="text-2xl font-light text-orange-400 mb-2"></div> {/* Text orange-400 */}
+                      <div class="text-sm text-white/50">Patents</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style is:global> /* Make modal styles global */
+          /* Background image container with position control */
+          .bg-image-container {
+            position: relative;
+            overflow: hidden;
           }
-          starField.appendChild(fragment);
-        }
 
-        // Scroll effect to fade image on scroll
-        const horizonImage = document.getElementById('horizon-image');
-        const horizonContainer = document.getElementById('horizon-container');
-        const navSunrise = document.getElementById('nav-sunrise');
-        const nav = document.getElementById('main-nav');
+          /* Sun point style has been removed */
 
-        // Create section observers for sunrise effect
-        const sectionObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              // Get the current section's position and show the sunrise effect
-              if (navSunrise && nav) {
-                const boundingRect = entry.target.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
+          /* Modal specific styles - now global */
+          .expertise-tag {
+            background-color: theme('colors.orange.400 / 15%');
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            border: 1px solid theme('colors.orange.400 / 25%');
+            transition: all 0.3s ease;
+          }
 
-                // Element is entering from bottom of viewport
-                if (boundingRect.top > 0 && boundingRect.top < viewportHeight) {
-                  const intensity = 1 - (boundingRect.top / viewportHeight);
-                  navSunrise.style.opacity = Math.min(intensity * 0.7, 0.7);
-                }
-                // Element is entering from top of viewport
-                else if (boundingRect.bottom > 0 && boundingRect.bottom < viewportHeight) {
-                  const intensity = boundingRect.bottom / viewportHeight;
-                  navSunrise.style.opacity = Math.min(intensity * 0.7, 0.7);
-                }
+          .expertise-tag:hover {
+            background-color: theme('colors.orange.400 / 20%');
+            border-color: theme('colors.orange.400 / 35%');
+            transform: translateY(-1px);
+          }
 
-                navSunrise.classList.add('sunriseActive');
+          .text-gradient-orange-soft {
+            background: linear-gradient(to right, #fff, theme('colors.orange.300'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+        </style>
+
+        <script>
+          // Global Modal Logic - MOVED HERE FROM team.astro
+          const modal = document.getElementById('member-modal');
+          const modalOverlay = modal?.querySelector('div');
+          const modalContent = modal?.querySelector('div:nth-child(2)');
+          const closeButton = document.getElementById('close-modal');
+
+          const modalImage = document.getElementById('modal-image');
+          const modalName = document.getElementById('modal-name');
+          const modalRole = document.getElementById('modal-role');
+          const modalBio = document.getElementById('modal-bio');
+          const modalEmail = document.getElementById('modal-email');
+          const modalEducation = document.getElementById('modal-education');
+          const modalExpertise = document.getElementById('modal-expertise');
+          const modalPublications = document.getElementById('modal-publications');
+          const modalPatents = document.getElementById('modal-patents');
+
+          // Make openModal globally accessible
+          window.openModal = function(member) {
+            if (modal && modalOverlay && modalContent) {
+              modal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden'; // Prevent background scroll
+              setTimeout(() => {
+                modalOverlay.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+              }, 10); // Short delay for transition
+
+              if (modalImage) {
+                modalImage.src = member.image;
+                modalImage.alt = member.name;
               }
-            } else {
-              // Fade out the sunrise effect when section is no longer intersecting
-              if (navSunrise) {
-                navSunrise.classList.remove('sunriseActive');
-                setTimeout(() => {
-                  if (!document.querySelector('.section.isIntersecting')) {
-                    navSunrise.style.opacity = '0';
-                  }
-                }, 300);
+              if (modalName) modalName.textContent = member.name;
+              if (modalRole) modalRole.textContent = member.role;
+              if (modalBio) modalBio.textContent = member.bio || 'No bio available.'; // Add fallback
+
+              // Email
+              if (modalEmail) {
+                const emailSpan = modalEmail.querySelector('span');
+                if (member.email) {
+                  modalEmail.href = `mailto:${member.email}`;
+                  if (emailSpan) emailSpan.textContent = member.email;
+                  modalEmail.style.display = 'flex'; // Show email link
+                } else {
+                  modalEmail.style.display = 'none'; // Hide if no email
+                }
               }
+
+              // Education - Comment removed again
+              if (modalEducation) {
+                modalEducation.innerHTML = member.education?.map(edu => // Use optional chaining
+                  `<li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-400/60 mt-1.5 mr-3 shrink-0"></span>
+                    ${edu}
+                  </li>`
+                ).join('') || '<li>No education information available.</li>'; // Fallback
+              }
+
+              // Expertise
+              if (modalExpertise) {
+                modalExpertise.innerHTML = member.expertise?.map(exp => // Use optional chaining
+                  `<span class="expertise-tag">${exp}</span>` // Uses softer orange from style tag
+                ).join('') || '<span class="text-white/50 text-sm">No expertise listed.</span>'; // Fallback
+              }
+
+              // Stats - Use optional chaining and provide defaults
+              if (modalPublications) modalPublications.textContent = member.publications?.toString() || '0';
+              if (modalPatents) modalPatents.textContent = member.patents?.toString() || '0';
+            }
+          }
+
+          // Make closeModal globally accessible
+          window.closeModal = function() {
+            if (modal && modalOverlay && modalContent) {
+              modalOverlay.classList.remove('opacity-100');
+              modalContent.classList.remove('scale-100', 'opacity-100');
+              modalContent.classList.add('scale-95', 'opacity-0');
+              document.body.style.overflow = ''; // Restore background scroll
+
+              setTimeout(() => {
+                modal.classList.add('hidden');
+              }, 300); // Match transition duration
+            }
+          }
+
+          // Global event listeners for the modal
+          closeButton?.addEventListener('click', window.closeModal);
+
+          modalOverlay?.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+              window.closeModal();
             }
           });
-        }, {
-          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-          rootMargin: "-10% 0px -10% 0px"
-        });
 
-        // Observe all sections for the sunrise effect
-        document.querySelectorAll('section').forEach(section => {
-          section.classList.add('section');
-          sectionObserver.observe(section);
-        });
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+              window.closeModal();
+            }
+          });
 
-        // Enhanced scroll effect for background image
-        window.addEventListener('scroll', () => {
-          const scrollY = window.scrollY;
-          const maxScroll = document.body.scrollHeight - window.innerHeight;
-          const scrollPercentage = Math.min(scrollY / (window.innerHeight * 0.4), 1);
+          // --- Rest of the Layout.astro script ---
+          document.addEventListener('DOMContentLoaded', () => {
+            // Create stars background animation
+            const starField = document.getElementById('star-field');
+            if (starField) {
+              // Clear existing stars
+              starField.innerHTML = '';
 
-          // Fade image elements as user scrolls down
-          if (horizonImage && horizonContainer) {
-            // Full intensity at top, fades as you scroll down
-            const fadeOpacity = Math.max(1 - scrollPercentage * 0.7, 0.3);
+              // Create stars with document fragment for better performance
+              const fragment = document.createDocumentFragment();
+              for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
 
-            horizonImage.style.opacity = fadeOpacity;
-          }
-        });
-      });
-    </script>
-  </body>
-</html>
+                // Random star size with a few larger ones
+                const size = Math.random() > 0.9 ? Math.random() * 2 + 1.5 :
+                         Math.random() > 0.7 ? Math.random() * 1.5 + 0.8 :
+                         Math.random() * 0.8 + 0.2;
+
+                // Star coloring - most stars are white, with occasional orange tint
+                const color = Math.random() > 0.90 ?
+                  'rgba(255, 180, 120, 0.8)' :
+                  'rgba(255, 255, 255, 0.8)';
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.backgroundColor = color;
+
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+
+                // Add occasional glow to larger stars
+                if (size > 1.5) {
+                  star.style.boxShadow = `0 0 ${size}px ${color}`;
+                }
+
+                fragment.appendChild(star);
+              }
+              starField.appendChild(fragment);
+            }
+
+            // Scroll effect to fade image on scroll
+            const horizonImage = document.getElementById('horizon-image');
+            const horizonContainer = document.getElementById('horizon-container');
+            const navSunrise = document.getElementById('nav-sunrise');
+            const nav = document.getElementById('main-nav');
+
+            // Create section observers for sunrise effect
+            const sectionObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                // Add class to track intersecting state for sunrise logic
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('isIntersecting');
+                } else {
+                  entry.target.classList.remove('isIntersecting');
+                }
+
+                // Update sunrise effect based on intersecting sections
+                if (navSunrise && nav) {
+                  const intersectingSections = document.querySelectorAll('.section.isIntersecting');
+                  let maxIntensity = 0;
+
+                  intersectingSections.forEach(intersectingEntry => {
+                    const boundingRect = intersectingEntry.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    let intensity = 0;
+
+                    // Calculate intensity based on visibility percentage
+                    if (boundingRect.top < viewportHeight && boundingRect.bottom > 0) {
+                       const visibleHeight = Math.min(boundingRect.bottom, viewportHeight) - Math.max(boundingRect.top, 0);
+                       intensity = visibleHeight / viewportHeight;
+                    }
+                    maxIntensity = Math.max(maxIntensity, intensity);
+                  });
+
+                  navSunrise.style.opacity = Math.min(maxIntensity * 0.7, 0.7); // Adjust multiplier as needed
+
+                  if (intersectingSections.length > 0) {
+                     navSunrise.classList.add('sunriseActive');
+                  } else {
+                     navSunrise.classList.remove('sunriseActive');
+                     // Only fully hide if no sections are intersecting after a delay
+                     setTimeout(() => {
+                       if (document.querySelectorAll('.section.isIntersecting').length === 0) {
+                         navSunrise.style.opacity = '0';
+                       }
+                     }, 300);
+                  }
+                }
+              });
+            }, {
+              threshold: Array.from({ length: 21 }, (_, i) => i * 0.05), // More thresholds for smoother effect
+              rootMargin: "-10% 0px -10% 0px"
+            });
+
+
+            // Observe all sections for the sunrise effect
+            document.querySelectorAll('section').forEach(section => {
+              section.classList.add('section'); // Ensure all sections have the class
+              sectionObserver.observe(section);
+            });
+
+            // Enhanced scroll effect for background image
+            window.addEventListener('scroll', () => {
+              const scrollY = window.scrollY;
+              const maxScroll = document.body.scrollHeight - window.innerHeight;
+              const scrollPercentage = Math.min(scrollY / (window.innerHeight * 0.4), 1);
+
+              // Fade image elements as user scrolls down
+              if (horizonImage && horizonContainer) {
+                // Full intensity at top, fades as you scroll down
+                const fadeOpacity = Math.max(1 - scrollPercentage * 0.7, 0.3);
+
+                horizonImage.style.opacity = fadeOpacity;
+              }
+            });
+          });
+        </script>
+      </body>
+    </html>

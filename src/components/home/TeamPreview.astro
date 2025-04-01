@@ -1,110 +1,142 @@
 ---
-import { ArrowRight } from 'lucide-astro';
-import { team } from '../../content/home';
----
+    import { ArrowRight } from 'lucide-astro';
+    import { team } from '../../content/home';
+    import { teamMembers } from '../../content/team'; // Import full team data for modal
 
-<section class="section pb-24 relative scroll-reveal">
-  <!-- Smooth gradient transition from research section -->
-  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-900/90 to-transparent z-0"></div>
+    // Find the full data for the preview members
+    const previewMembersData = team.members.map(previewMember => {
+      return teamMembers.find(fullMember => fullMember.name === previewMember.name) || previewMember;
+    });
+    ---
 
-  <div class="container-custom relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="heading-lg mb-4 slide-right">{team.title}</h2>
-      {/* Updated underline to use softer orange gradient */}
-      <div class="h-px w-20 bg-gradient-to-r from-orange-400/80 to-orange-600/70 mx-auto"></div>
-    </div>
+    <section class="section pb-24 relative scroll-reveal">
+      <!-- Smooth gradient transition from research section -->
+      <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-900/90 to-transparent z-0"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
-      {team.members.map((member, index) => (
-        <div class="reveal-element" data-reveal-delay={index * 150}>
-          {/* Updated card border and hover effects to use softer orange */}
-          <div class="relative overflow-hidden rounded-xl mb-4 aspect-square team-member-card">
-            <img src={member.image} alt={member.name} class="w-full h-full object-cover transition-transform duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-90"></div>
-            <div class="absolute bottom-0 left-0 p-6 transform transition-transform duration-300">
-              <h3 class="text-xl font-light mb-2 text-gradient">{member.name}</h3>
-              <p class="text-orange-400 text-sm tracking-wider uppercase">{member.role}</p> {/* Softer role color */}
-            </div>
-            <div class="absolute inset-0 bg-orange-400/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div> {/* Softer hover overlay */}
-          </div>
+      <div class="container-custom relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="heading-lg mb-4 slide-right">{team.title}</h2>
+          {/* Updated underline to use softer orange gradient */}
+          <div class="h-px w-20 bg-gradient-to-r from-orange-400/80 to-orange-600/70 mx-auto"></div>
         </div>
-      ))}
-    </div>
-    {/* Added View Full Team button - using softer orange */}
-    <div class="text-center mt-16 reveal-element" data-reveal-delay="600">
-      <a href="/team" class="primary-button-orange group">
-        <span>View Full Team</span>
-        <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-      </a>
-    </div>
-  </div>
 
-  <!-- Smooth transition to footer -->
-  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-900/90 to-transparent z-0"></div>
-</section>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
+          {previewMembersData.map((member, index) => (
+            <div
+              class="reveal-element team-member-card group cursor-pointer"
+              data-reveal-delay={index * 150}
+              data-member={JSON.stringify(member)} {/* Add data attribute */}
+            >
+              {/* Updated card border and hover effects to use softer orange */}
+              <div class="relative overflow-hidden rounded-xl mb-4 aspect-square">
+                <img src={member.image} alt={member.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 p-6 transform transition-transform duration-300 group-hover:-translate-y-1">
+                  <h3 class="text-xl font-light mb-2 text-gradient group-hover:text-orange-400 transition-colors duration-300">{member.name}</h3>
+                  <p class="text-orange-400 text-sm tracking-wider uppercase">{member.role}</p> {/* Softer role color */}
+                </div>
+                <div class="absolute inset-0 bg-orange-400/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div> {/* Softer hover overlay */}
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Added View Full Team button - using softer orange */}
+        <div class="text-center mt-16 reveal-element" data-reveal-delay="600">
+          <a href="/team" class="primary-button-orange group">
+            <span>View Full Team</span>
+            <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </div>
+      </div>
 
-<style>
-  /* Team member card animations using softer orange */
-  .team-member-card {
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(13, 15, 26, 0.3); /* dark-800 base */
-    backdrop-filter: blur(10px);
-    border: 1px solid theme('colors.orange.500 / 10%'); /* Keep subtle border */
-  }
+      <!-- Smooth transition to footer -->
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-900/90 to-transparent z-0"></div>
+    </section>
 
-  .team-member-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.3),
-      0 0 30px theme('colors.orange.400 / 20%'); /* Softer shadow */
-    border-color: theme('colors.orange.400 / 25%'); /* Softer border */
-  }
+    <style>
+      /* Team member card animations using softer orange */
+      .team-member-card {
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: rgba(13, 15, 26, 0.3); /* dark-800 base */
+        backdrop-filter: blur(10px);
+        border: 1px solid theme('colors.orange.500 / 10%'); /* Keep subtle border */
+        border-radius: 0.75rem; /* Added border-radius here */
+        overflow: hidden; /* Ensure content respects border-radius */
+      }
 
-  .team-member-card img {
-    transition: transform 0.5s ease;
-  }
+      .team-member-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.3),
+          0 0 30px theme('colors.orange.400 / 20%'); /* Softer shadow */
+        border-color: theme('colors.orange.400 / 25%'); /* Softer border */
+      }
 
-  .team-member-card:hover img {
-    transform: scale(1.1);
-  }
+      .team-member-card img {
+        transition: transform 0.5s ease;
+      }
 
-  .team-member-card:hover .transform {
-    transform: translateY(-5px);
-  }
+      .team-member-card:hover img {
+        transform: scale(1.1);
+      }
 
-  .text-gradient {
-    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+      .text-gradient {
+        background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
 
-  /* Slide animation for title */
-  .slide-right {
-    opacity: 0;
-    transform: translateX(50px);
-  }
+      /* Slide animation for title */
+      .slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+      }
 
-  /* Primary button using softer orange palette */
-  .primary-button-orange {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.875rem 2rem;
-    background: linear-gradient(90deg, theme('colors.orange.500 / 80%'), theme('colors.orange.600 / 80%'));
-    border-radius: 0.25rem;
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    transition: all 0.3s ease;
-    border: 1px solid theme('colors.orange.500 / 15%');
-  }
+      /* Primary button using softer orange palette */
+      .primary-button-orange {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.875rem 2rem;
+        background: linear-gradient(90deg, theme('colors.orange.500 / 80%'), theme('colors.orange.600 / 80%'));
+        border-radius: 0.25rem;
+        color: white;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.025em;
+        transition: all 0.3s ease;
+        border: 1px solid theme('colors.orange.500 / 15%');
+      }
 
-  .primary-button-orange:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px theme('colors.orange.500 / 25%');
-    background: linear-gradient(90deg, theme('colors.orange.500 / 90%'), theme('colors.orange.600 / 90%'));
-  }
-</style>
+      .primary-button-orange:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px theme('colors.orange.500 / 25%');
+        background: linear-gradient(90deg, theme('colors.orange.500 / 90%'), theme('colors.orange.600 / 90%'));
+      }
+    </style>
+
+    <script>
+      // This script assumes the modal and its functions (openModal) are globally available (moved to Layout.astro)
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.team-member-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const memberData = card.getAttribute('data-member');
+            if (memberData) {
+              try {
+                const member = JSON.parse(memberData);
+                // Check if the global openModal function exists before calling
+                if (typeof window.openModal === 'function') {
+                  window.openModal(member);
+                } else {
+                  console.error('openModal function not found. Ensure modal logic is in Layout.astro.');
+                }
+              } catch (e) {
+                console.error('Failed to parse member data:', e);
+              }
+            }
+          });
+        });
+      });
+    </script>
