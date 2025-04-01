@@ -1,0 +1,453 @@
+---
+import { ArrowRight } from 'lucide-astro';
+---
+
+<div class="glass-card mb-20 mt-32 overflow-hidden reveal-element">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="p-8 lg:p-10 flex flex-col justify-center">
+      <div class="inline-block mb-4 px-3 py-1 rounded-full bg-accent-quaternary/10 text-accent-quaternary text-xs font-medium tracking-widest uppercase">
+        Network Automation
+      </div>
+      <h3 class="text-2xl md:text-3xl font-light mb-4">QoS-Driven Network Performance Optimization</h3>
+      <p class="text-white/70 mb-6 leading-relaxed">
+        Our intelligent automation solutions enable end-to-end network optimization through AI-driven controllers, ensuring optimal QoS across all network domains.
+      </p>
+      
+      <!-- Key Features List -->
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">AI-driven optimization for resource allocation</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">Self-healing networks with automatic failover</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">Predictive analytics for proactive maintenance</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">Seamless integration with existing infrastructure</span>
+        </li>
+      </ul>
+      
+      <div class="mt-auto">
+        <a href="/solutions/automation" class="secondary-button-purple group hover:bg-accent-quaternary/20">
+          <span class="text-accent-quaternary">Learn More</span>
+          <ArrowRight class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1 text-accent-quaternary" />
+        </a>
+      </div>
+    </div>
+    
+    <!-- Network Automation Diagram -->
+    <div class="relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container">
+      <div class="w-full max-w-xl mx-auto">
+        <div class="network-automation-diagram">
+          <!-- Network visualization -->
+          <div class="network-visualization">
+            <!-- Background grid -->
+            <div class="grid-bg"></div>
+            
+            <!-- Central AI Controller -->
+            <div class="ai-system">
+              <div class="ai-core"></div>
+              <div class="ai-pulse"></div>
+              <div class="ai-label">Intelligent Controller</div>
+            </div>
+            
+            <!-- Network domains -->
+            <div class="network-domain core-network">
+              <div class="domain-icon"></div>
+              <div class="domain-label">5G Core Network</div>
+            </div>
+            
+            <div class="network-domain ran">
+              <div class="domain-icon"></div>
+              <div class="domain-label">Radio Access Network (RAN)</div>
+            </div>
+            
+            <div class="network-domain ue-group">
+              <div class="domain-icon"></div>
+              <div class="domain-label">User Equipment (UE)</div>
+            </div>
+            
+            <div class="network-domain transport">
+              <div class="domain-icon"></div>
+              <div class="domain-label">Transport Network</div>
+            </div>
+            
+            <!-- Connection paths -->
+            <div class="connection-lines">
+              <div class="connection-path path-1"></div>
+              <div class="connection-path path-2"></div>
+              <div class="connection-path path-3"></div>
+              <div class="connection-path path-4"></div>
+            </div>
+            
+            <!-- Data flows -->
+            <div class="data-flow flow-1"></div>
+            <div class="data-flow flow-2"></div>
+            <div class="data-flow flow-3"></div>
+            <div class="data-flow flow-4"></div>
+            
+            <!-- QoS metrics -->
+            <div class="qos-metrics">
+              <div class="qos-header">QoS Optimization</div>
+              <div class="qos-indicators">
+                <div class="qos-item">
+                  <div class="qos-bar" style="height: 80%;"></div>
+                  <div class="qos-label">Throughput</div>
+                </div>
+                <div class="qos-item">
+                  <div class="qos-bar" style="height: 65%;"></div>
+                  <div class="qos-label">Latency</div>
+                </div>
+                <div class="qos-item">
+                  <div class="qos-bar" style="height: 90%;"></div>
+                  <div class="qos-label">Reliability</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- E2E optimization label -->
+            <div class="e2e-label">E2E Network Optimization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Glass card styling */
+  .glass-card {
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Diagram container styles */
+  .diagram-container {
+    min-height: 500px;
+    border-radius: 0 0.75rem 0.75rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  @media (max-width: 1024px) {
+    .diagram-container {
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+  }
+  
+  /* Secondary button styles - Purple */
+  .secondary-button-purple {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    color: rgb(83, 52, 131);
+    background-color: rgba(83, 52, 131, 0.1);
+    border: 1px solid rgba(83, 52, 131, 0.3);
+    border-radius: 0.25rem;
+    transition: all 0.25s ease;
+  }
+  
+  .secondary-button-purple:hover {
+    background-color: rgba(83, 52, 131, 0.2);
+    border-color: rgba(83, 52, 131, 0.5);
+  }
+  
+  /* Network Automation Diagram */
+  .network-automation-diagram {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  .network-visualization {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(83, 52, 131, 0.2) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+  }
+  
+  .ai-system {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ai-core {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(83, 52, 131, 0.8), rgba(83, 52, 131, 0.6));
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(83, 52, 131, 0.5);
+  }
+  
+  .ai-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(83, 52, 131, 0.5);
+    animation: pulse 3s infinite;
+  }
+  
+  .ai-label {
+    margin-top: 70px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(83, 52, 131, 0.3);
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  
+  @keyframes pulse {
+    0% {
+      width: 60px;
+      height: 60px;
+      opacity: 1;
+    }
+    100% {
+      width: 150px;
+      height: 150px;
+      opacity: 0;
+    }
+  }
+  
+  .network-domain {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .domain-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(83, 52, 131, 0.3);
+    border: 2px solid rgba(83, 52, 131, 0.5);
+    border-radius: 8px;
+  }
+  
+  .domain-label {
+    margin-top: 8px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  /* Position network domains in a better layout around the AI system */
+  .core-network {
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .ran {
+    top: 50%;
+    left: 10%;
+  }
+  
+  .ue-group {
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .transport {
+    top: 50%;
+    right: 15%;
+  }
+  
+  .connection-lines {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .connection-path {
+    position: absolute;
+    background: linear-gradient(to right, rgba(83, 52, 131, 0.7), rgba(83, 52, 131, 0.1));
+    height: 2px;
+  }
+  
+  .path-1 {
+    top: 30%;
+    left: 50%;
+    width: 80px;
+    transform: translateX(-50%) rotate(90deg);
+    transform-origin: center;
+  }
+  
+  .path-2 {
+    top: 50%;
+    left: 25%;
+    width: 100px;
+  }
+  
+  .path-3 {
+    top: 50%;
+    right: 25%;
+    width: 100px;
+    transform: rotate(180deg);
+  }
+  
+  .path-4 {
+    top: 65%;
+    left: 50%;
+    width: 80px;
+    transform: translateX(-50%) rotate(90deg);
+    transform-origin: center;
+  }
+  
+  .data-flow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(83, 52, 131, 0.8);
+    box-shadow: 0 0 10px rgba(83, 52, 131, 0.5);
+  }
+  
+  .flow-1 {
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flowVertical 3s infinite linear;
+  }
+  
+  .flow-2 {
+    top: 50%;
+    left: 35%;
+    animation: flowHorizontal 3s infinite linear;
+  }
+  
+  .flow-3 {
+    top: 50%;
+    right: 35%;
+    animation: flowHorizontalReverse 3s infinite linear 1s;
+  }
+  
+  .flow-4 {
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flowVerticalReverse 3s infinite linear 0.5s;
+  }
+  
+  @keyframes flowVertical {
+    0% { transform: translate(-50%, 0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translate(-50%, 100px); opacity: 0; }
+  }
+  
+  @keyframes flowVerticalReverse {
+    0% { transform: translate(-50%, 0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translate(-50%, -100px); opacity: 0; }
+  }
+  
+  @keyframes flowHorizontal {
+    0% { transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(-60px); opacity: 0; }
+  }
+  
+  @keyframes flowHorizontalReverse {
+    0% { transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(60px); opacity: 0; }
+  }
+  
+  .qos-metrics {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    background-color: rgba(26, 26, 46, 0.7);
+    border: 1px solid rgba(83, 52, 131, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+  }
+  
+  .qos-header {
+    font-size: 12px;
+    color: rgba(83, 52, 131, 0.8);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .qos-indicators {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+  }
+  
+  .qos-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .qos-bar {
+    width: 8px;
+    background: linear-gradient(to top, rgba(83, 52, 131, 0.4), rgba(83, 52, 131, 0.8));
+    border-radius: 4px;
+    margin-bottom: 5px;
+    transition: height 1s ease;
+  }
+  
+  .qos-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.6);
+    transform: rotate(-30deg);
+  }
+  
+  .e2e-label {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(83, 52, 131, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(83, 52, 131, 0.3);
+  }
+</style>

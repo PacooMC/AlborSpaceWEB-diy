@@ -1,0 +1,139 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class="w-full h-full flex items-center justify-center p-4">
+  <div class="relative w-full max-w-4xl">
+    <!-- Background glow effect -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-[#FFB800]/5 to-[#915F1C]/5 rounded-full blur-[120px]"></div>
+    
+    <!-- Development Flow Diagram -->
+    <div class="relative bg-[#0D0F1A]/80 rounded-xl border border-[#915F1C]/20 p-6 backdrop-blur-sm">
+      <h2 class="text-[#FFB800] text-lg font-medium mb-6 text-center">Development Process</h2>
+      
+      <!-- Flow Steps -->
+      <div class="grid grid-cols-5 gap-3 mb-8">
+        {[
+          { 
+            name: 'Requirements',
+            icon: `<g fill="#FFB800"><path d="M7 3C5.34315 3 4 4.34315 4 6V18C4 19.6569 5.34315 21 7 21H17C18.6569 21 20 19.6569 20 18V6C20 4.34315 18.6569 3 17 3H7ZM8 7C7.44772 7 7 7.44772 7 8C7 8.55228 7.44772 9 8 9H16C16.5523 9 17 8.55228 17 8C17 7.44772 16.5523 7 16 7H8ZM8 11C7.44772 11 7 11.4477 7 12C7 12.5523 7.44772 13 8 13H16C16.5523 13 17 12.5523 17 12C17 11.4477 16.5523 11 16 11H8ZM8 15C7.44772 15 7 15.4477 7 16C7 16.5523 7.44772 17 8 17H13C13.5523 17 14 16.5523 14 16C14 15.4477 13.5523 15 13 15H8Z"/></g>`
+          },
+          {
+            name: 'Design',
+            icon: `<g fill="#FFB800"><path d="M15 3C16.6569 3 18 4.34315 18 6V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V6C6 4.34315 7.34315 3 9 3H15ZM12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17ZM12 7C10.8954 7 10 7.89543 10 9V12C10 13.1046 10.8954 14 12 14C13.1046 14 14 13.1046 14 12V9C14 7.89543 13.1046 7 12 7Z"/></g>`
+          },
+          {
+            name: 'Development',
+            icon: `<g fill="#FFB800"><path d="M13.3252 3.05011C13.7501 3.19421 13.9713 3.65967 13.8272 4.08454L9.82715 15.0845C9.68305 15.5094 9.21759 15.7306 8.79272 15.5865C8.36785 15.4424 8.14663 14.977 8.29073 14.5521L12.2907 3.55211C12.4348 3.12724 12.9003 2.90602 13.3252 3.05011Z"/><path d="M6.70711 6.29289C7.09763 6.68342 7.09763 7.31658 6.70711 7.70711L4.41421 10L6.70711 12.2929C7.09763 12.6834 7.09763 13.3166 6.70711 13.7071C6.31658 14.0976 5.68342 14.0976 5.29289 13.7071L2.29289 10.7071C1.90237 10.3166 1.90237 9.68342 2.29289 9.29289L5.29289 6.29289C5.68342 5.90237 6.31658 5.90237 6.70711 6.29289Z"/><path d="M17.2929 6.29289C17.6834 5.90237 18.3166 5.90237 18.7071 6.29289L21.7071 9.29289C22.0976 9.68342 22.0976 10.3166 21.7071 10.7071L18.7071 13.7071C18.3166 14.0976 17.6834 14.0976 17.2929 13.7071C16.9024 13.3166 16.9024 12.6834 17.2929 12.2929L19.5858 10L17.2929 7.70711C16.9024 7.31658 16.9024 6.68342 17.2929 6.29289Z"/></g>`
+          },
+          {
+            name: 'Testing',
+            icon: `<g fill="#FFB800"><path d="M9.68 14.775L11.21 11.715L14.27 10.185L11.21 8.655L9.68 5.595L8.15 8.655L5.09 10.185L8.15 11.715L9.68 14.775Z"/><path d="M14.32 19.425L15.085 17.895L16.615 17.13L15.085 16.365L14.32 14.835L13.555 16.365L12.025 17.13L13.555 17.895L14.32 19.425Z"/><path d="M14.32 5.535L15.085 4.005L16.615 3.24L15.085 2.475L14.32 0.945L13.555 2.475L12.025 3.24L13.555 4.005L14.32 5.535Z"/><path d="M19.68 12.48L20.445 10.95L21.975 10.185L20.445 9.42L19.68 7.89L18.915 9.42L17.385 10.185L18.915 10.95L19.68 12.48Z"/></g>`
+          },
+          {
+            name: 'Deployment',
+            icon: `<g fill="#FFB800"><path d="M12 2L2 7L12 12L22 7L12 2Z"/><path d="M2 17L12 22L22 17"/><path d="M2 12L12 17L22 12"/></g>`
+          }
+        ].map((step, i) => (
+          <div class="relative">
+            <div class="flex flex-col items-center">
+              <div class={`w-14 h-14 rounded-xl bg-gradient-to-br from-[#915F1C]/20 to-[#FFB800]/5 border border-[#FFB800]/20 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-[#FFB800]/40 backdrop-blur-sm ${i === 0 ? 'animate-pulse-slow' : ''}`}>
+                <svg class="w-8 h-8" viewBox="0 0 24 24">
+                  {step.icon}
+                </svg>
+              </div>
+              <div class="text-[#FFB800] text-xs mt-2 font-medium tracking-wide uppercase">{step.name}</div>
+              
+              {i < 4 && (
+                <div class="absolute top-7 -right-1.5 w-3 h-0.5 bg-gradient-to-r from-[#FFB800]/50 to-[#915F1C]/50 transform translate-x-full"></div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Divider -->
+      <div class="relative mb-8">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-[#915F1C]/20"></div>
+        </div>
+        <div class="relative flex justify-center">
+          <span class="px-3 text-[#FFB800] text-lg font-medium bg-[#0D0F1A]/80">Technology Stack</span>
+        </div>
+      </div>
+
+      <!-- Technology Stack -->
+      <div class="grid grid-cols-5 gap-4">
+        {[
+          { 
+            name: 'Python',
+            icon: `<g fill="#FFB800"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z"/></g>`,
+            desc: 'Algorithm Development'
+          },
+          {
+            name: 'C++',
+            icon: `<g fill="#FFB800"><path d="M11.3999 2.40002C11.9999 2.10002 12.5999 2.10002 13.1999 2.40002L19.7999 6.00002C20.3999 6.30002 20.6999 6.90002 20.6999 7.50002V15C20.6999 15.6 20.2999 16.2 19.7999 16.5L13.1999 20.1C12.5999 20.4 11.9999 20.4 11.3999 20.1L4.7999 16.5C4.1999 16.2 3.8999 15.6 3.8999 15V7.50002C3.8999 6.90002 4.2999 6.30002 4.7999 6.00002L11.3999 2.40002Z"/></g>`,
+            desc: 'High-Performance'
+          },
+          {
+            name: 'CUDA',
+            icon: `<g fill="#FFB800"><path d="M12 3L4 7V17L12 21L20 17V7L12 3ZM18 15.17L12 18.17L6 15.17V8.83L12 5.83L18 8.83V15.17Z"/><path d="M12 8L8 10V14L12 16L16 14V10L12 8Z"/></g>`,
+            desc: 'Parallel Processing'
+          },
+          {
+            name: 'SDR',
+            icon: `<g fill="#FFB800"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"/><path d="M12 7C9.24 7 7 9.24 7 12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7ZM12 15C10.34 15 9 13.66 9 12C9 10.34 10.34 9 12 9C13.66 9 15 10.34 15 12C15 13.66 13.66 15 12 15Z"/></g>`,
+            desc: 'Signal Processing'
+          },
+          {
+            name: 'FPGA',
+            icon: `<g fill="#FFB800"><path d="M4 4H20V20H4V4Z"/><path fill="#0D0F1A" d="M6 6H18V18H6V6Z"/><path d="M8 8H10V10H8V8Z"/><path d="M12 8H14V10H12V8Z"/><path d="M16 8H18V10H16V8Z"/><path d="M8 12H10V14H8V12Z"/><path d="M12 12H14V14H12V12Z"/><path d="M16 12H18V14H16V12Z"/></g>`,
+            desc: 'Hardware Accel.'
+          }
+        ].map((tech) => (
+          <div class="group">
+            <div class="bg-gradient-to-br from-[#0D0F1A]/90 to-[#915F1C]/5 rounded-xl border border-[#915F1C]/20 p-4 transition-all duration-300 hover:border-[#FFB800]/40 backdrop-blur-sm">
+              <div class="flex flex-col items-center text-center">
+                <div class="mb-2 transform transition-all duration-300 group-hover:scale-110">
+                  <svg class="w-8 h-8" viewBox="0 0 24 24">
+                    {tech.icon}
+                  </svg>
+                </div>
+                <div class="text-[#FFB800] text-xs font-medium mb-1">{tech.name}</div>
+                <div class="text-[#FFB800]/60 text-[10px] font-medium">{tech.desc}</div>
+                
+                <div class="mt-2 w-full h-0.5 bg-[#915F1C]/20 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-[#FFB800]/50 to-[#915F1C]/50 rounded-full animate-flow"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+  }
+
+  @keyframes flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-flow {
+    animation: flow 2s linear infinite;
+  }
+</style>

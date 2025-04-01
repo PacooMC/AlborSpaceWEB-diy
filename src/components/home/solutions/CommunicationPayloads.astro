@@ -1,0 +1,89 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import { communicationPayloads } from '../../../content/solutions/featured';
+import PayloadDiagram from './diagrams/PayloadDiagram.astro';
+---
+
+<div class="glass-card mb-20 overflow-hidden reveal-element">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Communication Payloads Diagram -->
+    <div class="relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container order-2 lg:order-1">
+      <div class="w-full max-w-xl mx-auto">
+        <PayloadDiagram />
+      </div>
+    </div>
+    
+    <div class="p-8 lg:p-10 flex flex-col justify-center order-1 lg:order-2">
+      <div class="inline-block mb-4 px-3 py-1 rounded-full bg-accent-secondary/10 text-accent-secondary text-xs font-medium tracking-widest uppercase">
+        Advanced Payloads
+      </div>
+      <h3 class="text-2xl md:text-3xl font-light mb-4">{communicationPayloads.title}</h3>
+      <p class="text-white/70 mb-6 leading-relaxed">{communicationPayloads.description}</p>
+      
+      <!-- Key Features List -->
+      <ul class="space-y-3 mb-8">
+        {communicationPayloads.features.map(feature => (
+          <li class="flex items-start">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-secondary mt-2 mr-3"></span>
+            <span class="text-white/70">{feature}</span>
+          </li>
+        ))}
+      </ul>
+      
+      <div class="mt-auto">
+        <a href="/solutions/cubesats" class="secondary-button-pink group">
+          <span>Learn More</span>
+          <ArrowRight class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Glass card styling */
+  .glass-card {
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Diagram container */
+  .diagram-container {
+    min-height: 500px;
+    border-radius: 0 0.75rem 0.75rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  @media (max-width: 1024px) {
+    .diagram-container {
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+  }
+  
+  /* Secondary button styles */
+  .secondary-button-pink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    color: white;
+    background-color: rgba(233, 69, 96, 0.1);
+    border: 1px solid rgba(233, 69, 96, 0.3);
+    border-radius: 0.25rem;
+    transition: all 0.25s ease;
+  }
+  
+  .secondary-button-pink:hover {
+    background-color: rgba(233, 69, 96, 0.2);
+    border-color: rgba(233, 69, 96, 0.5);
+  }
+</style>

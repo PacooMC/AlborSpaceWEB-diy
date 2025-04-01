@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { cubesatSolution, features, specifications, cta } from '../../content/solutions/cubesats';
+import { ArrowRight, Waves, Shield, Zap } from 'lucide-astro';
+import PayloadDiagram from '../../components/diagrams/PayloadDiagram.astro';
+
+// Map icon strings to components
+const getIcon = (iconName) => {
+  const icons = {
+    'Waves': Waves,
+    'Shield': Shield,
+    'Zap': Zap
+  };
+  
+  const IconComponent = icons[iconName] || Waves;
+  return IconComponent;
+};
+---
+
+<Layout title={`5G CubeSat Payloads - ALBOR SPACE`} description={cubesatSolution.description}>
+  <div class="pt-32 pb-24 relative">
+    <!-- Background effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90"></div>
+    
+    <div class="container-custom relative z-10">
+      <!-- Hero Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+        <div class="reveal-element">
+          <h1 class="text-5xl font-light mb-6 leading-tight">Next-Gen <span class="text-accent-primary">5G Communication Payloads</span></h1>
+          <p class="text-white/70 text-lg mb-8 leading-relaxed">Our cutting-edge satellite communication payloads deliver superior performance for 5G non-terrestrial networks with enhanced efficiency, reduced weight, and increased throughput.</p>
+          
+          <div class="mb-10">
+            <p class="text-white/70 leading-relaxed mb-4">
+              Albor Space develops high-performance communication payloads optimized specifically for small satellites and CubeSats, enabling seamless integration with terrestrial 5G infrastructure. Our technology bridges the gap between terrestrial and space-based communications, creating a unified network architecture.
+            </p>
+            <p class="text-white/70 leading-relaxed">
+              With advanced multi-band capabilities and software-defined architecture, our payloads provide unprecedented flexibility and adaptability for mission-specific requirements, all while maintaining strict power, size, and weight constraints.
+            </p>
+          </div>
+          
+          <a href="/contact" class="primary-button group">
+            <span>Contact Us</span>
+            <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </div>
+        
+        <div class="relative rounded-xl overflow-hidden reveal-element h-[500px]">
+          <PayloadDiagram className="h-full" />
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-4xl font-light mb-4">Advanced Capabilities</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">Our cubesat payloads leverage cutting-edge 5G radio protocols optimized specifically for satellite communications, ensuring maximum efficiency and reliability in space operations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.items.map((feature, index) => {
+            const IconComponent = getIcon(feature.icon);
+            return (
+              <div 
+                class="glass-card group reveal-element" 
+                data-reveal-delay={index * 100}
+              >
+                <div class="mb-6 w-12 h-12 rounded-lg bg-accent-primary/10 flex items-center justify-center text-accent-primary">
+                  <IconComponent size={24} />
+                </div>
+                <h3 class="text-xl font-light mb-4">{feature.title}</h3>
+                <p class="text-white/60 mb-6">{feature.description}</p>
+                
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/60 text-sm">3GPP standards compliant implementation</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/60 text-sm">Adaptive modulation and coding</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/60 text-sm">High-gain beam steering capabilities</span>
+                  </li>
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Specifications Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-4xl font-light mb-4">Technical Specifications</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">Our cubesat payloads are designed to meet the most demanding requirements of modern satellite communications.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {specifications.sections.map((section, index) => (
+            <div 
+              class="glass-card reveal-element" 
+              data-reveal-delay={index * 100}
+            >
+              <h3 class="text-xl font-light mb-6">{section.title}</h3>
+              <ul class="space-y-3">
+                {section.specs.map(spec => (
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/70">{spec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Implementation Examples -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-4xl font-light mb-4">Implementation Examples</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">Explore real-world applications of our 5G CubeSat payload technology.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="glass-card reveal-element">
+            <h3 class="text-xl font-light mb-4">IoT Connectivity Constellation</h3>
+            <p class="text-white/60 mb-4">
+              A network of 12 CubeSats equipped with our communication payload provides global IoT connectivity with direct-to-device communication capabilities.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Supports millions of IoT devices worldwide</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Ultra-low power device connectivity</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Seamless integration with terrestrial networks</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="glass-card reveal-element">
+            <h3 class="text-xl font-light mb-4">Rural Connectivity Solution</h3>
+            <p class="text-white/60 mb-4">
+              High-throughput coverage for underserved regions using our advanced beamforming technology to deliver reliable broadband services.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Up to 100 Mbps downlink to standard terminals</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Dynamic coverage optimization</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Resilient emergency communications</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="text-center max-w-3xl mx-auto reveal-element">
+        <h2 class="text-4xl font-light mb-4">Ready to Launch Your Project?</h2>
+        <p class="text-white/60 mb-8">Contact our team to learn more about how our cubesat payloads can enhance your satellite communications capabilities.</p>
+        <a href="/contact" class="primary-button group">
+          <span>Contact Us</span>
+          <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .glass-card {
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-color: rgba(233, 69, 96, 0.2);
+  }
+
+  .primary-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(90deg, rgba(233, 69, 96, 0.9), rgba(83, 52, 131, 0.9));
+    border-radius: 0.25rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+  }
+
+  .primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+    background: linear-gradient(90deg, rgba(233, 69, 96, 1), rgba(83, 52, 131, 1));
+  }
+
+  .reveal-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Immediately reveal all elements for better initial page load experience
+    document.querySelectorAll('.reveal-element').forEach(el => {
+      setTimeout(() => {
+        el.classList.add('revealed');
+      }, 100);
+    });
+  });
+</script>

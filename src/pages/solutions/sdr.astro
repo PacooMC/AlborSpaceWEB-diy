@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sdrSolution, features, specifications, cta } from '../../content/solutions/sdr';
+import { ArrowRight, Radio, Waves, Cpu } from 'lucide-astro';
+import ChannelEmulatorDiagram from '../../components/diagrams/ChannelEmulatorDiagram.astro';
+
+// Map icon strings to components
+const getIcon = (iconName) => {
+  const icons = {
+    'Radio': Radio,
+    'Waves': Waves,
+    'Cpu': Cpu
+  };
+  
+  const IconComponent = icons[iconName] || Radio;
+  return IconComponent;
+};
+---
+
+<Layout title={`NTN Channel Emulator - ALBOR SPACE`} description={sdrSolution.description}>
+  <div class="pt-32 pb-24 relative">
+    <!-- Background effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90"></div>
+    
+    <div class="container-custom relative z-10">
+      <!-- Hero Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+        <div class="reveal-element">
+          <h1 class="text-5xl font-light mb-6 leading-tight">Multi-orbit Satellite <span class="text-accent-primary">Channel Emulator</span></h1>
+          <p class="text-white/70 text-lg mb-8 leading-relaxed">Our advanced channel emulator provides a cost-effective solution for testing satellite communications in realistic conditions, allowing for precise simulation of various space channel characteristics.</p>
+          
+          <div class="mb-10">
+            <p class="text-white/70 leading-relaxed mb-4">
+              The Albor Space Channel Emulator enables comprehensive testing of satellite communication systems by accurately simulating the challenging conditions of space links. This software-defined radio (SDR) solution offers unparalleled flexibility and precision at a fraction of the cost of traditional hardware-based systems.
+            </p>
+            <p class="text-white/70 leading-relaxed">
+              Designed specifically for non-terrestrial networks (NTN), our emulator facilitates rapid development, validation, and optimization of robust communication systems for LEO, MEO, and GEO satellite constellations.
+            </p>
+          </div>
+          
+          <a href="/contact" class="primary-button group">
+            <span>Contact Us</span>
+            <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </div>
+        
+        <div class="relative rounded-xl overflow-hidden reveal-element h-[500px]">
+          <ChannelEmulatorDiagram className="h-full" />
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-4xl font-light mb-4">Key Capabilities</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">Our SDR-based channel emulators provide high-precision testing capabilities while significantly reducing costs compared to traditional hardware solutions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.items.map((feature, index) => {
+            const IconComponent = getIcon(feature.icon);
+            return (
+              <div 
+                class="glass-card group reveal-element" 
+                data-reveal-delay={index * 100}
+              >
+                <div class="mb-6 w-12 h-12 rounded-lg bg-accent-primary/10 flex items-center justify-center text-accent-primary">
+                  <IconComponent size={24} />
+                </div>
+                <h3 class="text-xl font-light mb-4">{feature.title}</h3>
+                <p class="text-white/60 mb-6">{feature.description}</p>
+                
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/60 text-sm">Advanced real-time processing capabilities</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/60 text-sm">Multi-terminal emulation support</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/60 text-sm">Customizable simulation scenarios</span>
+                  </li>
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Specifications Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-4xl font-light mb-4">Technical Specifications</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">Our SDR channel emulators are designed to meet the most demanding requirements of modern satellite testing.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {specifications.sections.map((section, index) => (
+            <div 
+              class="glass-card reveal-element" 
+              data-reveal-delay={index * 100}
+            >
+              <h3 class="text-xl font-light mb-6">{section.title}</h3>
+              <ul class="space-y-3">
+                {section.specs.map(spec => (
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                    <span class="text-white/70">{spec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Use Cases Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-4xl font-light mb-4">Use Cases</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">Our channel emulator has been utilized in a variety of satellite communication applications.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="glass-card reveal-element">
+            <h3 class="text-xl font-light mb-4">5G NTN Development</h3>
+            <p class="text-white/60 mb-4">
+              Testing and validation of 5G non-terrestrial network protocols and implementations under various orbital scenarios.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Simulation of LEO constellation dynamics</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Handover testing between satellites</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Protocol adaptation verification</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="glass-card reveal-element">
+            <h3 class="text-xl font-light mb-4">CubeSat Communication Validation</h3>
+            <p class="text-white/60 mb-4">
+              Pre-launch testing of communication systems for small satellite missions, ensuring functionality in space conditions.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Link budget verification</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">Error correction performance evaluation</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3"></span>
+                <span class="text-white/70">End-to-end system testing</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="text-center max-w-3xl mx-auto reveal-element">
+        <h2 class="text-4xl font-light mb-4">Ready to Transform Your Testing?</h2>
+        <p class="text-white/60 mb-8">Contact our team to learn more about how our SDR channel emulators can revolutionize your satellite testing capabilities.</p>
+        <a href="/contact" class="primary-button group">
+          <span>Contact Us</span>
+          <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .glass-card {
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-color: rgba(233, 69, 96, 0.2);
+  }
+
+  .primary-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(90deg, rgba(233, 69, 96, 0.9), rgba(83, 52, 131, 0.9));
+    border-radius: 0.25rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+  }
+
+  .primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+    background: linear-gradient(90deg, rgba(233, 69, 96, 1), rgba(83, 52, 131, 1));
+  }
+
+  .reveal-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Immediately reveal all elements for better initial page load experience
+    document.querySelectorAll('.reveal-element').forEach(el => {
+      setTimeout(() => {
+        el.classList.add('revealed');
+      }, 100);
+    });
+  });
+</script>

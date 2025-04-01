@@ -1,0 +1,132 @@
+---
+import { expertise } from '../../content/home';
+// Import specific icons directly instead of dynamic imports
+import { Cpu } from 'lucide-astro';
+import { Rocket } from 'lucide-astro';
+import { Globe } from 'lucide-astro';
+import { Radio } from 'lucide-astro';
+import { Network } from 'lucide-astro';
+import { Satellite } from 'lucide-astro';
+
+// Use a simpler icon mapping approach
+const iconMap = {
+  'Cpu': Cpu,
+  'Rocket': Rocket,
+  'Globe': Globe,
+  'Radio': Radio,
+  'Network': Network,
+  'Satellite': Satellite,
+};
+---
+
+<section id="expertise" class="section py-24 relative scroll-reveal">
+  <!-- Gradient transition -->
+  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-900/90 to-transparent z-0"></div>
+  
+  <div class="container-custom relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="heading-lg mb-4">{expertise.title}</h2>
+      <div class="h-px w-20 bg-accent-primary/80 mx-auto"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {expertise.items.map((item, index) => {
+        const IconComponent = iconMap[item.icon] || Globe;
+        const colorClass = item.color === 'blue' ? 'bg-accent-tertiary/5 text-accent-tertiary' : 
+                          item.color === 'purple' ? 'bg-accent-secondary/5 text-accent-secondary' : 
+                          'bg-accent-primary/5 text-accent-primary';
+        
+        return (
+          <div 
+            class="group glass-card reveal-element" 
+            data-reveal-delay={index * 100}
+          >
+            <div class={`${colorClass} w-12 h-12 rounded-lg flex items-center justify-center mb-6 icon-container`}>
+              <IconComponent size={24} />
+            </div>
+            <h3 class="text-xl font-light mb-4 card-title">{item.title}</h3>
+            <p class="text-white/60 leading-relaxed card-description mb-6">{item.description}</p>
+            
+            <!-- Key points with animated reveal -->
+            <ul class="space-y-3">
+              {item.points.map((point, i) => (
+                <li 
+                  class="flex items-start point-item reveal-element" 
+                  data-reveal-delay={index * 100 + (i * 100) + 300}
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent-primary/60 mt-2 mr-3 point-marker"></span>
+                  <span class="text-white/50 text-sm point-text">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+  
+  <!-- Gradient transition -->
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-900/90 to-transparent z-0"></div>
+</section>
+
+<style>
+  /* Glass card styling */
+  .glass-card {
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-color: rgba(233, 69, 96, 0.1);
+  }
+  
+  /* Card hover animations */
+  .card-title {
+    transition: color 0.3s ease;
+  }
+  
+  .glass-card:hover .card-title {
+    color: rgba(233, 69, 96, 0.9);
+  }
+  
+  .card-description {
+    transition: color 0.3s ease;
+  }
+  
+  .glass-card:hover .card-description {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .icon-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .glass-card:hover .icon-container {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+  }
+  
+  /* Point item animations */
+  .point-marker {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .point-item:hover .point-marker {
+    transform: scale(1.5);
+    background-color: rgba(233, 69, 96, 0.9);
+  }
+  
+  .point-text {
+    transition: color 0.3s ease;
+  }
+  
+  .point-item:hover .point-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+</style>

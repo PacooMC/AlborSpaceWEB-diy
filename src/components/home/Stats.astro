@@ -1,0 +1,70 @@
+---
+import { stats } from '../../content/home';
+---
+
+<section class="py-20 relative scroll-reveal">
+  <!-- Smooth gradient background transitions -->
+  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-900/90 to-transparent z-0"></div>
+  <div class="absolute inset-0 bg-dark-800/30 z-0"></div>
+  
+  <div class="container-custom relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="heading-lg mb-4">{stats.title}</h2>
+      <div class="h-px w-20 bg-accent-primary/80 mx-auto"></div>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+      {stats.items.map((stat, index) => (
+        <div class="text-center counter-wrap reveal-element" data-reveal-delay={index * 100}>
+          <div class="mb-3">
+            <span class="text-4xl md:text-5xl font-light tracking-tight text-white counter" data-target={stat.value.replace('+', '')}>
+              0
+            </span>
+            <span class="text-4xl md:text-5xl font-light tracking-tight text-white">+</span>
+          </div>
+          <p class="text-sm text-white/50 tracking-wider uppercase">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Smooth transition to next section -->
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-900/90 to-transparent z-0"></div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animated counters for stats section
+    const counterAnimation = () => {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200; // Animation speed - higher is slower
+      
+      counters.forEach(counter => {
+        const targetValue = parseFloat(counter.getAttribute('data-target'));
+        const increment = targetValue / speed;
+        
+        const updateCount = () => {
+          const currentValue = parseFloat(counter.innerText);
+          if (currentValue < targetValue) {
+            const newValue = Math.ceil(currentValue + increment);
+            counter.innerText = newValue > targetValue ? targetValue : newValue;
+            setTimeout(updateCount, 1);
+          } else {
+            counter.innerText = targetValue;
+          }
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            updateCount();
+            counterObserver.unobserve(counter);
+          }
+        }, { threshold: 0.5 });
+        
+        counterObserver.observe(counter);
+      });
+    };
+    
+    counterAnimation();
+  });
+</script>

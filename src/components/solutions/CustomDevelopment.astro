@@ -1,0 +1,83 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import DevelopmentDiagram from '../diagrams/DevelopmentDiagram.astro';
+---
+
+<div class="glass-card overflow-hidden reveal-element">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="p-8 lg:p-10 flex flex-col justify-center">
+      {/* Keep amber for title/icon */}
+      <div class="inline-block mb-4 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-medium tracking-widest uppercase">
+        Custom Solutions
+      </div>
+      <h3 class="text-2xl md:text-3xl font-light mb-4">Tailored Development Services</h3>
+      <p class="text-white/70 mb-6 leading-relaxed">
+        Our specialized team delivers custom software and hardware solutions for the unique challenges of space communications, from concept to deployment.
+      </p>
+
+      <!-- Key Features List - Keep amber for bullets -->
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-3"></span>
+          <span class="text-white/70">End-to-end solution development for specific requirements</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-3"></span>
+          <span class="text-white/70">Agile development methodology for rapid iteration</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-3"></span>
+          <span class="text-white/70">Integration with existing systems and infrastructure</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-3"></span>
+          <span class="text-white/70">Specialized expertise in space communication challenges</span>
+        </li>
+      </ul>
+
+      <div class="mt-auto">
+        {/* Updated button to use softer orange theme */}
+        <a href="/solutions/development" class="secondary-button-orange group">
+          <span>Learn More</span>
+          <ArrowRight class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Development Diagram -->
+    <DevelopmentDiagram />
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background-color: rgba(13, 15, 26, 0.2); /* dark-800 base */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Secondary button using softer orange palette */
+  .secondary-button-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    color: white;
+    background-color: theme('colors.orange.400 / 10%'); /* Softer bg */
+    border: 1px solid theme('colors.orange.400 / 30%'); /* Softer border */
+    border-radius: 0.25rem;
+    transition: all 0.25s ease;
+  }
+
+  .secondary-button-orange:hover {
+    background-color: theme('colors.orange.400 / 20%'); /* Softer hover bg */
+    border-color: theme('colors.orange.400 / 50%'); /* Softer hover border */
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import NetworkDiagram from '../diagrams/NetworkDiagram.astro';
+---
+
+<div class="glass-card mb-20 mt-20 overflow-hidden reveal-element">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="p-8 lg:p-10 flex flex-col justify-center">
+      {/* Keep accent-quaternary for title/icon */}
+      <div class="inline-block mb-4 px-3 py-1 rounded-full bg-accent-quaternary/10 text-accent-quaternary text-xs font-medium tracking-widest uppercase">
+        Network Automation
+      </div>
+      <h3 class="text-2xl md:text-3xl font-light mb-4">QoS-Driven Network Performance Optimization</h3>
+      <p class="text-white/70 mb-6 leading-relaxed">
+        Our intelligent automation solutions enable end-to-end network optimization through AI-driven controllers, ensuring optimal QoS across all network domains.
+      </p>
+
+      <!-- Key Features List - Keep accent-quaternary for bullets -->
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">AI-driven optimization for resource allocation</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">Self-healing networks with automatic failover</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">Predictive analytics for proactive maintenance</span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-quaternary mt-2 mr-3"></span>
+          <span class="text-white/70">Seamless integration with existing infrastructure</span>
+        </li>
+      </ul>
+
+      <div class="mt-auto">
+        {/* Updated button to use softer orange theme */}
+        <a href="/solutions/automation" class="secondary-button-orange group">
+          <span>Learn More</span>
+          <ArrowRight class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Network Automation Diagram -->
+    <NetworkDiagram />
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background-color: rgba(13, 15, 26, 0.2); /* dark-800 base */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Secondary button using softer orange palette */
+  .secondary-button-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    color: white;
+    background-color: theme('colors.orange.400 / 10%'); /* Softer bg */
+    border: 1px solid theme('colors.orange.400 / 30%'); /* Softer border */
+    border-radius: 0.25rem;
+    transition: all 0.25s ease;
+  }
+
+  .secondary-button-orange:hover {
+    background-color: theme('colors.orange.400 / 20%'); /* Softer hover bg */
+    border-color: theme('colors.orange.400 / 50%'); /* Softer hover border */
+  }
+</style>

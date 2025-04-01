@@ -1,0 +1,107 @@
+---
+import { technology } from '../../content/home';
+// Import specific icons directly instead of dynamic imports
+import { Cpu } from 'lucide-astro';
+import { Rocket } from 'lucide-astro';
+import { Globe } from 'lucide-astro';
+import { Radio } from 'lucide-astro';
+import { Network } from 'lucide-astro';
+import { Satellite } from 'lucide-astro';
+
+// Simpler icon mapping without dynamic function
+const iconMap = {
+  'Cpu': Cpu,
+  'Rocket': Rocket,
+  'Globe': Globe,
+  'Radio': Radio,
+  'Network': Network,
+  'Satellite': Satellite,
+};
+---
+
+<section id="technology" class="section py-24 relative scroll-reveal">
+  <!-- Smoother gradient transition from hero to technology section -->
+  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-900/90 to-transparent z-0"></div>
+  
+  <div class="container-custom relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="heading-lg mb-4 slide-right">{technology.title}</h2>
+      <div class="h-px w-20 bg-[rgb(var(--orange-medium))]/80 mx-auto"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {technology.items.map((item, index) => {
+        const IconComponent = iconMap[item.icon] || Globe;
+        const colorClass = item.color === 'blue' ? 'bg-[rgb(var(--orange-light))]/5 text-[rgb(var(--orange-light))]' : 
+                          item.color === 'purple' ? 'bg-[rgb(var(--orange-medium))]/5 text-[rgb(var(--orange-medium))]' : 
+                          'bg-[rgb(var(--orange-dark))]/5 text-[rgb(var(--orange-dark))]';
+        
+        return (
+          <div 
+            class="group glass-card reveal-element" 
+            data-reveal-delay={index * 100}
+          >
+            <div class={`${colorClass} w-12 h-12 rounded-lg flex items-center justify-center mb-6 icon-container`}>
+              <IconComponent size={24} />
+            </div>
+            <h3 class="text-xl font-light mb-4 card-title">{item.title}</h3>
+            <p class="text-white/60 leading-relaxed card-description">{item.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+  
+  <!-- Smooth transition to the next section -->
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-900/90 to-transparent z-0"></div>
+</section>
+
+<style>
+  /* Glass card styling */
+  .glass-card {
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-color: rgba(var(--orange-medium), 0.1);
+  }
+  
+  /* Card hover animations */
+  .card-title {
+    transition: color 0.3s ease;
+  }
+  
+  .glass-card:hover .card-title {
+    color: rgba(var(--orange-medium), 0.9);
+  }
+  
+  .card-description {
+    transition: color 0.3s ease;
+  }
+  
+  .glass-card:hover .card-description {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .icon-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .glass-card:hover .icon-container {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(var(--orange-medium), 0.3);
+  }
+  
+  /* Slide animation for title */
+  .slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+</style>

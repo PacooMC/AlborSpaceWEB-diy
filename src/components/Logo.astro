@@ -1,0 +1,31 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<a href="/" class={`flex items-center space-x-2 ${className}`} aria-label="Go to homepage">
+  <span class="text-2xl font-light tracking-[0.2em] text-white">
+    ALBOR
+  </span>
+  <span class="text-2xl font-light tracking-[0.2em] text-white/30">
+    SPACE
+  </span>
+</a>
+
+<style>
+  a:hover span:first-child {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+  }
+  
+  a:hover span:last-child {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  a span {
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+</style>

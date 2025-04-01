@@ -1,0 +1,202 @@
+---
+import { Menu, X } from 'lucide-astro';
+import Logo from './Logo.astro';
+import { navItems, solutionsDropdown } from '../content/navigation';
+---
+
+<nav id="main-nav" class="px-6 py-4 fixed w-full z-50 transition-all duration-500 bg-transparent -translate-y-1">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex-none">
+      <a href="/" aria-label="Home">
+        <Logo />
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-8">
+      {navItems.map((item) => (
+        item.dropdown ? (
+          <div class="relative group">
+            {/* Solutions Dropdown Link */}
+            <a href={item.url} class="text-white/70 hover:text-white transition-colors duration-300 text-sm tracking-wider flex items-center group relative px-1 py-1">
+              {/* Hover Dot */}
+              <span class="absolute left-[-10px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-orange-500 rounded-full opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out origin-left"></span>
+              <span class="relative z-10 pl-2">{item.title}</span> {/* Added pl-2 for spacing */}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-300 relative z-10">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            {/* Dropdown Menu */}
+            <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+              <div class="bg-dark-200/80 backdrop-blur-xl border border-white/5 rounded-lg py-2 min-w-[220px] shadow-lg shadow-dark-900/50">
+                {solutionsDropdown.map((solution) => (
+                  <a
+                    href={solution.url}
+                    class="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-orange-500/15 transition-all duration-200 flex items-center group/item"
+                  >
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500/80 mr-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-200"></span>
+                    <span class="transform translate-x-0 group-hover/item:translate-x-1 transition-transform duration-200">{solution.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Regular Links (Team, Contact) */
+          <a href={item.url} class="text-white/70 hover:text-white transition-colors duration-300 text-sm tracking-wider relative group px-1 py-1">
+            {/* Hover Dot */}
+            <span class="absolute left-[-10px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-orange-500 rounded-full opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out origin-left"></span>
+            <span class="relative z-10 block pl-2">{item.title}</span> {/* Added pl-2 for spacing */}
+            {/* Removed the underline span */}
+          </a>
+        )
+      ))}
+    </div>
+
+    <button
+      id="mobile-menu-button"
+      class="md:hidden relative z-50 p-2 focus:outline-none"
+      aria-label="Toggle menu"
+    >
+      <div class="relative w-6 h-6">
+        <span id="menu-icon" class="w-6 h-6 text-white absolute inset-0 transform transition-all duration-300">
+          <Menu />
+        </span>
+        <span id="close-icon" class="w-6 h-6 text-white absolute inset-0 transform transition-all duration-300 opacity-0 rotate-90 scale-95">
+          <X />
+        </span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile menu with enhanced dark styling -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed top-0 left-0 w-full h-screen transition-all duration-300 ease-out z-40 opacity-0 -translate-y-8 pointer-events-none flex items-center justify-center"
+  >
+    <!-- Dark overlay - simplified for better performance -->
+    <div class="absolute inset-0 bg-black opacity-95"></div>
+
+    <!-- Sunrise effect at bottom using orange -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[30vh] bg-gradient-radial from-orange-500/15 to-transparent rounded-full blur-[100px] transform translate-y-1/2"></div>
+
+    <div class="h-full flex flex-col justify-center items-center space-y-10 p-6 relative z-10 max-w-md mx-auto w-full">
+      <div class="space-y-5 text-center border-b border-white/5 pb-8 mb-4 w-full">
+        <h3 class="text-sm font-medium text-white/50 uppercase tracking-wider mb-6">Solutions</h3>
+        {solutionsDropdown.map((solution) => (
+          <a
+            href={solution.url}
+            class="block text-xl font-light tracking-wider text-white/70 hover:text-white transition-all duration-300 hover:scale-105 transform relative group"
+          >
+            <span class="relative">
+              {solution.title}
+              <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-orange-500/70 to-orange-700/70 group-hover:w-full transition-all duration-500"></span>
+            </span>
+          </a>
+        ))}
+      </div>
+      {navItems.filter(item => !item.dropdown).map((item) => (
+        <a
+          href={item.url}
+          class="text-2xl font-light tracking-wider text-white/70 hover:text-white transition-all duration-300 transform hover:scale-105 relative group"
+        >
+          <span class="relative">
+            {item.title}
+            <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-orange-500 to-orange-700 group-hover:w-full transition-all duration-300"></span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('main-nav');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    let isMenuOpen = false;
+
+    // Enhanced scroll handling for navigation using orange border
+    const handleScroll = () => {
+      if (nav) {
+        if (window.scrollY > 20) {
+          nav.classList.add('bg-black/80', 'backdrop-blur-xl', 'translate-y-0', 'border-b', 'border-orange-500/10', 'shadow-lg', 'shadow-dark-900/20');
+          nav.classList.remove('bg-transparent', '-translate-y-1');
+        } else {
+          nav.classList.remove('bg-black/80', 'backdrop-blur-xl', 'translate-y-0', 'border-b', 'border-orange-500/10', 'shadow-lg', 'shadow-dark-900/20');
+          nav.classList.add('bg-transparent', '-translate-y-1');
+        }
+      }
+    };
+
+    // Enhanced toggle menu with simpler animations for better performance
+    const toggleMenu = () => {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen && mobileMenu && menuIcon && closeIcon) {
+        document.body.style.overflow = 'hidden';
+
+        mobileMenu.classList.remove('opacity-0', '-translate-y-8', 'pointer-events-none');
+        mobileMenu.classList.add('opacity-100', 'translate-y-0');
+
+        // Animate menu icons
+        menuIcon.classList.remove('opacity-100', 'rotate-0', 'scale-100');
+        menuIcon.classList.add('opacity-0', 'rotate-90', 'scale-95');
+
+        closeIcon.classList.remove('opacity-0', '-rotate-90', 'scale-95');
+        closeIcon.classList.add('opacity-100', 'rotate-0', 'scale-100');
+
+      } else if (mobileMenu && menuIcon && closeIcon) {
+        document.body.style.overflow = '';
+        mobileMenu.classList.add('opacity-0', '-translate-y-8', 'pointer-events-none');
+        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+
+        menuIcon.classList.add('opacity-100', 'rotate-0', 'scale-100');
+        menuIcon.classList.remove('opacity-0', 'rotate-90', 'scale-95');
+
+        closeIcon.classList.add('opacity-0', '-rotate-90', 'scale-95');
+        closeIcon.classList.remove('opacity-100', 'rotate-0', 'scale-100');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    mobileMenuButton?.addEventListener('click', toggleMenu);
+
+    // Initial check for scroll position
+    handleScroll();
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Prevent default navigation for links within the same page
+        if (isMenuOpen) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // Handle page navigation clicks
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Add a small delay to show a loading state before navigating
+        const href = link.getAttribute('href');
+        if (href && href !== '/' && href !== window.location.pathname) {
+          e.preventDefault();
+          link.classList.add('opacity-50');
+          setTimeout(() => {
+            window.location.href = href;
+          }, 100);
+        }
+      });
+    });
+
+    // Cleanup event listeners
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      mobileMenuButton?.removeEventListener('click', toggleMenu);
+    };
+  });
+</script>

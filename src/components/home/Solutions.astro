@@ -1,0 +1,73 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import ChannelEmulator from '../../components/home/solutions/ChannelEmulator.astro'; // Keep blue theme
+import CommunicationPayloads from '../../components/home/solutions/CommunicationPayloads.astro'; // Keep red/pink theme
+---
+
+<section id="solutions" class="section py-24 relative scroll-reveal">
+  <!-- Smoother transition between sections - gradient overlay instead of hard edge -->
+  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-900/90 to-transparent z-0"></div>
+
+  <div class="container-custom relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="heading-lg mb-4 slide-right">Our Solutions</h2>
+      <div class="h-px w-20 bg-orange-400/70 mx-auto"></div> {/* Softer underline color */}
+      <p class="text-white/60 max-w-2xl mx-auto mt-4 reveal-element" data-reveal-delay="100">
+        Next-generation space communication technologies designed for the challenges of today and tomorrow
+      </p>
+    </div>
+
+    {/* Channel Emulator Solution - Excluded from orange theme */}
+    <div class="reveal-element" data-reveal-delay="200">
+      <ChannelEmulator />
+    </div>
+
+    {/* Communication Payloads Solution - Excluded from orange theme */}
+    <div class="reveal-element" data-reveal-delay="300">
+      <CommunicationPayloads />
+    </div>
+
+    {/* View All Solutions button - Updated to softer orange theme */}
+    <div class="text-center mt-16 reveal-element" data-reveal-delay="400">
+      <a href="/solutions" class="primary-button-orange group">
+        <span>View All Solutions</span>
+        <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Smoother transition to next section -->
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-900/90 to-transparent z-0"></div>
+</section>
+
+<style>
+  /* Primary button using softer orange palette */
+  .primary-button-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    /* Slightly softer gradient */
+    background: linear-gradient(90deg, theme('colors.orange.500 / 80%'), theme('colors.orange.600 / 80%'));
+    border-radius: 0.25rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    border: 1px solid theme('colors.orange.500 / 15%'); /* Softer border */
+  }
+
+  .primary-button-orange:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px theme('colors.orange.500 / 25%'); /* Softer shadow */
+    /* Slightly softer hover gradient */
+    background: linear-gradient(90deg, theme('colors.orange.500 / 90%'), theme('colors.orange.600 / 90%'));
+  }
+
+  /* Slide animation for title */
+  .slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+</style>

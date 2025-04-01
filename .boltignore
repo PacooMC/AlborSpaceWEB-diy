@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.npm
+.yarn
+
+# Build output
+dist/
+build/
+.astro/
+
+# Environment files
+.env
+.env.*
+
+# Editor directories
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large content files that don't change frequently
+public/
+src/assets/
+
+# Component files that don't change frequently
+src/components/home/solutions/diagrams/
+src/components/home/SpaceScene.astro
+
+# Style files
+src/styles/global.css
+
+# Config files
+astro.config.mjs
+tailwind.config.mjs
+tsconfig.json

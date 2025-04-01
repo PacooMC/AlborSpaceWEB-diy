@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { networksSolution, features, specifications, cta } from '../../content/solutions/networks';
+import { ArrowRight, Network, Signal, Wifi } from 'lucide-astro';
+import NetworkDiagram from '../../components/diagrams/NetworkDiagram.astro';
+
+// Map icon strings to components
+const getIcon = (iconName) => {
+  const icons = {
+    'Network': Network,
+    'Signal': Signal,
+    'Wifi': Wifi
+  };
+
+  const IconComponent = icons[iconName] || Network;
+  return IconComponent;
+};
+---
+
+<Layout title={`${networksSolution.title} - ALBOR SPACE`} description={networksSolution.description}>
+  <div class="pt-32 pb-24 relative">
+    <!-- Background effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90"></div>
+
+    <div class="container-custom relative z-10">
+      <!-- Hero Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+        <div class="reveal-element">
+          <h1 class="heading-lg mb-6">{networksSolution.title}</h1>
+          <p class="text-white/60 text-lg mb-8 leading-relaxed">{networksSolution.description}</p>
+          <a href="/contact" class="primary-button-orange group"> {/* Updated button class */}
+            <span>{networksSolution.cta}</span>
+            <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </div>
+        <div class="relative aspect-video rounded-xl overflow-hidden reveal-element">
+          <NetworkDiagram className="min-h-[400px]" />
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="heading-lg mb-4">{features.title}</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">{features.description}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.items.map((feature, index) => {
+            const IconComponent = getIcon(feature.icon);
+            return (
+              <div
+                class="glass-card group reveal-element"
+                data-reveal-delay={index * 100}
+              >
+                {/* Updated icon background and text color to softer orange */}
+                <div class="mb-6 w-12 h-12 rounded-lg bg-orange-400/10 flex items-center justify-center text-orange-400">
+                  <IconComponent size={24} />
+                </div>
+                <h3 class="text-xl font-light mb-4">{feature.title}</h3>
+                <p class="text-white/60">{feature.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Specifications Section -->
+      <div class="mb-24">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="heading-lg mb-4">{specifications.title}</h2>
+          <p class="text-white/60 max-w-2xl mx-auto">{specifications.description}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {specifications.sections.map((section, index) => (
+            <div
+              class="glass-card reveal-element"
+              data-reveal-delay={index * 100}
+            >
+              <h3 class="text-xl font-light mb-6">{section.title}</h3>
+              <ul class="space-y-3">
+                {section.specs.map(spec => (
+                  <li class="flex items-start">
+                    {/* Updated bullet color to softer orange */}
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-400/60 mt-2 mr-3"></span>
+                    <span class="text-white/70">{spec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="text-center max-w-3xl mx-auto reveal-element">
+        <h2 class="heading-lg mb-4">{cta.title}</h2>
+        <p class="text-white/60 mb-8">{cta.description}</p>
+        <a href="/contact" class="primary-button-orange group"> {/* Updated button class */}
+          <span>{cta.buttonText}</span>
+          <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .glass-card {
+    background-color: rgba(13, 15, 26, 0.2); /* dark-800 base */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-color: theme('colors.orange.400 / 20%'); /* Softer hover border orange */
+  }
+
+  /* Primary button using softer orange palette */
+  .primary-button-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(90deg, theme('colors.orange.500 / 80%'), theme('colors.orange.600 / 80%'));
+    border-radius: 0.25rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    border: 1px solid theme('colors.orange.500 / 15%');
+  }
+
+  .primary-button-orange:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px theme('colors.orange.500 / 25%');
+    background: linear-gradient(90deg, theme('colors.orange.500 / 90%'), theme('colors.orange.600 / 90%'));
+  }
+
+  .reveal-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Immediately reveal all elements for better initial page load experience
+    document.querySelectorAll('.reveal-element').forEach(el => {
+      const delay = parseInt(el.getAttribute('data-reveal-delay') || '100');
+      setTimeout(() => {
+        el.classList.add('revealed');
+      }, delay);
+    });
+  });
+</script>

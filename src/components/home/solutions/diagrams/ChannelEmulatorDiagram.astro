@@ -1,0 +1,352 @@
+---
+---
+
+<div class="channel-emulator-diagram">
+  <!-- Network topology visualization -->
+  <div class="network-topology">
+    <!-- Diagram Background -->
+    <div class="diagram-bg"></div>
+    
+    <!-- Satellite at top -->
+    <div class="satellite-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"></path>
+        <path d="M15 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"></path>
+        <path d="M10 5a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"></path>
+        <path d="M5.5 16.5s-.7-2 2.5-6c0 0 4 4 6-2"></path>
+        <path d="M17.5 16.5s.7-2-2.5-6c0 0-4 4-6-2"></path>
+      </svg>
+      <span class="label">Satellite</span>
+    </div>
+    
+    <!-- Terminals - Positioned for better balance -->
+    <div class="terminal terminal-1">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+        <line x1="8" x2="16" y1="21" y2="21"></line>
+        <line x1="12" x2="12" y1="17" y2="21"></line>
+      </svg>
+      <span class="label">Terminal 1<br/>UE</span>
+    </div>
+    
+    <div class="terminal terminal-3">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+        <line x1="8" x2="16" y1="21" y2="21"></line>
+        <line x1="12" x2="12" y1="17" y2="21"></line>
+      </svg>
+      <span class="label">Terminal 3<br/>gNodeB</span>
+    </div>
+    
+    <!-- Core Network -->
+    <div class="core-network">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect width="16" height="6" x="4" y="9" rx="2"></rect>
+        <path d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4"></path>
+        <path d="M8 15v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4"></path>
+      </svg>
+      <span class="label">5G Core<br/>Network</span>
+    </div>
+    
+    <!-- Emulator in middle - MOSC (smaller size) -->
+    <div class="emulator-box">
+      <div class="emulator-label">MOSC</div>
+      <div class="emulation-features">
+        <div class="feature">Doppler</div>
+        <div class="feature">Delay</div>
+        <div class="feature">Fading</div>
+        <div class="feature">Interference</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Enhanced connection lines with better visibility -->
+  <div class="connections">
+    <!-- Satellite to MOSC -->
+    <div class="connection" id="sat-to-mosc"></div>
+    
+    <!-- MOSC to Terminals -->
+    <div class="connection" id="mosc-to-t1"></div>
+    <div class="connection" id="mosc-to-t3"></div>
+    
+    <!-- MOSC to Core -->
+    <div class="connection" id="mosc-to-core"></div>
+    
+    <!-- Animated data packets -->
+    <div class="data-packet" id="packet-1"></div>
+    <div class="data-packet" id="packet-2"></div>
+    <div class="data-packet" id="packet-3"></div>
+    <div class="data-packet" id="packet-4"></div>
+  </div>
+</div>
+
+<style>
+  /* MOSC Channel Emulator Diagram Styles */
+  .channel-emulator-diagram {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+  }
+  
+  .network-topology {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .diagram-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(28, 130, 173, 0.05) 0%, transparent 70%);
+    border: 1px dashed rgba(28, 130, 173, 0.2);
+    border-radius: 16px;
+  }
+  
+  /* Satellite Icon */
+  .satellite-icon {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #67c8ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .satellite-icon svg {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 0 8px rgba(28, 130, 173, 0.5));
+  }
+  
+  .satellite-icon .label {
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+  }
+  
+  /* MOSC Emulator - Smaller and cleaner design */
+  .emulator-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    padding: 12px;
+    background: rgba(28, 130, 173, 0.15);
+    border-radius: 12px;
+    border: 1px solid rgba(28, 130, 173, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    filter: drop-shadow(0 0 20px rgba(28, 130, 173, 0.1));
+  }
+  
+  .emulator-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #67c8ff;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  
+  .emulation-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+  
+  .feature {
+    font-size: 0.65rem;
+    padding: 4px;
+    background-color: rgba(28, 130, 173, 0.15);
+    border: 1px solid rgba(28, 130, 173, 0.2);
+    border-radius: 4px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Terminals - Better positioned */
+  .terminal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .terminal svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 0 5px rgba(28, 130, 173, 0.3));
+  }
+  
+  .terminal .label {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Terminal positions - Better spaced */
+  .terminal-1 {
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+  }
+  
+  .terminal-3 {
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+  }
+  
+  /* Core Network */
+  .core-network {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .core-network svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 0 5px rgba(28, 130, 173, 0.3));
+  }
+  
+  .core-network .label {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Enhanced connections with better visibility */
+  .connection {
+    position: absolute;
+    background: rgba(28, 130, 173, 0.5);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Individual connection paths */
+  #sat-to-mosc {
+    top: 20%;
+    left: 50%;
+    height: 15%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, rgba(28, 130, 173, 0.1), rgba(28, 130, 173, 0.5));
+  }
+  
+  #mosc-to-t1 {
+    top: 50%;
+    right: 15%;
+    width: 20%;
+    height: 2px;
+    transform-origin: left;
+    transform: translateY(-50%) translateX(0);
+    background: linear-gradient(to right, rgba(28, 130, 173, 0.5), rgba(28, 130, 173, 0.1));
+  }
+  
+  #mosc-to-t3 {
+    top: 50%;
+    left: 15%;
+    width: 20%;
+    height: 2px;
+    transform-origin: left;
+    transform: translateY(-50%) translateX(0);
+    background: linear-gradient(to left, rgba(28, 130, 173, 0.5), rgba(28, 130, 173, 0.1));
+  }
+  
+  #mosc-to-core {
+    top: 65%;
+    left: 50%;
+    height: 15%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, rgba(28, 130, 173, 0.5), rgba(28, 130, 173, 0.1));
+  }
+  
+  /* Animated data packets */
+  .data-packet {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #67c8ff;
+    filter: drop-shadow(0 0 5px rgba(28, 130, 173, 0.8));
+    z-index: 2;
+  }
+  
+  #packet-1 {
+    top: 20%;
+    left: calc(50% - 3px);
+    animation: movePacketVertical 4s infinite ease-in-out;
+  }
+  
+  #packet-2 {
+    top: calc(45% - 3px);
+    right: 28%;
+    animation: movePacketHorizontal 4s infinite ease-in-out;
+    animation-delay: 1s;
+  }
+  
+  #packet-3 {
+    top: calc(55% - 3px);
+    right: 30%;
+    animation: movePacketHorizontal 4s infinite ease-in-out;
+    animation-delay: 2s;
+  }
+  
+  #packet-4 {
+    top: calc(45% - 3px);
+    left: 28%;
+    animation: movePacketHorizontalReverse 4s infinite ease-in-out;
+    animation-delay: 3s;
+  }
+  
+  /* Animations for channel emulator */
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+  
+  @keyframes movePacketVertical {
+    0%, 100% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    45% { transform: translateY(160px); opacity: 1; }
+    50% { transform: translateY(160px); opacity: 0; }
+    55% { transform: translateY(0); opacity: 0; }
+  }
+  
+  @keyframes movePacketHorizontal {
+    0%, 100% { transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    45% { transform: translateX(-60px); opacity: 1; }
+    50% { transform: translateX(-60px); opacity: 0; }
+    55% { transform: translateX(0); opacity: 0; }
+  }
+  
+  @keyframes movePacketHorizontalReverse {
+    0%, 100% { transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    45% { transform: translateX(60px); opacity: 1; }
+    50% { transform: translateX(60px); opacity: 0; }
+    55% { transform: translateX(0); opacity: 0; }
+  }
+</style>

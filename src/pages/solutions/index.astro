@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { solutionsPage } from '../../content/solutions';
+import { ArrowRight } from 'lucide-astro';
+
+// Import solution components - directly showing featured solutions
+import ChannelEmulator from '../../components/home/solutions/ChannelEmulator.astro';
+import CommunicationPayloads from '../../components/home/solutions/CommunicationPayloads.astro';
+import NetworkAutomation from '../../components/solutions/NetworkAutomation.astro';
+import TerrestrialNonTerrestrial from '../../components/solutions/TerrestrialNonTerrestrial.astro';
+import CustomDevelopment from '../../components/solutions/CustomDevelopment.astro';
+---
+
+<Layout title={`${solutionsPage.title} - ALBOR SPACE`} description={solutionsPage.description}>
+  <section class="pt-32 pb-24 relative">
+  
+    <!-- Background effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90 z-0"></div>
+    
+    <div class="container-custom relative z-10">
+      <!-- Page header -->
+      <div class="text-center mb-16 reveal-element">
+        <h1 class="heading-lg mb-4 slide-right">{solutionsPage.title}</h1>
+        <p class="text-white/60 max-w-2xl mx-auto">{solutionsPage.description}</p>
+      </div>
+      
+      <!-- Featured Solutions - shown directly without grid menu -->
+      <!-- SDR Channel Emulator (MOSC) - shown first as requested -->
+      <ChannelEmulator />
+      
+      <!-- Communication Payloads -->
+      <CommunicationPayloads />
+      
+      <!-- Network Automation Solution -->
+      <NetworkAutomation />
+      
+      <!-- 5G Terrestrial Non-Terrestrial Network Integration -->
+      <TerrestrialNonTerrestrial />
+      
+      <!-- Custom Development -->
+      <CustomDevelopment />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Animation for reveal elements */
+  .reveal-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Solution card styling */
+  .solution-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: rgba(26, 26, 46, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Slide animations */
+  .slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInFromRight 1s ease forwards;
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    });
+    
+    // Observe all reveal elements
+    document.querySelectorAll('.reveal-element').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
