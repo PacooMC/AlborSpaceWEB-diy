@@ -2,8 +2,6 @@
     import Navigation from '../components/Navigation.astro';
     import Footer from '../components/Footer.astro';
     import '../styles/global.css';
-    // Import the image from the assets directory
-    import planetHorizonImage from '../assets/Planet-horizon.jpg';
     // Import icons needed for the modal
     import { Mail, MapPin } from 'lucide-astro';
 
@@ -39,8 +37,8 @@
         <div class="fixed inset-0 z-[-8] overflow-hidden">
           <!-- Background image with planet horizon -->
           <div id="horizon-container" class="absolute inset-0 w-full h-full bg-image-container">
-            {/* Use the imported image variable */}
-            <img src={planetHorizonImage.src} alt="Planet horizon" class="w-full h-full object-cover object-bottom" id="horizon-image">
+            {/* Use the image from public directory with WebP format */}
+            <img src="/images/backgrounds/Planet-horizon.webp" alt="Planet horizon" class="w-full h-full object-cover" id="horizon-image">
 
             <!-- Sun point has been removed -->
           </div>

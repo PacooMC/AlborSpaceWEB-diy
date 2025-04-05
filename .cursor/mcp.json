@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "hyperbrowser": {
+      "command": "npx",
+      "args": ["-y", "hyperbrowser-mcp"],
+      "env": {
+        "HYPERBROWSER_API_KEY": "hb_4532417c24eb6988e4114337716b"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {}
+    }
+  }
+} 

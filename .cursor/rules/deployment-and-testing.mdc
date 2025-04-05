@@ -1,0 +1,225 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
+
+# AlborSpace Website Deployment and Testing Documentation
+
+## Project Overview
+This document provides instructions for deploying and testing the AlborSpace website. The website is built with Astro.js and deployed to Netlify.
+
+## Development Environment
+
+### Prerequisites
+- Node.js (v18.14.0 or later)
+- npm (comes with Node.js)
+- Git
+
+### Repository Information
+- Repository URL: `git@github.com:PacooMC/AlborSpaceWEB-diy.git`
+- Main branch: `main`
+
+### Local Setup
+```bash
+# Clone the repository
+git clone git@github.com:PacooMC/AlborSpaceWEB-diy.git
+
+# Navigate to the project directory
+cd AlborSpaceWEB-diy
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+## Build Process
+To build the website for production:
+```bash
+npm run build
+```
+
+This will generate static files in the `dist/` directory.
+
+## File Management Guidelines
+
+### Static Assets & Background Images
+- Large static assets should be placed in the `public/` directory, not in `src/assets/`
+- For background images specifically, use the `public/images/backgrounds/` directory
+- Use modern image formats like WebP for better performance (e.g., `Planet-horizon.webp`)
+- Reference these assets in your code using absolute paths (e.g., `/images/backgrounds/Planet-horizon.webp`)
+- This prevents Astro from trying to process large images during build, which can cause errors
+
+## MCP Configuration
+
+### Hyperbrowser MCP
+The project uses Hyperbrowser for browser automation and testing. Configuration is found in `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "hyperbrowser": {
+      "command": "npx",
+      "args": ["-y", "hyperbrowser-mcp"],
+      "env": {
+        "HYPERBROWSER_API_KEY": "hb_4532417c24eb6988e4114337716b"
+      }
+    }
+  }
+}
+```
+
+To install the Hyperbrowser MCP server:
+```bash
+npm install -g hyperbrowser-mcp
+```
+
+### GitHub MCP
+The project also uses GitHub MCP for repository management. Configuration is found in `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {}
+    }
+  }
+}
+```
+
+To install the GitHub MCP server:
+```bash
+npm install -g @modelcontextprotocol/server-github
+```
+
+## Deployment to Netlify
+
+### Netlify Configuration
+- Site ID: `e8364cd6-63de-422b-a4a7-8a2df033feff`
+- Site Name: `glowing-clafoutis-603c5a`
+- Custom Domain: `alborspace.com`
+- API Token: `nfp_QyTjNig9BfUae27e85FrRa4yPP6fYiuz9cbb`
+
+### Deployment Steps
+1. Install Netlify CLI:
+   ```bash
+   npm install -g netlify-cli
+   ```
+
+2. Authenticate with Netlify:
+   ```bash
+   netlify login
+   ```
+
+3. Link your local project to the Netlify site:
+   ```bash
+   netlify link --id e8364cd6-63de-422b-a4a7-8a2df033feff
+   ```
+
+4. Deploy to production:
+   ```bash
+   netlify deploy --prod --dir=dist
+   ```
+
+### Continuous Deployment
+The site is configured for continuous deployment from GitHub. When changes are pushed to the main branch, Netlify will automatically build and deploy the updated site.
+
+## Testing Procedures
+
+### Local Testing
+1. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+2. Open your browser and navigate to `http://localhost:4321`
+
+3. Test the following functionality:
+   - Navigation to all pages
+   - Responsive design (mobile, tablet, desktop)
+   - Interactive components
+   - Form submissions
+
+### Browser Compatibility Testing
+Test the website in the following browsers:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+### Automated Testing with Hyperbrowser
+You can use Hyperbrowser to automate testing tasks:
+
+```javascript
+// Example: Navigate to the website and take a screenshot
+await mcp_playwright_playwright_navigate({
+  url: "https://alborspace.com"
+});
+
+await mcp_playwright_playwright_screenshot({
+  name: "homepage-screenshot"
+});
+```
+
+## Troubleshooting
+
+### Common Build Issues
+1. **Image Processing Errors**: If you encounter errors related to image processing, check that all images are properly formatted and not corrupted. Use a placeholder image if necessary:
+   ```bash
+   curl -sL https://placehold.co/1920x1080 -o src/assets/problematic-image.jpg
+   ```
+   
+   Better yet, move large background images to the public directory:
+   ```bash
+   mkdir -p public/images/backgrounds
+   # You can use WebP format for better performance
+   curl -sL https://source.unsplash.com/random/1920x1080/?space -o public/images/backgrounds/Planet-horizon.webp
+   ```
+   
+   Then update references in your code from:
+   ```astro
+   import planetHorizonImage from '../assets/Planet-horizon.jpg';
+   <img src={planetHorizonImage.src} alt="Planet horizon">
+   ```
+   
+   To:
+   ```astro
+   <img src="/images/backgrounds/Planet-horizon.webp" alt="Planet horizon">
+   ```
+
+2. **Node.js Compatibility**: Ensure you're using a compatible Node.js version (18.14.0 or later).
+
+3. **Dependency Issues**: If you encounter dependency issues, try removing `node_modules` and reinstalling:
+   ```bash
+   rm -rf node_modules
+   npm install
+   ```
+
+### Deployment Issues
+1. **Netlify Access**: Make sure you have the correct permissions for the Netlify site.
+
+2. **Build Command**: Verify that the build command in Netlify is set to `npm run build`.
+
+3. **Publish Directory**: Ensure the publish directory in Netlify is set to `dist`.
+
+## Site Architecture
+The AlborSpace website follows this structure:
+- `src/pages/`: Contains all page routes
+- `src/components/`: Reusable UI components
+- `src/layouts/`: Page layouts
+- `src/styles/`: Global styles
+- `src/assets/`: Images and other static assets (small, processed images only)
+- `public/images/`: Large static images (like backgrounds) that don't need processing
+- `src/content/`: Content configuration
+
+## Contact Information
+For deployment issues, contact the website administrator at `pacomuro99@gmail.com`.
