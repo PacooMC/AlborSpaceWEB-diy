@@ -7,54 +7,62 @@ const { className = '' } = Astro.props;
 ---
 
 <div class={`relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container ${className}`}>
-  <div class="w-full max-w-xl mx-auto">
+  <div class="w-full h-full mx-auto">
     <div class="payload-diagram">
-      <!-- Processing Chain (Top) -->
+      <!-- Processing Chain - Top section -->
       <div class="processing-chain">
-        <div class="process-unit rf-unit">
+        <div class="processing-unit rf-unit">
           <div class="unit-label">RF</div>
           <div class="unit-sublabel">Radio Unit</div>
           <div class="unit-detail">1-6 GHz</div>
         </div>
         
-        <div class="signal-arrow"></div>
+        <div class="signal-arrow arrow-1"></div>
         
-        <div class="process-unit bbp-unit">
+        <div class="processing-unit bbp-unit">
           <div class="unit-label">BBP</div>
           <div class="unit-sublabel">Baseband Processing</div>
           <div class="unit-detail">5G NR DSP</div>
         </div>
         
-        <div class="signal-arrow"></div>
+        <div class="signal-arrow arrow-2"></div>
         
-        <div class="process-unit pt-unit">
+        <div class="processing-unit pt-unit">
           <div class="unit-label">PT</div>
           <div class="unit-sublabel">Protocol Stack</div>
           <div class="unit-detail">Software Defined</div>
         </div>
       </div>
 
-      <!-- Satellite (Center) -->
-      <div class="satellite">
-        <div class="satellite-body"></div>
-        <div class="satellite-panels left"></div>
-        <div class="satellite-panels right"></div>
-        <div class="satellite-antenna"></div>
+      <!-- Satellite - Center section -->
+      <div class="satellite-section">
+        <div class="satellite">
+          <div class="satellite-panels left"></div>
+          <div class="satellite-body"></div>
+          <div class="satellite-panels right"></div>
+          <div class="satellite-antenna"></div>
+        </div>
       </div>
 
-      <!-- Ground Stations (Bottom) -->
+      <!-- Ground Stations - Bottom section -->
       <div class="ground-stations">
         <div class="ground-station left">
-          <div class="station-icon"></div>
+          <div class="station-body"></div>
           <div class="station-antenna"></div>
           <div class="station-label">Ground Station</div>
         </div>
 
         <div class="ground-station right">
-          <div class="station-icon"></div>
+          <div class="station-body"></div>
           <div class="station-antenna"></div>
           <div class="station-label">User Terminal</div>
         </div>
+      </div>
+
+      <!-- Communication beams -->
+      <div class="beam-container">
+        <div class="beam uplink"></div>
+        <div class="beam downlink"></div>
       </div>
     </div>
   </div>
@@ -63,6 +71,8 @@ const { className = '' } = Astro.props;
 <style>
   .diagram-container {
     min-height: 500px;
+    min-width: 500px;
+    aspect-ratio: 1;
     border-radius: 0 0.75rem 0.75rem 0;
     overflow: hidden;
     position: relative;
@@ -71,20 +81,29 @@ const { className = '' } = Astro.props;
   @media (max-width: 1024px) {
     .diagram-container {
       border-radius: 0 0 0.75rem 0.75rem;
+      min-height: 400px;
+      min-width: 400px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .diagram-container {
+      min-height: 350px;
+      min-width: 350px;
     }
   }
 
   .payload-diagram {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 100%;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  /* Processing Chain (Top) */
+  /* Processing Chain - Top */
   .processing-chain {
     display: flex;
     align-items: center;
@@ -93,11 +112,9 @@ const { className = '' } = Astro.props;
     margin-bottom: 40px;
   }
 
-  .process-unit {
-    width: 110px;
+  .processing-unit {
+    width: 120px;
     height: 80px;
-    background-color: rgba(26, 26, 46, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     padding: 12px;
     display: flex;
@@ -106,27 +123,27 @@ const { className = '' } = Astro.props;
     align-items: center;
     position: relative;
     transition: all 0.3s ease;
-  }
-
-  .process-unit:hover {
-    border-color: rgba(255, 255, 255, 0.25);
-    background-color: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(13, 15, 26, 0.6);
   }
 
   .rf-unit {
     border-color: rgba(233, 69, 96, 0.3);
+    background-color: rgba(233, 69, 96, 0.08);
   }
 
   .bbp-unit {
     border-color: rgba(34, 197, 94, 0.3);
+    background-color: rgba(34, 197, 94, 0.08);
   }
 
   .pt-unit {
     border-color: rgba(59, 130, 246, 0.3);
+    background-color: rgba(59, 130, 246, 0.08);
   }
 
   .unit-label {
-    font-size: 16px;
+    font-size: 18px;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
     text-align: center;
@@ -135,11 +152,11 @@ const { className = '' } = Astro.props;
   }
 
   .unit-sublabel {
-    font-size: 10px;
+    font-size: 11px;
     color: rgba(255, 255, 255, 0.6);
     text-align: center;
-    line-height: 1.2;
     margin-bottom: 2px;
+    line-height: 1.2;
   }
 
   .unit-detail {
@@ -170,52 +187,58 @@ const { className = '' } = Astro.props;
     border-bottom: 3px solid transparent;
   }
 
-  /* Satellite (Center) */
+  /* Satellite - Center */
+  .satellite-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+  }
+
   .satellite {
     position: relative;
-    align-self: center;
-    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .satellite-body {
     width: 80px;
     height: 50px;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.6));
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
+    background-color: rgba(13, 15, 26, 0.8);
+    border: 2px solid rgba(233, 69, 96, 0.3);
+    border-radius: 8px;
     position: relative;
   }
 
   .satellite-panels {
-    position: absolute;
     width: 50px;
-    height: 20px;
-    background-color: rgba(59, 130, 246, 0.3);
-    border: 1px solid rgba(59, 130, 246, 0.4);
-    border-radius: 2px;
-    top: 15px;
+    height: 25px;
+    background-color: rgba(13, 15, 26, 0.6);
+    border: 1px solid rgba(233, 69, 96, 0.25);
+    border-radius: 4px;
   }
 
   .satellite-panels.left {
-    left: -55px;
+    margin-right: 10px;
   }
 
   .satellite-panels.right {
-    right: -55px;
+    margin-left: 10px;
   }
 
   .satellite-antenna {
     position: absolute;
-    bottom: -12px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     width: 3px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.6);
+    height: 15px;
+    background-color: rgba(233, 69, 96, 0.6);
     border-radius: 1px;
   }
 
-  /* Ground Stations (Bottom) */
+  /* Ground Stations - Bottom */
   .ground-stations {
     display: flex;
     justify-content: space-between;
@@ -228,46 +251,91 @@ const { className = '' } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
   }
 
-  .station-icon {
+  .station-body {
     width: 40px;
-    height: 30px;
-    background-color: rgba(26, 26, 46, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 25px;
+    background-color: rgba(13, 15, 26, 0.8);
+    border: 1px solid rgba(233, 69, 96, 0.3);
     border-radius: 4px;
     position: relative;
   }
 
   .station-antenna {
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 8px;
-    background-color: rgba(255, 255, 255, 0.6);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(233, 69, 96, 0.4);
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    margin-top: -2px;
+    position: relative;
   }
 
-  .station-antenna::after {
+  .station-antenna::before {
     content: '';
     position: absolute;
-    top: -4px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
+    transform: translate(-50%, -50%);
+    width: 2px;
     height: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 0 4px 0 0;
-    transform: translateX(-50%) rotate(-45deg);
+    background-color: rgba(233, 69, 96, 0.5);
   }
 
   .station-label {
+    margin-top: 8px;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
+  }
+
+  /* Communication Beams */
+  .beam-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .beam {
+    position: absolute;
+    background: radial-gradient(ellipse at center, rgba(233, 69, 96, 0.15), transparent 70%);
+    width: 120px;
+    height: 200px;
+    clip-path: polygon(45% 0%, 55% 0%, 70% 100%, 30% 100%);
+  }
+
+  .beam.uplink {
+    top: 45%;
+    left: 25%;
+    transform: translateX(-50%) rotate(15deg);
+  }
+
+  .beam.downlink {
+    top: 45%;
+    right: 25%;
+    transform: translateX(50%) rotate(-15deg);
+  }
+
+  /* Hover effects */
+  .processing-unit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .rf-unit:hover {
+    border-color: rgba(233, 69, 96, 0.5);
+    background-color: rgba(233, 69, 96, 0.12);
+  }
+
+  .bbp-unit:hover {
+    border-color: rgba(34, 197, 94, 0.5);
+    background-color: rgba(34, 197, 94, 0.12);
+  }
+
+  .pt-unit:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    background-color: rgba(59, 130, 246, 0.12);
   }
 </style>
