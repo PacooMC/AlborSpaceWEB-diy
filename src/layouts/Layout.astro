@@ -32,22 +32,27 @@
         <title>{title}</title>
       </head>
       <body class="bg-black text-white min-h-screen overflow-x-hidden">
-        <!-- UNIFORM Deep space background - NO variations -->
-        <div class="fixed inset-0 bg-black z-[-10]"></div>
+        <!-- Beautiful navy space gradient background -->
+        <div class="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-[-10]"></div>
 
-        <!-- Planet horizon background - ULTRA DARK and UNIFORM -->
+        <!-- Planet horizon background with enhanced navy atmosphere -->
         <div class="fixed inset-0 z-[-8] overflow-hidden">
           <div id="horizon-container" class="absolute inset-0 w-full h-full">
-            <!-- Planet horizon image - EXTREMELY dark and subtle -->
+            <!-- Planet horizon image -->
             <img 
               src={horizonImage.src} 
               alt="Planet horizon" 
-              class="w-full h-full object-cover object-bottom opacity-5" 
+              class="w-full h-full object-cover object-bottom opacity-60" 
               id="horizon-image"
             />
             
-            <!-- UNIFORM black overlay - NO gradients or variations -->
-            <div class="absolute inset-0 bg-black/95"></div>
+            <!-- Beautiful navy space overlay layers -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/95 via-slate-800/80 to-slate-900/90"></div>
+            <div class="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-blue-900/30 via-slate-800/20 to-transparent"></div>
+            <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-indigo-900/20 to-transparent"></div>
+            
+            <!-- Subtle space glow -->
+            <div id="space-glow" class="absolute top-0 w-full h-full bg-gradient-to-b from-blue-900/20 via-slate-800/10 to-transparent opacity-60 transition-all duration-1000 ease-out"></div>
           </div>
         </div>
 
@@ -64,8 +69,8 @@
 
         <!-- Modal for expanded member details -->
         <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
-          <div class="absolute inset-0 bg-black/98 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
-          <div class="relative bg-black/90 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
+          <div class="absolute inset-0 bg-slate-900/98 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
+          <div class="relative bg-slate-800/70 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
             <button id="close-modal" class="absolute top-4 right-4 text-white/50 hover:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -79,7 +84,7 @@
                 </div>
 
                 <!-- Contact info -->
-                <div class="space-y-4 p-4 bg-black/50 rounded-xl border border-white/5">
+                <div class="space-y-4 p-4 bg-slate-900/50 rounded-xl border border-white/5">
                   <h4 class="text-sm uppercase tracking-wider text-white/50 mb-3">Contact Information</h4>
 
                   <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white group">
@@ -136,7 +141,7 @@
         </div>
 
         <style is:global>
-          /* UNIFORM deep space background - NO variations */
+          /* Beautiful navy space background */
           #horizon-container {
             position: relative;
             overflow: hidden;
@@ -146,22 +151,22 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
           }
 
-          /* Enhanced star animations with space theme */
+          /* Enhanced star animations with navy space theme */
           .star {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            animation: twinkle 5s infinite;
+            animation: twinkle 4s infinite;
           }
 
           @keyframes twinkle {
             0%, 100% { 
-              opacity: 0.3; 
+              opacity: 0.4; 
               transform: scale(1);
             }
             50% { 
               opacity: 1; 
-              transform: scale(1.1);
+              transform: scale(1.2);
             }
           }
 
@@ -302,24 +307,32 @@
             }
           });
 
-          // Enhanced page initialization with space theme
+          // Enhanced page initialization with navy space theme
           document.addEventListener('DOMContentLoaded', () => {
-            // Enhanced stars background with space theme
+            // Enhanced stars background with navy space theme
             const starField = document.getElementById('star-field');
             if (starField) {
               starField.innerHTML = '';
 
               const fragment = document.createDocumentFragment();
-              for (let i = 0; i < 300; i++) {
+              for (let i = 0; i < 250; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
 
-                const size = Math.random() > 0.95 ? Math.random() * 2 + 0.8 :
-                         Math.random() > 0.85 ? Math.random() * 1.2 + 0.4 :
-                         Math.random() * 0.6 + 0.2;
+                const size = Math.random() > 0.90 ? Math.random() * 2.5 + 1 :
+                         Math.random() > 0.75 ? Math.random() * 1.5 + 0.5 :
+                         Math.random() * 0.8 + 0.3;
 
-                // Mostly white stars
-                let color = 'rgba(255, 255, 255, 0.8)';
+                // Navy space star coloring
+                let color;
+                const random = Math.random();
+                if (random > 0.95) {
+                  color = 'rgba(147, 197, 253, 0.9)'; // Blue stars
+                } else if (random > 0.85) {
+                  color = 'rgba(255, 255, 255, 0.9)'; // White stars
+                } else {
+                  color = 'rgba(255, 255, 255, 0.6)'; // Dim white
+                }
 
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
@@ -327,11 +340,11 @@
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.backgroundColor = color;
 
-                star.style.animationDelay = `${Math.random() * 8}s`;
-                star.style.animationDuration = `${Math.random() * 6 + 4}s`;
+                star.style.animationDelay = `${Math.random() * 6}s`;
+                star.style.animationDuration = `${Math.random() * 4 + 3}s`;
 
-                if (size > 1) {
-                  star.style.boxShadow = `0 0 ${size * 1.5}px ${color}`;
+                if (size > 1.5) {
+                  star.style.boxShadow = `0 0 ${size * 2}px ${color}`;
                 }
 
                 fragment.appendChild(star);
@@ -339,8 +352,9 @@
               starField.appendChild(fragment);
             }
 
-            // Minimal scroll effects
+            // Enhanced scroll effects with navy theme
             const horizonImage = document.getElementById('horizon-image');
+            const spaceGlow = document.getElementById('space-glow');
 
             let ticking = false;
             window.addEventListener('scroll', () => {
@@ -348,10 +362,19 @@
                 requestAnimationFrame(() => {
                   const scrollY = window.scrollY;
 
-                  // Subtle parallax effect on background
-                  if (horizonImage) {
-                    const parallaxOffset = scrollY * 0.1;
-                    horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.01)`;
+                  // Enhanced background effects
+                  if (horizonImage && spaceGlow) {
+                    // Space glow appears when scrolled to top
+                    if (scrollY < 150) {
+                      const topIntensity = Math.max(1 - (scrollY / 150), 0);
+                      spaceGlow.style.opacity = topIntensity * 0.8;
+                    } else {
+                      spaceGlow.style.opacity = '0.6';
+                    }
+
+                    // Subtle parallax effect on background
+                    const parallaxOffset = scrollY * 0.3;
+                    horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.05)`;
                   }
 
                   ticking = false;
@@ -359,6 +382,16 @@
                 ticking = true;
               }
             });
+
+            // Initial space glow effect for page load
+            if (spaceGlow) {
+              setTimeout(() => {
+                spaceGlow.style.opacity = '0.8';
+                setTimeout(() => {
+                  spaceGlow.style.opacity = '0.6';
+                }, 2000);
+              }, 500);
+            }
           });
         </script>
       </body>
