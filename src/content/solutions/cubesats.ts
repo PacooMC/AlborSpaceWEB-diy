@@ -1,72 +1,72 @@
 export const cubesatSolution = {
-  title: "Payloads para Cubesats de Alto Rendimiento",
-  description: "Payloads de comunicación satelital de próxima generación basados en software de alto rendimiento, optimizados para máxima eficiencia y rendimiento en comunicaciones espaciales.",
-  cta: "Solicitar Demo",
+  title: "High-Performance CubeSat Payloads",
+  description: "Next-generation software-based high-performance satellite communication payloads optimized for maximum efficiency and performance in space communications.",
+  cta: "Request Demo",
   color: "blue",
   image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=2072&h=1200",
-  imageAlt: "Satélite en el espacio"
+  imageAlt: "Satellite in space"
 };
 
 export const features = {
-  title: "Tecnología de Radio Avanzada",
-  description: "Nuestros payloads para cubesats aprovechan protocolos de radio 5G de vanguardia, completamente basados en software de alto rendimiento, optimizados específicamente para comunicaciones satelitales.",
+  title: "Advanced Radio Technology",
+  description: "Our cubesat payloads leverage cutting-edge 5G radio protocols, completely based on high-performance software, optimized specifically for satellite communications.",
   items: [
     {
       icon: "Waves",
-      title: "Protocolos de Alta Eficiencia",
-      description: "Protocolos de radio 5G avanzados basados en software de alto rendimiento para comunicaciones satelitales"
+      title: "High-Efficiency Protocols",
+      description: "Advanced software-based high-performance 5G radio protocols for satellite communications"
     },
     {
       icon: "Shield",
-      title: "Diseño Robusto",
-      description: "Hardware endurecido para el espacio diseñado para operaciones orbitales de larga duración"
+      title: "Robust Design",
+      description: "Space-hardened hardware designed for long-term orbital operations"
     },
     {
       icon: "Zap",
-      title: "Optimización de Potencia",
-      description: "Consumo de potencia ultra-eficiente basado en procesado de software optimizado"
+      title: "Power Optimization",
+      description: "Ultra-efficient power consumption based on optimized software processing"
     }
   ],
   image: "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&q=80&w=1000&h=800",
-  imageAlt: "Tecnología satelital"
+  imageAlt: "Satellite technology"
 };
 
 export const specifications = {
-  title: "Especificaciones Técnicas",
-  description: "Nuestros payloads para cubesats están diseñados para cumplir los requisitos más exigentes de las comunicaciones satelitales modernas basadas en software.",
+  title: "Technical Specifications",
+  description: "Our cubesat payloads are designed to meet the most demanding requirements of modern software-based satellite communications.",
   sections: [
     {
-      title: "Especificaciones de Radio",
+      title: "Radio Specifications",
       specs: [
-        "Rango de Frecuencia: 1-6 GHz",
-        "Ancho de Banda: Hasta 200 MHz",
-        "Modulación: 5G NR avanzada",
-        "Procesado: Software de alto rendimiento"
+        "Frequency Range: 1-6 GHz",
+        "Bandwidth: Up to 200 MHz",
+        "Modulation: Advanced 5G NR",
+        "Processing: High-performance software"
       ]
     },
     {
-      title: "Requisitos de Potencia",
+      title: "Power Requirements",
       specs: [
-        "Consumo: < 10W",
-        "Voltaje de alimentación: 3.3V/5V",
-        "Eficiencia: > 90%",
-        "Optimización por software"
+        "Power Consumption: < 10W",
+        "Supply Voltage: 3.3V/5V",
+        "Efficiency: > 90%",
+        "Software optimization"
       ]
     },
     {
-      title: "Propiedades Físicas",
+      title: "Physical Properties",
       specs: [
-        "Tamaño: 10x10x10 cm",
-        "Peso: < 1.33 kg",
-        "Temp. operación: -40°C a +85°C",
-        "Arquitectura definida por software"
+        "Size: 10x10x10 cm",
+        "Weight: < 1.33 kg",
+        "Operating Temp: -40°C to +85°C",
+        "Software-defined architecture"
       ]
     }
   ]
 };
 
 export const cta = {
-  title: "¿Listo para Lanzar tu Proyecto?",
-  description: "Contacta con nuestro equipo para conocer más sobre cómo nuestros payloads para cubesats pueden mejorar tus capacidades de comunicaciones satelitales.",
-  buttonText: "Comenzar"
+  title: "Ready to Launch Your Project?",
+  description: "Contact our team to learn more about how our cubesat payloads can enhance your satellite communications capabilities.",
+  buttonText: "Get Started"
 };

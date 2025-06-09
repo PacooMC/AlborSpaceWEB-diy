@@ -1,28 +1,28 @@
 export const hero = {
   title: "ALBOR",
   subtitle: "SPACE",
-  description: "Sistemas de procesado de señal de alto rendimiento para comunicaciones satelitales de próxima generación",
-  cta: "DESCUBRE NUESTRO TRABAJO"
+  description: "High-performance signal processing systems for next-generation satellite communications",
+  cta: "DISCOVER OUR WORK"
 };
 
 export const technology = {
-  title: "Nuestra Tecnología",
+  title: "Our Technology",
   items: [
     {
-      title: "Procesado de Señal",
-      description: "Sistemas de procesado de señal de alto rendimiento basados en software para comunicaciones espaciales avanzadas.",
+      title: "Signal Processing",
+      description: "High-performance software-based signal processing systems for advanced space communications.",
       icon: "Cpu",
       color: "blue"
     },
     {
-      title: "Gestión de Red",
-      description: "Soluciones inteligentes para la gestión y optimización de redes satelitales complejas.",
+      title: "Network Management",
+      description: "Intelligent solutions for management and optimization of complex satellite networks.",
       icon: "Network",
       color: "purple"
     },
     {
-      title: "Testing de Comunicaciones",
-      description: "Soluciones avanzadas de testing para validación de sistemas de comunicaciones satelitales.",
+      title: "Communications Testing",
+      description: "Advanced testing solutions for validation of satellite communication systems.",
       icon: "Radio",
       color: "green"
     }
@@ -30,37 +30,37 @@ export const technology = {
 };
 
 export const expertise = {
-  title: "Nuestra Experiencia",
+  title: "Our Expertise",
   items: [
     {
-      title: "Procesado de Señal Avanzado",
-      description: "Desarrollo de sistemas de procesado de señal de alto rendimiento basados en software para aplicaciones espaciales críticas.",
+      title: "Advanced Signal Processing",
+      description: "Development of high-performance software-based signal processing systems for critical space applications.",
       points: [
-        "Algoritmos de procesado optimizados",
-        "Implementaciones en tiempo real",
-        "Soluciones escalables y configurables"
+        "Optimized processing algorithms",
+        "Real-time implementations",
+        "Scalable and configurable solutions"
       ],
       icon: "Cpu",
       color: "blue"
     },
     {
-      title: "Gestión de Redes Satelitales",
-      description: "Sistemas inteligentes para la gestión automatizada y optimización de redes de comunicaciones espaciales.",
+      title: "Satellite Network Management",
+      description: "Intelligent systems for automated management and optimization of space communication networks.",
       points: [
-        "Orquestación automática de servicios",
-        "Optimización de recursos en tiempo real",
-        "Gestión de constelaciones satelitales"
+        "Automated service orchestration",
+        "Real-time resource optimization",
+        "Satellite constellation management"
       ],
       icon: "Network",
       color: "purple"
     },
     {
-      title: "Testing y Validación",
-      description: "Soluciones completas de testing para validación de sistemas de comunicaciones satelitales bajo condiciones realistas.",
+      title: "Testing & Validation",
+      description: "Complete testing solutions for satellite communication systems validation under realistic conditions.",
       points: [
-        "Emulación de canal precisa",
-        "Testing end-to-end de redes",
-        "Validación centrada en QoE"
+        "Precise channel emulation",
+        "End-to-end network testing",
+        "QoE-centric validation"
       ],
       icon: "Radio",
       color: "green"
@@ -69,36 +69,36 @@ export const expertise = {
 };
 
 export const stats = {
-  title: "Nuestro Impacto",
+  title: "Our Impact",
   items: [
-    { value: "50+", label: "PROYECTOS" },
-    { value: "15+", label: "PAÍSES" },
-    { value: "25+", label: "EXPERTOS" },
-    { value: "10+", label: "PATENTES" }
+    { value: "50+", label: "PROJECTS" },
+    { value: "15+", label: "COUNTRIES" },
+    { value: "25+", label: "EXPERTS" },
+    { value: "10+", label: "PATENTS" }
   ]
 };
 
 export const research = {
-  title: "Áreas de Investigación",
+  title: "Research Areas",
   items: [
     {
-      title: "Comunicaciones Espaciales 6G",
-      description: "Pioneros en tecnologías de próxima generación para comunicaciones basadas en el espacio.",
+      title: "6G Space Communications",
+      description: "Pioneering next-generation technologies for space-based communications.",
       points: [
-        "Comunicaciones cuánticas",
-        "Integración fotónica",
-        "Conformado de haces avanzado"
+        "Quantum communications",
+        "Photonic integration",
+        "Advanced beamforming"
       ],
       icon: "Satellite",
       color: "blue"
     },
     {
-      title: "Redes Inteligentes",
-      description: "Sistemas inteligentes para optimización automatizada de redes espaciales.",
+      title: "Intelligent Networks",
+      description: "Intelligent systems for automated optimization of space networks.",
       points: [
-        "Redes auto-organizadas",
-        "Mantenimiento predictivo",
-        "Asignación dinámica de recursos"
+        "Self-organizing networks",
+        "Predictive maintenance",
+        "Dynamic resource allocation"
       ],
       icon: "Network",
       color: "purple"
@@ -107,7 +107,7 @@ export const research = {
 };
 
 export const team = {
-  title: "Nuestro Liderazgo",
+  title: "Our Leadership",
   members: [
     { 
       name: "Paco Muro", 

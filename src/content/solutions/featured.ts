@@ -1,24 +1,24 @@
 export const channelEmulator = {
-  title: "Emulador de Canal Satelital Multi-órbita",
-  description: "Nuestro emulador de canal avanzado proporciona una solución costo-efectiva para testing de comunicaciones satelitales en condiciones realistas, permitiendo simulación precisa de diversas características de canal espacial.",
+  title: "Multi-orbit Satellite Channel Emulator",
+  description: "Our advanced channel emulator provides a cost-effective solution for testing satellite communications in realistic conditions, allowing for precise simulation of various space channel characteristics.",
   features: [
-    "Simulación precisa de Doppler, retardo y desvanecimiento para satélites LEO, MEO y GEO",
-    "Hasta 200MHz de ancho de banda con soporte completo para modelos ITU y 3GPP",
-    "Soporte multi-terminal con integración API para testing automatizado",
-    "Propagadores de órbitas visuales con interfaz web moderna y configurable",
-    "Procesado de señal de alta fidelidad especializado para 5G NTN",
-    "Arquitectura altamente configurable para diversos escenarios de testing"
+    "Accurate Doppler, delay and fading simulation for LEO, MEO, and GEO satellites",
+    "Up to 200MHz bandwidth with full ITU and 3GPP satellite model support",
+    "Multi-terminal support with API integration for automated test sequences",
+    "Visual orbit propagators with modern, configurable web interface",
+    "High-fidelity signal processing specialized for 5G NTN development",
+    "Highly configurable architecture for diverse testing scenarios"
   ]
 };
 
 export const communicationPayloads = {
-  title: "Payloads de Comunicación 5G de Nueva Generación",
-  description: "Nuestros payloads de comunicación satelital de vanguardia ofrecen rendimiento superior para redes no terrestres 5G con eficiencia mejorada, peso reducido y mayor throughput, basados en soluciones de software de alto rendimiento.",
+  title: "Next-Gen 5G Communication Payloads",
+  description: "Our cutting-edge satellite communication payloads deliver superior performance for 5G non-terrestrial networks with enhanced efficiency, reduced weight, and increased throughput, based on high-performance software solutions.",
   features: [
-    "Tecnología multi-banda avanzada (1-6 GHz) con procesado IA adaptivo",
-    "Diseño ultra-compacto y eficiente: < 1.33kg, < 10W de consumo",
-    "Arquitectura definida por software con actualizaciones en órbita",
-    "Algoritmos de procesado optimizados para entornos espaciales críticos",
-    "Integración perfecta con infraestructura 5G terrestre existente"
+    "Advanced multi-band technology (1-6 GHz) with adaptive AI processing",
+    "Ultra-compact and efficient design: < 1.33kg, < 10W consumption",
+    "Software-defined architecture with in-orbit updates",
+    "Optimized processing algorithms for critical space environments",
+    "Seamless integration with existing terrestrial 5G infrastructure"
   ]
 };
