@@ -31,27 +31,30 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
         <title>{title}</title>
       </head>
-      <body class="bg-black text-white min-h-screen overflow-x-hidden">
-        <!-- Pure black space background -->
-        <div class="fixed inset-0 bg-black z-[-10]"></div>
+      <body class="text-white min-h-screen overflow-x-hidden">
+        <!-- Deep navy space background with subtle gradients -->
+        <div class="fixed inset-0 z-[-10] deep-navy-bg"></div>
 
-        <!-- Minimal planet horizon background -->
+        <!-- Additional gradient layers for depth -->
+        <div class="fixed inset-0 z-[-9] navy-gradient-overlay"></div>
+
+        <!-- Enhanced planet horizon background -->
         <div class="fixed inset-0 z-[-8] overflow-hidden">
           <div id="horizon-container" class="absolute inset-0 w-full h-full">
-            <!-- Planet horizon image with minimal visibility -->
+            <!-- Planet horizon image with better visibility on navy background -->
             <img 
               src={horizonImage.src} 
               alt="Planet horizon" 
-              class="w-full h-full object-cover object-bottom opacity-20" 
+              class="w-full h-full object-cover object-bottom opacity-30" 
               id="horizon-image"
             />
             
-            <!-- Minimal dark overlay -->
-            <div class="absolute inset-0 bg-black/80"></div>
+            <!-- Navy-tinted overlay for seamless integration -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000044]/60 to-transparent"></div>
           </div>
         </div>
 
-        <!-- Minimal star field background -->
+        <!-- Enhanced star field background -->
         <div id="star-field" class="fixed inset-0 z-[-5]"></div>
 
         <Navigation />
@@ -64,8 +67,8 @@
 
         <!-- Modal for expanded member details -->
         <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
-          <div class="absolute inset-0 bg-black/95 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
-          <div class="relative bg-gray-900/90 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
+          <div class="absolute inset-0 bg-[#000033]/95 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
+          <div class="relative bg-[#000044]/90 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
             <button id="close-modal" class="absolute top-4 right-4 text-white/50 hover:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -79,16 +82,16 @@
                 </div>
 
                 <!-- Contact info -->
-                <div class="space-y-4 p-4 bg-black/50 rounded-xl border border-white/5">
+                <div class="space-y-4 p-4 bg-[#000033]/50 rounded-xl border border-white/5">
                   <h4 class="text-sm uppercase tracking-wider text-white/50 mb-3">Contact Information</h4>
 
                   <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white group">
-                    <Mail size={20} class="mr-2 text-orange-400/70" />
-                    <span class="text-sm group-hover:text-orange-400 transition-colors duration-200"></span>
+                    <Mail size={20} class="mr-2 text-[#FF6B00]/70" />
+                    <span class="text-sm group-hover:text-[#FF6B00] transition-colors duration-200"></span>
                   </a>
 
                   <div class="flex items-start text-white/50">
-                    <MapPin size={20} class="mr-2 shrink-0 text-orange-400/70 mt-0.5" />
+                    <MapPin size={20} class="mr-2 shrink-0 text-[#FF6B00]/70 mt-0.5" />
                     <div>
                       <p class="text-sm">Departamento de Ingeniería de Comunicaciones</p>
                       <p class="text-sm">ETSI Telecomunicación</p>
@@ -101,7 +104,7 @@
 
               <div class="w-full md:w-2/3">
                 <h3 id="modal-name" class="text-2xl font-light mb-2 text-gradient-orange-soft"></h3>
-                <p id="modal-role" class="text-orange-400/90 text-sm tracking-wider uppercase mb-6"></p>
+                <p id="modal-role" class="text-[#FF6B00]/90 text-sm tracking-wider uppercase mb-6"></p>
 
                 <div class="prose prose-invert prose-sm max-w-none">
                   <p id="modal-bio" class="text-white/70 leading-relaxed mb-8"></p>
@@ -120,12 +123,12 @@
 
                   <!-- Stats -->
                   <div class="grid grid-cols-2 gap-4 text-center">
-                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10">
-                      <div id="modal-publications" class="text-2xl font-light text-orange-400 mb-2"></div>
+                    <div class="bg-[#FF6B00]/5 rounded-lg p-4 border border-[#FF6B00]/10">
+                      <div id="modal-publications" class="text-2xl font-light text-[#FF6B00] mb-2"></div>
                       <div class="text-sm text-white/50">Publications</div>
                     </div>
-                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10">
-                      <div id="modal-patents" class="text-2xl font-light text-orange-400 mb-2"></div>
+                    <div class="bg-[#FF6B00]/5 rounded-lg p-4 border border-[#FF6B00]/10">
+                      <div id="modal-patents" class="text-2xl font-light text-[#FF6B00] mb-2"></div>
                       <div class="text-sm text-white/50">Patents</div>
                     </div>
                   </div>
@@ -136,7 +139,31 @@
         </div>
 
         <style is:global>
-          /* Minimal dark space background */
+          /* Deep navy background with subtle gradients */
+          .deep-navy-bg {
+            background: linear-gradient(135deg, 
+              #000033 0%, 
+              #000044 25%, 
+              #001122 50%, 
+              #000055 75%, 
+              #000033 100%);
+          }
+
+          /* Additional gradient overlay for depth */
+          .navy-gradient-overlay {
+            background: radial-gradient(ellipse at center, 
+              transparent 0%, 
+              rgba(0, 0, 51, 0.3) 50%, 
+              rgba(0, 0, 68, 0.5) 100%);
+            animation: navyPulse 8s ease-in-out infinite alternate;
+          }
+
+          @keyframes navyPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+          }
+
+          /* Enhanced planet horizon background */
           #horizon-container {
             position: relative;
             overflow: hidden;
@@ -144,46 +171,47 @@
 
           #horizon-image {
             transition: opacity 0.3s ease, transform 0.3s ease;
+            filter: contrast(1.1) brightness(0.9);
           }
 
-          /* Minimal star animations */
+          /* Enhanced star animations with navy background */
           .star {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            animation: twinkle 5s infinite;
+            animation: twinkleOnNavy 5s infinite;
           }
 
-          @keyframes twinkle {
+          @keyframes twinkleOnNavy {
             0%, 100% { 
-              opacity: 0.3; 
+              opacity: 0.4; 
               transform: scale(1);
             }
             50% { 
               opacity: 1; 
-              transform: scale(1.1);
+              transform: scale(1.2);
             }
           }
 
-          /* Modal styles */
+          /* Modal styles with navy theme */
           .expertise-tag {
-            background-color: theme('colors.orange.400 / 15%');
+            background-color: rgba(255, 107, 0, 0.15);
             color: rgba(255, 255, 255, 0.8);
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.75rem;
-            border: 1px solid theme('colors.orange.400 / 25%');
+            border: 1px solid rgba(255, 107, 0, 0.25);
             transition: all 0.3s ease;
           }
 
           .expertise-tag:hover {
-            background-color: theme('colors.orange.400 / 20%');
-            border-color: theme('colors.orange.400 / 35%');
+            background-color: rgba(255, 107, 0, 0.25);
+            border-color: rgba(255, 107, 0, 0.4);
             transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(255, 107, 0, 0.2);
           }
 
           .text-gradient-orange-soft {
-            background: linear-gradient(to right, #fff, theme('colors.orange.300'));
+            background: linear-gradient(to right, #fff, #FF6B00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -254,7 +282,7 @@
               if (modalEducation) {
                 modalEducation.innerHTML = member.education?.map(edu =>
                   `<li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-orange-400/60 mt-1.5 mr-3 shrink-0"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#FF6B00]/60 mt-1.5 mr-3 shrink-0"></span>
                     ${edu}
                   </li>`
                 ).join('') || '<li>No education information available.</li>';
@@ -302,25 +330,35 @@
             }
           });
 
-          // Enhanced page initialization with minimal space theme
+          // Enhanced page initialization with navy theme
           document.addEventListener('DOMContentLoaded', () => {
-            // Minimal stars background - just like in the image
+            // Enhanced stars background with better visibility on navy
             const starField = document.getElementById('star-field');
             if (starField) {
               starField.innerHTML = '';
 
               const fragment = document.createDocumentFragment();
-              for (let i = 0; i < 150; i++) {
+              for (let i = 0; i < 180; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
 
-                // Minimal star sizing - mostly small
-                const size = Math.random() > 0.95 ? Math.random() * 1.5 + 1 :
-                         Math.random() > 0.85 ? Math.random() * 1 + 0.5 :
-                         Math.random() * 0.5 + 0.2;
+                // Enhanced star sizing for navy background
+                const size = Math.random() > 0.93 ? Math.random() * 2 + 1.5 :
+                         Math.random() > 0.8 ? Math.random() * 1.5 + 0.8 :
+                         Math.random() * 0.8 + 0.3;
 
-                // Simple white stars only
-                const color = 'rgba(255, 255, 255, 0.8)';
+                // Enhanced star coloring for navy background
+                let color;
+                const random = Math.random();
+                if (random > 0.97) {
+                  color = 'rgba(255, 107, 0, 0.9)'; // Orange stars for accents
+                } else if (random > 0.92) {
+                  color = 'rgba(255, 255, 255, 1)'; // Bright white stars
+                } else if (random > 0.85) {
+                  color = 'rgba(200, 220, 255, 0.9)'; // Slightly blue-tinted stars
+                } else {
+                  color = 'rgba(255, 255, 255, 0.7)'; // Regular white stars
+                }
 
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
@@ -331,12 +369,16 @@
                 star.style.animationDelay = `${Math.random() * 8}s`;
                 star.style.animationDuration = `${Math.random() * 6 + 4}s`;
 
+                if (size > 1.5) {
+                  star.style.boxShadow = `0 0 ${size * 3}px ${color}`;
+                }
+
                 fragment.appendChild(star);
               }
               starField.appendChild(fragment);
             }
 
-            // Minimal scroll effects
+            // Enhanced scroll effects with navy background
             const horizonImage = document.getElementById('horizon-image');
 
             let ticking = false;
@@ -345,10 +387,10 @@
                 requestAnimationFrame(() => {
                   const scrollY = window.scrollY;
 
-                  // Minimal parallax effect
+                  // Enhanced parallax effect
                   if (horizonImage) {
-                    const parallaxOffset = scrollY * 0.2;
-                    horizonImage.style.transform = `translateY(${parallaxOffset}px)`;
+                    const parallaxOffset = scrollY * 0.3;
+                    horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.05)`;
                   }
 
                   ticking = false;

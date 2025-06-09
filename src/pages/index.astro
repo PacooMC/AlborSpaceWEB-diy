@@ -7,8 +7,8 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 ---
 
 <Layout title="ALBOR SPACE - Advanced Satellite Communication Systems">
-  <!-- Minimal black space page with seamless transitions -->
-  <div class="minimal-space-page">
+  <!-- Navy space page with elegant transitions -->
+  <div class="navy-space-page">
     <!-- Hero Section - perfect centering, no padding -->
     <Hero />
 
@@ -30,13 +30,13 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 </Layout>
 
 <style is:global>
-  /* Minimal black space page with smooth transitions */
-  .minimal-space-page {
+  /* Navy space page with enhanced depth */
+  .navy-space-page {
     position: relative;
     background: transparent;
   }
 
-  /* Enhanced animations with minimal space theme */
+  /* Enhanced animations with navy space theme */
   .slide-left {
     animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.2s;
@@ -80,7 +80,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     }
   }
   
-  /* Enhanced reveal elements with minimal space theme */
+  /* Enhanced reveal elements with navy space theme */
   .heading-lg {
     font-weight: 300;
     letter-spacing: -0.03em;
@@ -98,7 +98,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateX(-50%);
     width: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.6), transparent);
     transition: width 1s ease 0.5s;
   }
   
@@ -122,19 +122,36 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateY(0);
   }
 
-  /* Enhanced glass effects with minimal space theme */
+  /* Enhanced glass effects with navy space theme */
   .glass-card {
     position: relative;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 51, 0.3);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .glass-card:hover {
-    border-color: rgba(255, 140, 0, 0.15);
-    background-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 107, 0, 0.3);
+    background-color: rgba(0, 0, 68, 0.4);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 51, 0.6),
+      0 0 20px rgba(255, 107, 0, 0.1);
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.6), transparent);
+    transition: left 0.8s ease;
+  }
+
+  .glass-card:hover::before {
+    left: 100%;
   }
 </style>
 
@@ -168,4 +185,3 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     document.documentElement.style.scrollBehavior = 'smooth';
   });
 </script>
-</Layout>
