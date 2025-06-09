@@ -62,45 +62,45 @@
 
         <Footer />
 
-        <!-- Ultra responsive mobile-first modal -->
+        <!-- Fixed mobile modal -->
         <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-          <!-- Enhanced backdrop with better mobile touch handling -->
-          <div class="absolute inset-0 bg-[#000012]/98 backdrop-blur-2xl opacity-0 transition-opacity duration-500 modal-backdrop"></div>
+          <!-- Enhanced backdrop -->
+          <div class="absolute inset-0 bg-[#000012]/95 backdrop-blur-2xl opacity-0 transition-opacity duration-500 modal-backdrop"></div>
           
-          <!-- Completely responsive modal container -->
-          <div class="relative w-full h-full sm:h-auto sm:max-h-[90vh] sm:w-auto sm:max-w-sm md:max-w-lg lg:max-w-4xl transform scale-95 opacity-0 transition-all duration-500 modal-content">
-            <!-- Mobile-first modal content -->
-            <div class="bg-[#000018]/95 h-full sm:h-auto sm:rounded-2xl border-0 sm:border border-white/8 backdrop-blur-xl shadow-2xl overflow-y-auto">
-              <!-- Enhanced close button for mobile -->
-              <button id="close-modal" class="absolute top-4 right-4 z-20 text-white/70 hover:text-white/90 transition-colors duration-300 p-2 rounded-full bg-[#000012]/80 backdrop-blur-sm touch-manipulation">
+          <!-- Properly sized modal container -->
+          <div class="relative w-full h-full sm:h-auto sm:max-h-[85vh] sm:w-auto sm:max-w-4xl sm:mx-4 transform scale-95 opacity-0 transition-all duration-500 modal-content">
+            <!-- Modal content with proper mobile sizing -->
+            <div class="bg-[#000018]/95 h-full sm:h-auto sm:rounded-2xl border-0 sm:border border-white/8 backdrop-blur-xl shadow-2xl flex flex-col">
+              <!-- Close button - properly positioned for mobile -->
+              <button id="close-modal" class="absolute top-4 right-4 z-20 text-white/70 hover:text-white/90 transition-colors duration-300 p-2 rounded-full bg-[#000012]/80 backdrop-blur-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
-              <!-- Mobile-optimized content layout -->
-              <div class="p-4 sm:p-6 lg:p-8">
-                <!-- Mobile: Single column, Desktop: Two columns -->
+              <!-- Scrollable content area -->
+              <div class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+                <!-- Content layout -->
                 <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
                   
-                  <!-- Image and contact info - Mobile optimized -->
+                  <!-- Image and contact info -->
                   <div class="w-full lg:w-1/3">
-                    <!-- Member image - responsive sizing -->
+                    <!-- Member image -->
                     <div class="rounded-xl overflow-hidden mb-6 ring-1 ring-white/8 shadow-xl">
                       <img id="modal-image" src="" alt="" class="w-full aspect-square object-cover">
                     </div>
 
-                    <!-- Contact info - Mobile optimized -->
+                    <!-- Contact info -->
                     <div class="space-y-4 p-4 bg-[#000012]/70 rounded-xl border border-white/5">
                       <h4 class="text-sm uppercase tracking-wider text-white/50 mb-4">Contact Information</h4>
 
-                      <!-- Email - mobile friendly -->
-                      <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white/80 group transition-colors duration-300 p-2 -m-2 rounded-lg touch-manipulation">
+                      <!-- Email -->
+                      <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white/80 group transition-colors duration-300 p-2 -m-2 rounded-lg">
                         <Mail size={20} class="mr-3 text-[#FF6B00]/40 group-hover:text-[#FF6B00]/60 transition-colors duration-300 flex-shrink-0" />
                         <span class="text-sm group-hover:text-[#FF6B00]/70 transition-colors duration-300 break-all"></span>
                       </a>
 
-                      <!-- Location - mobile friendly -->
+                      <!-- Location -->
                       <div class="flex items-start text-white/50 text-sm p-2 -m-2">
                         <MapPin size={20} class="mr-3 shrink-0 text-[#FF6B00]/40 mt-0.5" />
                         <div class="leading-relaxed">
@@ -113,29 +113,29 @@
                     </div>
                   </div>
 
-                  <!-- Content - Mobile optimized -->
+                  <!-- Content -->
                   <div class="w-full lg:w-2/3">
-                    <!-- Name and role - responsive typography -->
+                    <!-- Name and role -->
                     <h3 id="modal-name" class="text-2xl sm:text-3xl lg:text-4xl font-light mb-2 text-gradient-minimalist"></h3>
                     <p id="modal-role" class="text-[#FF6B00]/60 text-sm sm:text-base tracking-wider uppercase mb-6"></p>
 
-                    <!-- Bio - mobile optimized -->
+                    <!-- Bio -->
                     <div class="prose prose-invert prose-sm sm:prose-base max-w-none">
                       <p id="modal-bio" class="text-white/70 leading-relaxed mb-8 text-base"></p>
 
-                      <!-- Education - Mobile responsive -->
+                      <!-- Education -->
                       <div class="mb-8">
                         <h4 class="text-lg sm:text-xl font-light mb-4 text-white">Education</h4>
                         <ul id="modal-education" class="space-y-3 text-white/60"></ul>
                       </div>
 
-                      <!-- Expertise - Mobile responsive -->
+                      <!-- Expertise -->
                       <div class="mb-8">
                         <h4 class="text-lg sm:text-xl font-light mb-4 text-white">Areas of Expertise</h4>
                         <div id="modal-expertise" class="flex flex-wrap gap-2"></div>
                       </div>
 
-                      <!-- Stats - Mobile responsive grid -->
+                      <!-- Stats -->
                       <div class="grid grid-cols-2 gap-4 text-center">
                         <div class="bg-[#FF6B00]/5 rounded-lg p-4 border border-[#FF6B00]/8 hover:border-[#FF6B00]/15 transition-colors duration-300">
                           <div id="modal-publications" class="text-2xl sm:text-3xl font-light text-[#FF6B00]/70 mb-2"></div>
@@ -197,23 +197,27 @@
             }
           }
 
-          /* Mobile-first responsive modal styles */
+          /* Modal styles */
           .modal-backdrop {
             -webkit-tap-highlight-color: transparent;
           }
 
-          .modal-content {
-            /* Mobile: Full screen */
-            @media (max-width: 639px) {
+          /* Mobile modal fixes */
+          @media (max-width: 639px) {
+            .modal-content {
               width: 100vw !important;
               height: 100vh !important;
               max-width: 100vw !important;
               max-height: 100vh !important;
+            }
+            
+            .modal-content > div {
               border-radius: 0 !important;
+              height: 100vh;
             }
           }
 
-          /* Enhanced expertise tags - Mobile responsive */
+          /* Expertise tags */
           .expertise-tag {
             background-color: rgba(255, 107, 0, 0.08);
             color: rgba(255, 255, 255, 0.8);
@@ -222,8 +226,6 @@
             font-size: 0.75rem;
             border: 1px solid rgba(255, 107, 0, 0.12);
             transition: all 0.3s ease;
-            /* Improve touch targets on mobile */
-            min-height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -234,7 +236,6 @@
             .expertise-tag {
               font-size: 0.875rem;
               padding: 0.375rem 1rem;
-              min-height: auto;
             }
           }
 
@@ -252,7 +253,7 @@
             background-clip: text;
           }
 
-          /* Enhanced responsive primary button */
+          /* Primary button */
           .primary-button-minimalist {
             position: relative;
             display: inline-flex;
@@ -269,8 +270,6 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(20px);
             overflow: hidden;
-            /* Better mobile touch targets */
-            min-height: 48px;
             -webkit-tap-highlight-color: transparent;
           }
 
@@ -278,7 +277,6 @@
             .primary-button-minimalist {
               padding: 1rem 2.5rem;
               font-size: 1rem;
-              min-height: auto;
             }
           }
 
@@ -344,20 +342,14 @@
               scroll-padding-top: 80px;
             }
             
-            /* Improve touch scrolling */
             * {
               -webkit-overflow-scrolling: touch;
             }
           }
-
-          /* Improve touch targets on mobile */
-          .touch-manipulation {
-            touch-action: manipulation;
-          }
         </style>
 
         <script>
-          // Enhanced mobile-first modal logic
+          // Modal logic
           const modal = document.getElementById('member-modal');
           const modalBackdrop = modal?.querySelector('.modal-backdrop');
           const modalContent = modal?.querySelector('.modal-content');
@@ -373,14 +365,10 @@
           const modalPublications = document.getElementById('modal-publications');
           const modalPatents = document.getElementById('modal-patents');
 
-          // Enhanced modal with mobile-first responsive behavior
           window.openModal = function(member) {
             if (modal && modalBackdrop && modalContent) {
               modal.classList.remove('hidden');
               document.body.style.overflow = 'hidden';
-              
-              // Add touch event listeners for mobile
-              addTouchListeners();
               
               setTimeout(() => {
                 modalBackdrop.classList.add('opacity-100');
@@ -397,7 +385,7 @@
               if (modalRole) modalRole.textContent = member.role;
               if (modalBio) modalBio.textContent = member.bio || 'No bio available.';
 
-              // Email with mobile-friendly styling
+              // Email
               if (modalEmail) {
                 const emailSpan = modalEmail.querySelector('span');
                 if (member.email) {
@@ -419,7 +407,7 @@
                 ).join('') || '<li>No education information available.</li>';
               }
 
-              // Expertise with mobile-optimized tags
+              // Expertise
               if (modalExpertise) {
                 modalExpertise.innerHTML = member.expertise?.map(exp =>
                   `<span class="expertise-tag">${exp}</span>`
@@ -438,9 +426,6 @@
               modalContent.classList.remove('scale-100', 'opacity-100');
               modalContent.classList.add('scale-95', 'opacity-0');
               document.body.style.overflow = '';
-              
-              // Remove touch event listeners
-              removeTouchListeners();
 
               setTimeout(() => {
                 modal.classList.add('hidden');
@@ -448,63 +433,8 @@
             }
           }
 
-          // Touch handling for mobile devices
-          let startY = 0;
-          let startTime = 0;
-
-          function addTouchListeners() {
-            modalContent?.addEventListener('touchstart', handleTouchStart, { passive: true });
-            modalContent?.addEventListener('touchmove', handleTouchMove, { passive: false });
-            modalContent?.addEventListener('touchend', handleTouchEnd, { passive: true });
-          }
-
-          function removeTouchListeners() {
-            modalContent?.removeEventListener('touchstart', handleTouchStart);
-            modalContent?.removeEventListener('touchmove', handleTouchMove);
-            modalContent?.removeEventListener('touchend', handleTouchEnd);
-          }
-
-          function handleTouchStart(e) {
-            startY = e.touches[0].clientY;
-            startTime = Date.now();
-          }
-
-          function handleTouchMove(e) {
-            // Allow normal scrolling within modal content
-            const modalContentElement = e.currentTarget;
-            const scrollTop = modalContentElement.scrollTop;
-            const scrollHeight = modalContentElement.scrollHeight;
-            const clientHeight = modalContentElement.clientHeight;
-            
-            // Only prevent default if at the edges and trying to scroll beyond
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchY - startY;
-            
-            if ((scrollTop === 0 && deltaY > 0) || 
-                (scrollTop + clientHeight >= scrollHeight && deltaY < 0)) {
-              e.preventDefault();
-            }
-          }
-
-          function handleTouchEnd(e) {
-            const endY = e.changedTouches[0].clientY;
-            const endTime = Date.now();
-            const deltaY = endY - startY;
-            const deltaTime = endTime - startTime;
-            const velocity = Math.abs(deltaY) / deltaTime;
-
-            // Close modal if fast swipe down from top
-            if (deltaY > 100 && velocity > 0.5 && startY < 100) {
-              window.closeModal();
-            }
-          }
-
-          // Enhanced event listeners
+          // Event listeners
           closeButton?.addEventListener('click', window.closeModal);
-          closeButton?.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            window.closeModal();
-          });
 
           modalBackdrop?.addEventListener('click', (e) => {
             if (e.target === modalBackdrop) {
@@ -512,21 +442,20 @@
             }
           });
 
-          // Enhanced keyboard handling
+          // Keyboard handling
           document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
               window.closeModal();
             }
           });
 
-          // Enhanced page initialization with mobile optimizations
+          // Page initialization
           document.addEventListener('DOMContentLoaded', () => {
-            // Enhanced stars background with mobile optimization
+            // Stars background
             const starField = document.getElementById('star-field');
             if (starField) {
               starField.innerHTML = '';
 
-              // Mobile-optimized star count
               const isMobile = window.innerWidth < 768;
               const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
               const starCount = isMobile ? 80 : isTablet ? 120 : 200;
@@ -536,12 +465,10 @@
                 const star = document.createElement('div');
                 star.classList.add('star');
 
-                // Mobile-optimized star sizing
                 const size = Math.random() > 0.95 ? Math.random() * (isMobile ? 1.5 : 2) + 1 :
                          Math.random() > 0.85 ? Math.random() * (isMobile ? 1 : 1.2) + 0.6 :
                          Math.random() * (isMobile ? 0.5 : 0.6) + 0.3;
 
-                // Enhanced star coloring
                 let color;
                 const random = Math.random();
                 if (random > 0.97) {
@@ -572,16 +499,15 @@
               starField.appendChild(fragment);
             }
 
-            // Enhanced responsive scroll effects
+            // Scroll effects
             const horizonImage = document.getElementById('horizon-image');
-
             let ticking = false;
+            
             window.addEventListener('scroll', () => {
               if (!ticking) {
                 requestAnimationFrame(() => {
                   const scrollY = window.scrollY;
 
-                  // Mobile-optimized parallax effect
                   if (horizonImage) {
                     const parallaxOffset = scrollY * (window.innerWidth < 768 ? 0.05 : 0.1);
                     horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.02)`;
@@ -593,7 +519,7 @@
               }
             }, { passive: true });
 
-            // Handle responsive resize with debouncing
+            // Handle resize
             let resizeTimeout;
             window.addEventListener('resize', () => {
               clearTimeout(resizeTimeout);
@@ -604,10 +530,8 @@
                 const targetCount = isMobile ? 80 : isTablet ? 120 : 200;
                 
                 if (Math.abs(currentStarCount - targetCount) > 30) {
-                  // Recreate stars if significant change
                   if (starField) {
                     starField.innerHTML = '';
-                    // Trigger star recreation
                     const event = new CustomEvent('recreateStars');
                     document.dispatchEvent(event);
                   }
