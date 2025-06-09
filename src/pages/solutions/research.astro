@@ -27,9 +27,9 @@ const getIcon = (iconName) => {
         <div class="reveal-element">
           <h1 class="heading-lg mb-6">{researchSolution.title}</h1>
           <p class="text-white/60 text-lg mb-8 leading-relaxed">{researchSolution.description}</p>
-          <a href="/contact" class="primary-button-orange group"> {/* Updated button class */}
+          <a href="/contact" class="primary-button-minimalist group">
             <span>{researchSolution.cta}</span>
-            <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#FF6B00]/80" />
           </a>
         </div>
         <div class="relative aspect-video rounded-xl overflow-hidden reveal-element">
@@ -102,9 +102,9 @@ const getIcon = (iconName) => {
       <div class="text-center max-w-3xl mx-auto reveal-element">
         <h2 class="heading-lg mb-4">{cta.title}</h2>
         <p class="text-white/60 mb-8">{cta.description}</p>
-        <a href="/contact" class="primary-button-orange group"> {/* Updated button class */}
+        <a href="/contact" class="primary-button-minimalist group">
           <span>{cta.buttonText}</span>
-          <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          <ArrowRight class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#FF6B00]/80" />
         </a>
       </div>
     </div>
@@ -125,28 +125,6 @@ const getIcon = (iconName) => {
     transform: translateY(-4px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border-color: theme('colors.orange.400 / 20%'); /* Softer hover border orange */
-  }
-
-  /* Primary button using softer orange palette */
-  .primary-button-orange {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.875rem 2rem;
-    background: linear-gradient(90deg, theme('colors.orange.500 / 80%'), theme('colors.orange.600 / 80%'));
-    border-radius: 0.25rem;
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    transition: all 0.3s ease;
-    border: 1px solid theme('colors.orange.500 / 15%');
-  }
-
-  .primary-button-orange:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px theme('colors.orange.500 / 25%');
-    background: linear-gradient(90deg, theme('colors.orange.500 / 90%'), theme('colors.orange.600 / 90%'));
   }
 
   .reveal-element {

@@ -36,10 +36,10 @@ import DevelopmentDiagram from '../diagrams/DevelopmentDiagram.astro';
       </ul>
 
       <div class="mt-auto">
-        {/* Updated button to use softer orange theme */}
-        <a href="/solutions/development" class="secondary-button-orange group">
+        {/* Updated to use minimalist button style */}
+        <a href="/solutions/development" class="primary-button-minimalist group">
           <span>Learn More</span>
-          <ArrowRight class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" />
+          <ArrowRight class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1 group-hover:text-[#FF6B00]/80" />
         </a>
       </div>
     </div>
@@ -60,24 +60,5 @@ import DevelopmentDiagram from '../diagrams/DevelopmentDiagram.astro';
 
   .glass-card:hover {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Secondary button using softer orange palette */
-  .secondary-button-orange {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    color: white;
-    background-color: theme('colors.orange.400 / 10%'); /* Softer bg */
-    border: 1px solid theme('colors.orange.400 / 30%'); /* Softer border */
-    border-radius: 0.25rem;
-    transition: all 0.25s ease;
-  }
-
-  .secondary-button-orange:hover {
-    background-color: theme('colors.orange.400 / 20%'); /* Softer hover bg */
-    border-color: theme('colors.orange.400 / 50%'); /* Softer hover border */
   }
 </style>
