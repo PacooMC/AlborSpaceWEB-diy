@@ -7,82 +7,65 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 ---
 
 <Layout title="ALBOR SPACE - Advanced Satellite Communication Systems">
-  <!-- Deep space page with ultra-soft seamless sections -->
+  <!-- Seamless deep space page with NO section boundaries -->
   <div class="space-page">
-    <!-- Hero Section -->
+    <!-- Hero Section - no padding -->
     <section class="section hero-section">
       <Hero />
     </section>
 
-    <!-- Technology Section with ultra-soft transition -->
+    <!-- Technology Section - starts immediately with content margin -->
     <section class="section tech-section">
-      <Technology />
+      <div class="mt-24">
+        <Technology />
+      </div>
     </section>
 
-    <!-- Solutions Section with ultra-soft transition -->
+    <!-- Solutions Section - starts immediately with content margin -->
     <section class="section solutions-section">
-      <Solutions />
+      <div class="mt-32">
+        <Solutions />
+      </div>
     </section>
 
-    <!-- Team Preview Section with ultra-soft transition -->
+    <!-- Team Preview Section - starts immediately with content margin -->
     <section class="section team-section">
-      <TeamPreview />
+      <div class="mt-32">
+        <TeamPreview />
+      </div>
     </section>
   </div>
 </Layout>
 
 <style is:global>
-  /* Deep space page styling */
+  /* Seamless deep space page styling */
   .space-page {
     position: relative;
     background: transparent;
   }
 
-  /* Ultra-soft seamless section styling */
+  /* NO section backgrounds - completely transparent and seamless */
   .section {
     position: relative;
-    padding: 4rem 0;
-    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    margin: 0;
     background: transparent;
+    transition: none;
   }
 
-  /* Hero section - pure transparent */
+  /* Hero section - full height, no background */
   .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 0;
     background: transparent;
   }
 
-  /* Technology section - barely perceptible */
-  .tech-section {
-    background: linear-gradient(to bottom, 
-      transparent 0%, 
-      rgba(8, 12, 20, 0.02) 30%,
-      rgba(8, 12, 20, 0.03) 50%, 
-      rgba(8, 12, 20, 0.02) 70%,
-      transparent 100%);
-  }
-
-  /* Solutions section - almost invisible */
-  .solutions-section {
-    background: linear-gradient(to bottom, 
-      transparent 0%, 
-      rgba(12, 16, 25, 0.015) 30%,
-      rgba(12, 16, 25, 0.025) 50%, 
-      rgba(12, 16, 25, 0.015) 70%,
-      transparent 100%);
-  }
-
-  /* Team section - whisper-soft */
+  /* All other sections - completely transparent, no spacing */
+  .tech-section,
+  .solutions-section,
   .team-section {
-    background: linear-gradient(to bottom, 
-      transparent 0%, 
-      rgba(16, 20, 30, 0.02) 30%,
-      rgba(16, 20, 30, 0.03) 50%, 
-      rgba(16, 20, 30, 0.02) 70%,
-      transparent 100%);
+    background: transparent;
   }
 
   /* Enhanced animations */
@@ -185,31 +168,15 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  /* Ultra-soft section separators (almost invisible) */
-  .section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(255, 255, 255, 0.01) 20%, 
-      rgba(255, 255, 255, 0.02) 50%, 
-      rgba(255, 255, 255, 0.01) 80%, 
-      transparent 100%);
-    opacity: 0.3;
-  }
-
-  .hero-section::before {
+  /* NO section separators or boundaries */
+  .section::before,
+  .section::after {
     display: none;
   }
 
-  /* Soft inter-section blending */
+  /* Remove all spacing between sections */
   .section + .section {
-    margin-top: -2rem;
+    margin-top: 0;
   }
 </style>
 

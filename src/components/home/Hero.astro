@@ -4,9 +4,9 @@ import { hero } from '../../content/home';
 ---
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-space">
-  <!-- Deep space content with perfect centering -->
-  <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center space-y-8 reveal-element">
+  <!-- Deep space content with absolute perfect centering -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="w-full max-w-none text-center space-y-8 reveal-element px-6">
       <div class="space-y-6">
         <!-- Minimal space badge -->
         <div class="inline-block mb-6 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-orange-500/10 text-orange-200/60 text-xs tracking-widest uppercase space-badge">
@@ -17,10 +17,10 @@ import { hero } from '../../content/home';
           </div>
         </div>
         
-        <!-- Perfectly centered hero title -->
-        <div class="flex flex-col items-center justify-center">
-          <h1 class="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light tracking-wider leading-none hero-title text-center">
-            <div class="logo-style group">
+        <!-- Absolutely perfectly centered hero title -->
+        <div class="w-full flex justify-center">
+          <h1 class="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light tracking-wider leading-none hero-title">
+            <div class="logo-style group inline-block">
               <span class="text-white inline-block hero-text-1 transition-all duration-500 group-hover:text-shadow-subtle relative">
                 ALBOR
                 <!-- Subtle underline -->
@@ -71,18 +71,21 @@ import { hero } from '../../content/home';
     box-shadow: 0 0 10px rgba(255, 140, 0, 0.05);
   }
 
-  /* Hero title with perfect centering */
+  /* Hero title with absolute perfect centering */
   .hero-title {
     position: relative;
     transform: translateZ(0);
     letter-spacing: 0.1em;
     line-height: 1.1;
     text-shadow: 0 0 15px rgba(255, 140, 0, 0.03);
+    text-align: center;
+    width: 100%;
   }
 
   .logo-style {
     display: inline-block;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
   }
 
   .group:hover .group-hover\:text-shadow-subtle {
