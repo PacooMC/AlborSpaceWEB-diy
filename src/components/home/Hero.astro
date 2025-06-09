@@ -4,43 +4,41 @@ import { hero } from '../../content/home';
 ---
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-space">
-  <!-- Subtle space atmosphere overlay -->
-  <div class="absolute inset-0 bg-gradient-radial from-orange-400/8 via-transparent to-transparent opacity-40 hero-glow"></div>
-  <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-orange-500/5 via-orange-600/3 to-transparent opacity-60"></div>
-  
-  <!-- Centered content with proper alignment -->
-  <div class="container mx-auto px-6 relative z-10 text-center">
-    <div class="max-w-4xl mx-auto space-y-8 reveal-element">
+  <!-- Deep space content with perfect centering -->
+  <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center space-y-8 reveal-element">
       <div class="space-y-6">
-        <!-- Subtle badge with space theme -->
-        <div class="inline-block mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-slate-800/40 to-slate-700/40 backdrop-blur-sm border border-orange-500/20 text-orange-200/80 text-xs tracking-widest uppercase space-badge">
+        <!-- Minimal space badge -->
+        <div class="inline-block mb-6 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-orange-500/10 text-orange-200/60 text-xs tracking-widest uppercase space-badge">
           <div class="flex items-center justify-center space-x-2">
-            <div class="w-1.5 h-1.5 bg-orange-400/60 rounded-full animate-pulse"></div>
+            <div class="w-1.5 h-1.5 bg-orange-400/40 rounded-full animate-pulse"></div>
             <span>Advancing Space Communication</span>
-            <div class="w-1.5 h-1.5 bg-orange-400/60 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
+            <div class="w-1.5 h-1.5 bg-orange-400/40 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
           </div>
         </div>
         
-        <!-- Enhanced hero title with proper center alignment -->
-        <h1 class="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light tracking-wider leading-none hero-title">
-          <div class="relative block overflow-hidden logo-style group text-center">
-            <span class="text-white inline-block hero-text-1 transition-all duration-500 group-hover:text-shadow-subtle relative">
-              ALBOR
-              <!-- Subtle underline -->
-              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-orange-400/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
-            </span>
-            <span class="text-white/40 inline-block ml-4 hero-text-2 transition-colors duration-500 group-hover:text-white/60">SPACE</span>
-          </div>
-        </h1>
+        <!-- Perfectly centered hero title -->
+        <div class="flex flex-col items-center justify-center">
+          <h1 class="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light tracking-wider leading-none hero-title text-center">
+            <div class="logo-style group">
+              <span class="text-white inline-block hero-text-1 transition-all duration-500 group-hover:text-shadow-subtle relative">
+                ALBOR
+                <!-- Subtle underline -->
+                <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-orange-400/30 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+              </span>
+              <span class="text-white/30 inline-block ml-4 hero-text-2 transition-colors duration-500 group-hover:text-white/50">SPACE</span>
+            </div>
+          </h1>
+        </div>
         
-        <!-- Enhanced description with space theme -->
-        <p class="text-sm md:text-base text-orange-100/60 max-w-md mx-auto hero-description leading-relaxed mt-8 tracking-wide font-light">
+        <!-- Description -->
+        <p class="text-sm md:text-base text-white/40 max-w-md mx-auto hero-description leading-relaxed mt-8 tracking-wide font-light">
           {hero.description}
         </p>
       </div>
 
-      <!-- Enhanced CTA button with space theme -->
-      <div class="pt-10">
+      <!-- CTA button -->
+      <div class="pt-10 flex justify-center">
         <a href="#technology" class="hero-cta-button group relative overflow-hidden">
           <div class="hero-cta-bg"></div>
           <div class="hero-cta-border"></div>
@@ -48,95 +46,61 @@ import { hero } from '../../content/home';
             <span class="relative z-10">{hero.cta}</span>
             <ArrowRight class="w-5 h-5 ml-2 transition-all duration-500 ease-out transform group-hover:translate-x-2 group-hover:scale-110 relative z-10" />
           </div>
-          <!-- Subtle glow effect -->
-          <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Floating space particles -->
+  <!-- Minimal floating particles -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div class="space-particle space-particle-1"></div>
     <div class="space-particle space-particle-2"></div>
     <div class="space-particle space-particle-3"></div>
-    <div class="space-particle space-particle-4"></div>
-    <div class="space-particle space-particle-5"></div>
   </div>
 </section>
 
 <style>
-  /* Enhanced hero section with space atmosphere */
+  /* Deep space hero section */
   .hero-space {
-    background: radial-gradient(ellipse 100% 60% at center bottom, 
-      rgba(255, 140, 0, 0.03) 0%, 
-      rgba(255, 165, 0, 0.01) 40%, 
-      transparent 80%);
+    background: transparent;
   }
 
-  .hero-glow {
-    animation: spaceGlow 6s ease-in-out infinite alternate;
-  }
-
-  @keyframes spaceGlow {
-    0% { opacity: 0.2; }
-    100% { opacity: 0.4; }
-  }
-
-  /* Enhanced space badge */
+  /* Minimal space badge */
   .space-badge {
     backdrop-filter: blur(20px);
-    box-shadow: 
-      0 0 15px rgba(255, 140, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    animation: badgeGlow 4s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.05);
   }
 
-  @keyframes badgeGlow {
-    0%, 100% { 
-      box-shadow: 
-        0 0 15px rgba(255, 140, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    }
-    50% { 
-      box-shadow: 
-        0 0 25px rgba(255, 140, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  /* Enhanced hero title with space effects */
+  /* Hero title with perfect centering */
   .hero-title {
     position: relative;
     transform: translateZ(0);
     letter-spacing: 0.1em;
     line-height: 1.1;
-    text-shadow: 
-      0 0 20px rgba(255, 140, 0, 0.08),
-      0 0 40px rgba(255, 140, 0, 0.05);
+    text-shadow: 0 0 15px rgba(255, 140, 0, 0.03);
   }
 
-  .logo-style span {
+  .logo-style {
+    display: inline-block;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .group:hover .group-hover\:text-shadow-subtle {
     text-shadow: 
-      0 0 15px rgba(255, 140, 0, 0.3),
-      0 0 30px rgba(255, 140, 0, 0.2),
-      0 0 45px rgba(255, 140, 0, 0.1);
+      0 0 10px rgba(255, 140, 0, 0.2),
+      0 0 20px rgba(255, 140, 0, 0.1);
   }
 
-  /* Enhanced text animations with space theme */
+  /* Text animations */
   .hero-text-1 {
     animation: textRevealSpace 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     opacity: 0;
   }
 
   .hero-text-2 {
     animation: textRevealSpace 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.3s forwards;
-    transform: translateX(100%);
+    transform: translateX(50%);
     opacity: 0;
   }
 
@@ -147,7 +111,7 @@ import { hero } from '../../content/home';
 
   @keyframes textRevealSpace {
     0% { 
-      transform: translateX(50%); 
+      transform: translateX(25%); 
       opacity: 0; 
     }
     100% { 
@@ -167,7 +131,7 @@ import { hero } from '../../content/home';
     }
   }
 
-  /* Enhanced CTA button with space theme */
+  /* CTA button with dark space theme */
   .hero-cta-button {
     position: relative;
     display: inline-flex;
@@ -191,9 +155,9 @@ import { hero } from '../../content/home';
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, 
-      rgba(30, 41, 59, 0.6) 0%, 
-      rgba(51, 65, 85, 0.4) 50%, 
-      rgba(30, 41, 59, 0.6) 100%);
+      rgba(0, 0, 0, 0.8) 0%, 
+      rgba(30, 41, 59, 0.6) 50%, 
+      rgba(0, 0, 0, 0.8) 100%);
     border-radius: 0.5rem;
     transition: all 0.5s ease;
     z-index: 1;
@@ -205,9 +169,9 @@ import { hero } from '../../content/home';
     border-radius: 0.5rem;
     padding: 1px;
     background: linear-gradient(135deg, 
-      rgba(255, 140, 0, 0.3) 0%, 
-      rgba(255, 165, 0, 0.2) 50%, 
-      rgba(255, 140, 0, 0.3) 100%);
+      rgba(255, 140, 0, 0.2) 0%, 
+      rgba(255, 165, 0, 0.1) 50%, 
+      rgba(255, 140, 0, 0.2) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -225,68 +189,52 @@ import { hero } from '../../content/home';
 
   .hero-cta-button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 
-      0 15px 35px rgba(255, 140, 0, 0.15),
-      0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(255, 140, 0, 0.1);
   }
 
   .hero-cta-button:hover .hero-cta-bg {
     background: linear-gradient(135deg, 
-      rgba(255, 140, 0, 0.2) 0%, 
-      rgba(255, 165, 0, 0.15) 50%, 
+      rgba(255, 140, 0, 0.1) 0%, 
+      rgba(255, 165, 0, 0.05) 50%, 
       rgba(255, 140, 0, 0.1) 100%);
   }
 
   .hero-cta-button:hover .hero-cta-border {
     background: linear-gradient(135deg, 
-      rgba(255, 140, 0, 0.5) 0%, 
-      rgba(255, 165, 0, 0.3) 50%, 
-      rgba(255, 140, 0, 0.5) 100%);
+      rgba(255, 140, 0, 0.4) 0%, 
+      rgba(255, 165, 0, 0.2) 50%, 
+      rgba(255, 140, 0, 0.4) 100%);
   }
 
-  /* Floating space particles */
+  /* Minimal floating particles */
   .space-particle {
     position: absolute;
-    width: 3px;
-    height: 3px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    width: 2px;
+    height: 2px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
     border-radius: 50%;
-    animation: floatParticle 10s ease-in-out infinite;
+    animation: floatParticle 12s ease-in-out infinite;
   }
 
   .space-particle-1 {
     top: 20%;
-    left: 15%;
+    left: 20%;
     animation-delay: 0s;
-    animation-duration: 8s;
+    animation-duration: 10s;
   }
 
   .space-particle-2 {
     top: 60%;
-    left: 85%;
-    animation-delay: 2s;
-    animation-duration: 12s;
+    left: 80%;
+    animation-delay: 3s;
+    animation-duration: 14s;
   }
 
   .space-particle-3 {
     top: 40%;
-    left: 25%;
-    animation-delay: 4s;
-    animation-duration: 9s;
-  }
-
-  .space-particle-4 {
-    top: 80%;
-    left: 70%;
-    animation-delay: 1s;
-    animation-duration: 11s;
-  }
-
-  .space-particle-5 {
-    top: 30%;
-    left: 80%;
-    animation-delay: 3s;
-    animation-duration: 7s;
+    left: 60%;
+    animation-delay: 6s;
+    animation-duration: 12s;
   }
 
   @keyframes floatParticle {
@@ -294,22 +242,16 @@ import { hero } from '../../content/home';
       transform: translateY(0px) scale(1);
       opacity: 0.3;
     }
-    33% {
-      transform: translateY(-15px) scale(1.1);
+    50% {
+      transform: translateY(-20px) scale(1.1);
       opacity: 0.8;
-    }
-    66% {
-      transform: translateY(8px) scale(0.9);
-      opacity: 0.5;
     }
   }
 
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .hero-title {
-      text-shadow: 
-        0 0 15px rgba(255, 140, 0, 0.1),
-        0 0 30px rgba(255, 140, 0, 0.08);
+      text-shadow: 0 0 10px rgba(255, 140, 0, 0.05);
     }
     
     .hero-cta-button {
