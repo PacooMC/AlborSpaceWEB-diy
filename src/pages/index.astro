@@ -7,24 +7,24 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 ---
 
 <Layout title="ALBOR SPACE - Advanced Satellite Communication Systems">
-  <!-- Deep space page with seamless sections -->
+  <!-- Deep space page with ultra-soft seamless sections -->
   <div class="space-page">
     <!-- Hero Section -->
     <section class="section hero-section">
       <Hero />
     </section>
 
-    <!-- Technology Section with seamless transition -->
+    <!-- Technology Section with ultra-soft transition -->
     <section class="section tech-section">
       <Technology />
     </section>
 
-    <!-- Solutions Section with seamless transition -->
+    <!-- Solutions Section with ultra-soft transition -->
     <section class="section solutions-section">
       <Solutions />
     </section>
 
-    <!-- Team Preview Section with seamless transition -->
+    <!-- Team Preview Section with ultra-soft transition -->
     <section class="section team-section">
       <TeamPreview />
     </section>
@@ -38,43 +38,50 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     background: transparent;
   }
 
-  /* Seamless section styling - no harsh transitions */
+  /* Ultra-soft seamless section styling */
   .section {
     position: relative;
     padding: 4rem 0;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     background: transparent;
   }
 
-  /* Hero section */
+  /* Hero section - pure transparent */
   .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 0;
+    background: transparent;
   }
 
-  /* Technology section - seamless */
+  /* Technology section - barely perceptible */
   .tech-section {
     background: linear-gradient(to bottom, 
       transparent 0%, 
-      rgba(15, 23, 42, 0.1) 50%, 
+      rgba(8, 12, 20, 0.02) 30%,
+      rgba(8, 12, 20, 0.03) 50%, 
+      rgba(8, 12, 20, 0.02) 70%,
       transparent 100%);
   }
 
-  /* Solutions section - seamless */
+  /* Solutions section - almost invisible */
   .solutions-section {
     background: linear-gradient(to bottom, 
       transparent 0%, 
-      rgba(15, 23, 42, 0.05) 50%, 
+      rgba(12, 16, 25, 0.015) 30%,
+      rgba(12, 16, 25, 0.025) 50%, 
+      rgba(12, 16, 25, 0.015) 70%,
       transparent 100%);
   }
 
-  /* Team section - seamless */
+  /* Team section - whisper-soft */
   .team-section {
     background: linear-gradient(to bottom, 
       transparent 0%, 
-      rgba(15, 23, 42, 0.08) 50%, 
+      rgba(16, 20, 30, 0.02) 30%,
+      rgba(16, 20, 30, 0.03) 50%, 
+      rgba(16, 20, 30, 0.02) 70%,
       transparent 100%);
   }
 
@@ -140,7 +147,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateX(-50%);
     width: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.15), transparent);
     transition: width 1s ease 0.5s;
   }
   
@@ -174,8 +181,35 @@ import TeamPreview from '../components/home/TeamPreview.astro';
   }
 
   .glass-card:hover {
-    border-color: rgba(255, 140, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 140, 0, 0.08);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Ultra-soft section separators (almost invisible) */
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.01) 20%, 
+      rgba(255, 255, 255, 0.02) 50%, 
+      rgba(255, 255, 255, 0.01) 80%, 
+      transparent 100%);
+    opacity: 0.3;
+  }
+
+  .hero-section::before {
+    display: none;
+  }
+
+  /* Soft inter-section blending */
+  .section + .section {
+    margin-top: -2rem;
   }
 </style>
 
