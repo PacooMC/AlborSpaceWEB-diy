@@ -6,64 +6,69 @@ interface Props {
 const { className = '' } = Astro.props;
 ---
 
-<div class={`relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container ${className}`}>
-  <div class="w-full max-w-xl mx-auto px-2 sm:px-4 lg:px-0">
+<div class={`relative flex items-center justify-center p-2 sm:p-4 overflow-hidden bg-dark-800/30 diagram-container ${className}`}>
+  <div class="w-full max-w-lg mx-auto">
     <div class="payload-diagram">
-      <!-- Processing Chain - Top section -->
+      
+      <!-- Processing Chain - Top Section -->
       <div class="processing-chain">
-        <div class="processing-unit rf-unit">
-          <div class="unit-label">RF</div>
-          <div class="unit-sublabel">Radio Unit</div>
-          <div class="unit-detail">1-6 GHz</div>
+        <div class="process-box rf-box">
+          <div class="box-header">RF</div>
+          <div class="box-content">
+            <div class="box-title">Radio Unit</div>
+            <div class="box-subtitle">1-6 GHz</div>
+          </div>
         </div>
         
-        <div class="signal-arrow arrow-1"></div>
+        <div class="flow-arrow"></div>
         
-        <div class="processing-unit bbp-unit">
-          <div class="unit-label">BBP</div>
-          <div class="unit-sublabel">Baseband Processing</div>
-          <div class="unit-detail">5G NR DSP</div>
+        <div class="process-box bbp-box">
+          <div class="box-header">BBP</div>
+          <div class="box-content">
+            <div class="box-title">Baseband Processing</div>
+            <div class="box-subtitle">5G NR DSP</div>
+          </div>
         </div>
         
-        <div class="signal-arrow arrow-2"></div>
+        <div class="flow-arrow"></div>
         
-        <div class="processing-unit pt-unit">
-          <div class="unit-label">PT</div>
-          <div class="unit-sublabel">Protocol Stack</div>
-          <div class="unit-detail">Software Defined</div>
+        <div class="process-box pt-box">
+          <div class="box-header">PT</div>
+          <div class="box-content">
+            <div class="box-title">Protocol Stack</div>
+            <div class="box-subtitle">Software Defined</div>
+          </div>
         </div>
       </div>
 
-      <!-- Satellite - Center section -->
+      <!-- Satellite Representation - Center -->
       <div class="satellite-section">
-        <div class="satellite">
-          <div class="satellite-panels left"></div>
-          <div class="satellite-body"></div>
-          <div class="satellite-panels right"></div>
-          <div class="satellite-antenna"></div>
+        <div class="satellite-body">
+          <div class="satellite-core"></div>
+          <div class="satellite-panel left-panel"></div>
+          <div class="satellite-panel right-panel"></div>
         </div>
       </div>
 
-      <!-- Ground Stations - Bottom section -->
-      <div class="ground-stations">
-        <div class="ground-station left">
-          <div class="station-body"></div>
+      <!-- Communication Links -->
+      <div class="comm-links">
+        <div class="comm-beam uplink-beam"></div>
+        <div class="comm-beam downlink-beam"></div>
+      </div>
+
+      <!-- Ground Stations - Bottom Section -->
+      <div class="ground-section">
+        <div class="ground-station">
           <div class="station-antenna"></div>
           <div class="station-label">Ground Station</div>
         </div>
-
-        <div class="ground-station right">
-          <div class="station-body"></div>
+        
+        <div class="ground-station">
           <div class="station-antenna"></div>
           <div class="station-label">User Terminal</div>
         </div>
       </div>
 
-      <!-- Communication beams -->
-      <div class="beam-container">
-        <div class="beam uplink"></div>
-        <div class="beam downlink"></div>
-      </div>
     </div>
   </div>
 </div>
@@ -74,7 +79,6 @@ const { className = '' } = Astro.props;
     border-radius: 0 0.75rem 0.75rem 0;
     overflow: hidden;
     position: relative;
-    aspect-ratio: 1;
   }
 
   @media (min-width: 640px) {
@@ -86,6 +90,7 @@ const { className = '' } = Astro.props;
   @media (min-width: 1024px) {
     .diagram-container {
       min-height: 500px;
+      border-radius: 0 0.75rem 0.75rem 0;
     }
   }
 
@@ -98,442 +103,382 @@ const { className = '' } = Astro.props;
   .payload-diagram {
     position: relative;
     width: 100%;
-    height: 350px;
-    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    min-height: 320px;
   }
 
   @media (min-width: 640px) {
     .payload-diagram {
-      height: 400px;
-      padding: 15px;
+      padding: 20px;
+      min-height: 360px;
     }
   }
 
   @media (min-width: 1024px) {
     .payload-diagram {
-      height: 500px;
-      padding: 20px;
+      padding: 25px;
+      min-height: 450px;
     }
   }
 
   /* Processing Chain */
   .processing-chain {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .processing-chain {
+      gap: 12px;
+      margin-bottom: 25px;
+    }
   }
 
   .process-box {
-    width: 80px;
-    height: 60px;
-    background-color: rgba(26, 26, 46, 0.8);
-    border: 2px solid rgba(233, 69, 96, 0.4);
+    background: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(233, 69, 96, 0.3);
     border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 8px;
+    min-width: 70px;
+    text-align: center;
     transition: all 0.3s ease;
   }
 
   @media (min-width: 640px) {
     .process-box {
-      width: 100px;
-      height: 70px;
+      padding: 10px;
+      min-width: 85px;
     }
   }
 
   @media (min-width: 1024px) {
     .process-box {
-      width: 120px;
-      height: 80px;
+      padding: 12px;
+      min-width: 100px;
     }
   }
 
   .process-box:hover {
-    border-color: rgba(233, 69, 96, 0.7);
+    border-color: rgba(233, 69, 96, 0.6);
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.2);
   }
 
-  .process-label {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-    text-align: center;
+  .box-header {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(233, 69, 96, 0.9);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
   }
 
   @media (min-width: 640px) {
-    .process-label {
-      font-size: 12px;
+    .box-header {
+      font-size: 11px;
     }
   }
 
   @media (min-width: 1024px) {
-    .process-label {
-      font-size: 14px;
+    .box-header {
+      font-size: 12px;
     }
   }
 
-  .process-sublabel {
+  .box-title {
     font-size: 8px;
-    color: rgba(255, 255, 255, 0.6);
-    text-align: center;
-    margin-top: 2px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 2px;
   }
 
   @media (min-width: 640px) {
-    .process-sublabel {
+    .box-title {
       font-size: 9px;
     }
   }
 
   @media (min-width: 1024px) {
-    .process-sublabel {
+    .box-title {
       font-size: 10px;
     }
   }
 
-  .process-detail {
+  .box-subtitle {
     font-size: 7px;
-    color: rgba(233, 69, 96, 0.8);
-    text-align: center;
-    margin-top: 1px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.1;
   }
 
   @media (min-width: 640px) {
-    .process-detail {
+    .box-subtitle {
       font-size: 8px;
     }
   }
 
-  /* Signal Arrows */
-  .signal-arrow {
+  @media (min-width: 1024px) {
+    .box-subtitle {
+      font-size: 9px;
+    }
+  }
+
+  /* Flow Arrows */
+  .flow-arrow {
     width: 15px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(233, 69, 96, 0.7), rgba(233, 69, 96, 0.5));
+    background: linear-gradient(90deg, rgba(233, 69, 96, 0.7), rgba(233, 69, 96, 0.4));
     position: relative;
   }
 
-  @media (min-width: 1024px) {
-    .signal-arrow {
+  @media (min-width: 640px) {
+    .flow-arrow {
       width: 20px;
     }
   }
 
-  .signal-arrow::after {
+  .flow-arrow::after {
     content: '';
     position: absolute;
-    right: -4px;
+    right: -3px;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 6px solid rgba(233, 69, 96, 0.7);
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
+    border-left: 4px solid rgba(233, 69, 96, 0.7);
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
   }
 
-  /* Satellite */
-  .satellite {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%);
+  /* Satellite Section */
+  .satellite-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  @media (min-width: 640px) {
+    .satellite-section {
+      margin: 20px 0;
+    }
   }
 
   .satellite-body {
-    width: 70px;
-    height: 35px;
-    background: linear-gradient(135deg, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.6));
-    border-radius: 8px;
     position: relative;
-    box-shadow: 0 0 15px rgba(233, 69, 96, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .satellite-core {
+    width: 50px;
+    height: 25px;
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.6));
+    border-radius: 6px;
+    border: 1px solid rgba(233, 69, 96, 0.5);
+    position: relative;
+    z-index: 2;
   }
 
   @media (min-width: 640px) {
-    .satellite-body {
-      width: 85px;
-      height: 42px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .satellite-body {
-      width: 100px;
-      height: 50px;
-    }
-  }
-
-  .satellite-panels {
-    position: absolute;
-    width: 40px;
-    height: 15px;
-    background-color: rgba(233, 69, 96, 0.4);
-    border: 1px solid rgba(233, 69, 96, 0.6);
-    top: 10px;
-  }
-
-  @media (min-width: 640px) {
-    .satellite-panels {
-      width: 50px;
-      height: 17px;
-      top: 12px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .satellite-panels {
+    .satellite-core {
       width: 60px;
+      height: 30px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .satellite-core {
+      width: 70px;
+      height: 35px;
+    }
+  }
+
+  .satellite-panel {
+    width: 30px;
+    height: 15px;
+    background: rgba(233, 69, 96, 0.4);
+    border: 1px solid rgba(233, 69, 96, 0.6);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: 640px) {
+    .satellite-panel {
+      width: 35px;
+      height: 18px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .satellite-panel {
+      width: 40px;
       height: 20px;
-      top: 15px;
     }
   }
 
-  .satellite-panels.left {
-    left: -50px;
+  .left-panel {
+    left: -35px;
+  }
+
+  .right-panel {
+    right: -35px;
   }
 
   @media (min-width: 640px) {
-    .satellite-panels.left {
-      left: -60px;
+    .left-panel {
+      left: -40px;
+    }
+    .right-panel {
+      right: -40px;
     }
   }
 
   @media (min-width: 1024px) {
-    .satellite-panels.left {
-      left: -70px;
+    .left-panel {
+      left: -45px;
+    }
+    .right-panel {
+      right: -45px;
     }
   }
 
-  .satellite-panels.right {
-    right: -50px;
-  }
-
-  @media (min-width: 640px) {
-    .satellite-panels.right {
-      right: -60px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .satellite-panels.right {
-      right: -70px;
-    }
-  }
-
-  .satellite-antenna {
+  /* Communication Links */
+  .comm-links {
     position: absolute;
-    bottom: -10px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 10px;
-    background-color: rgba(233, 69, 96, 0.8);
-  }
-
-  @media (min-width: 1024px) {
-    .satellite-antenna {
-      bottom: -15px;
-      height: 15px;
-    }
-  }
-
-  /* Communication beams */
-  .beam-container {
-    position: absolute;
-    inset: 0;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     pointer-events: none;
   }
 
-  .beam {
+  .comm-beam {
     position: absolute;
     background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.15), transparent 70%);
-    width: 100px;
-    height: 140px;
+    width: 80px;
+    height: 120px;
+    clip-path: polygon(45% 0%, 55% 0%, 65% 100%, 35% 100%);
   }
 
   @media (min-width: 640px) {
-    .beam {
-      width: 125px;
-      height: 170px;
+    .comm-beam {
+      width: 100px;
+      height: 140px;
     }
   }
 
   @media (min-width: 1024px) {
-    .beam {
-      width: 150px;
-      height: 200px;
+    .comm-beam {
+      width: 120px;
+      height: 160px;
     }
   }
 
-  .beam.uplink {
-    top: 50%;
-    left: 15%;
-    transform: rotate(-25deg);
+  .uplink-beam {
+    top: 55%;
+    left: 25%;
+    transform: translateX(-50%);
+  }
+
+  .downlink-beam {
+    top: 55%;
+    right: 25%;
+    transform: translateX(50%);
+    background: radial-gradient(ellipse at top, rgba(28, 130, 173, 0.15), transparent 70%);
+  }
+
+  /* Ground Section */
+  .ground-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
   }
 
   @media (min-width: 640px) {
-    .beam.uplink {
-      left: 18%;
+    .ground-section {
+      margin-top: 25px;
     }
   }
 
-  @media (min-width: 1024px) {
-    .beam.uplink {
-      top: 55%;
-      left: 20%;
-    }
-  }
-
-  .beam.downlink {
-    top: 50%;
-    right: 15%;
-    transform: rotate(25deg);
-  }
-
-  @media (min-width: 640px) {
-    .beam.downlink {
-      right: 18%;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .beam.downlink {
-      top: 55%;
-      right: 20%;
-    }
-  }
-
-  /* Ground stations */
   .ground-station {
-    position: absolute;
-    bottom: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
-  @media (min-width: 1024px) {
-    .ground-station {
-      bottom: 15%;
-    }
-  }
-
-  .ground-station.left {
-    left: 10%;
-  }
-
-  @media (min-width: 640px) {
-    .ground-station.left {
-      left: 12%;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .ground-station.left {
-      left: 15%;
-    }
-  }
-
-  .ground-station.right {
-    right: 10%;
-  }
-
-  @media (min-width: 640px) {
-    .ground-station.right {
-      right: 12%;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .ground-station.right {
-      right: 15%;
-    }
-  }
-
-  .station-icon {
-    width: 30px;
-    height: 30px;
-    background-color: rgba(233, 69, 96, 0.8);
+  .station-antenna {
+    width: 25px;
+    height: 25px;
+    background: rgba(233, 69, 96, 0.7);
     border-radius: 4px;
     position: relative;
+    margin-bottom: 8px;
   }
 
   @media (min-width: 640px) {
-    .station-icon {
+    .station-antenna {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .station-antenna {
       width: 35px;
       height: 35px;
     }
   }
 
-  @media (min-width: 1024px) {
-    .station-icon {
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  .station-icon::before {
+  .station-antenna::before {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: 15px;
-    background-color: rgba(233, 69, 96, 0.8);
+    height: 8px;
+    background: rgba(233, 69, 96, 0.8);
   }
 
-  @media (min-width: 1024px) {
-    .station-icon::before {
-      top: -20px;
-      height: 20px;
-    }
-  }
-
-  .station-icon::after {
+  .station-antenna::after {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
-    width: 15px;
-    height: 15px;
-    border-top: 2px solid rgba(233, 69, 96, 0.8);
-    border-right: 2px solid rgba(233, 69, 96, 0.8);
-  }
-
-  @media (min-width: 1024px) {
-    .station-icon::after {
-      top: -20px;
-      width: 20px;
-      height: 20px;
-    }
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid rgba(233, 69, 96, 0.8);
+    border-right: 1px solid rgba(233, 69, 96, 0.8);
   }
 
   .station-label {
-    margin-top: 10px;
-    font-size: 10px;
+    font-size: 8px;
     color: rgba(255, 255, 255, 0.7);
-    text-align: center;
+    font-weight: 500;
   }
 
   @media (min-width: 640px) {
     .station-label {
-      font-size: 11px;
-      margin-top: 12px;
+      font-size: 9px;
     }
   }
 
   @media (min-width: 1024px) {
     .station-label {
-      margin-top: 15px;
-      font-size: 12px;
+      font-size: 10px;
     }
   }
 </style>
