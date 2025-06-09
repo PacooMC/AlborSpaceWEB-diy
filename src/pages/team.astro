@@ -6,19 +6,19 @@
     ---
 
     <Layout title={`${teamPage.title} - ALBOR SPACE`} description={teamPage.description}>
-      <div class="pt-32 pb-24 relative">
+      <div class="section-padding relative">
         <!-- Background effects -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#000012]/90 via-[#000018]/50 to-[#000012]/90"></div>
 
         <div class="container-custom relative z-10">
-          <!-- Page header -->
-          <div class="text-center mb-16 reveal-element">
+          <!-- Page header - Responsive -->
+          <div class="text-center mb-12 sm:mb-16 reveal-element">
             <h1 class="heading-lg mb-4 slide-right">{teamPage.title}</h1>
-            <p class="text-white/60 max-w-2xl mx-auto">{teamPage.description}</p>
+            <p class="text-body text-white/60 max-w-2xl mx-auto">{teamPage.description}</p>
           </div>
 
-          <!-- Team grid with minimalist cards -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+          <!-- Team grid - Fully responsive -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {teamMembers.map((member, index) => (
               <div
                 class="team-card group cursor-pointer hover:scale-[1.02] transition-all duration-500"
@@ -27,6 +27,7 @@
                 data-reveal-delay={index * 100}
               >
                 <div class="rounded-xl overflow-hidden h-full bg-[#000018]/40 border border-white/5 hover:border-[#FF6B00]/15 transition-all duration-300">
+                  <!-- Member photo - Responsive aspect ratio -->
                   <div class="relative aspect-square overflow-hidden">
                     <img
                       src={member.image}
@@ -36,18 +37,22 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-[#000012] via-[#000012]/70 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-40"></div>
                   </div>
 
-                  <div class="p-6">
-                    <h3 class="text-xl font-light mb-2 text-white group-hover:text-[#FF6B00]/70 transition-colors duration-300">{member.name}</h3>
-                    <p class="text-[#FF6B00]/60 text-sm tracking-wider uppercase mb-4">{member.role}</p>
+                  <!-- Member info - Responsive padding -->
+                  <div class="p-4 sm:p-6">
+                    <h3 class="text-lg sm:text-xl font-light mb-2 text-white group-hover:text-[#FF6B00]/70 transition-colors duration-300">{member.name}</h3>
+                    <p class="text-[#FF6B00]/60 text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4">{member.role}</p>
 
-                    <div class="flex items-center text-white/50 text-sm mb-2">
-                      <Mail size={14} class="mr-2 text-[#FF6B00]/40" />
-                      <span class="truncate">{member.email}</span>
-                    </div>
+                    <!-- Contact info - Responsive -->
+                    <div class="space-y-2">
+                      <div class="flex items-center text-white/50 text-xs sm:text-sm">
+                        <Mail size={14} class="mr-2 text-[#FF6B00]/40 flex-shrink-0" />
+                        <span class="truncate">{member.email}</span>
+                      </div>
 
-                    <div class="flex items-center text-white/50 text-sm">
-                      <MapPin size={14} class="mr-2 text-[#FF6B00]/40" />
-                      <span>Universidad de Málaga</span>
+                      <div class="flex items-center text-white/50 text-xs sm:text-sm">
+                        <MapPin size={14} class="mr-2 text-[#FF6B00]/40 flex-shrink-0" />
+                        <span>Universidad de Málaga</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -55,22 +60,24 @@
             ))}
           </div>
 
-          <!-- Team mission statement section -->
-          <div class="mt-24 max-w-4xl mx-auto">
+          <!-- Team mission statement - Responsive -->
+          <div class="mt-16 sm:mt-20 lg:mt-24 max-w-4xl mx-auto">
             <div class="glass-card">
-              <h2 class="text-3xl font-light mb-6 text-center">Our Mission</h2>
-              <p class="text-white/70 mb-6 leading-relaxed">
-                At Albor Space, we're dedicated to pushing the boundaries of space communications through innovation,
-                research, and technological excellence. Our team combines decades of academic expertise with
-                practical industry experience to develop revolutionary solutions for the next generation of
-                space exploration and connectivity.
-              </p>
-              <p class="text-white/70 leading-relaxed">
-                Founded by leading experts from the Universidad de Málaga's telecommunications department,
-                our team brings together specialists in satellite communications, software-defined radio,
-                network optimization, and artificial intelligence to address the most complex challenges in
-                non-terrestrial networks.
-              </p>
+              <h2 class="heading-md mb-4 sm:mb-6 text-center">Our Mission</h2>
+              <div class="space-y-4 sm:space-y-6 text-sm sm:text-base">
+                <p class="text-white/70 leading-relaxed">
+                  At Albor Space, we're dedicated to pushing the boundaries of space communications through innovation,
+                  research, and technological excellence. Our team combines decades of academic expertise with
+                  practical industry experience to develop revolutionary solutions for the next generation of
+                  space exploration and connectivity.
+                </p>
+                <p class="text-white/70 leading-relaxed">
+                  Founded by leading experts from the Universidad de Málaga's telecommunications department,
+                  our team brings together specialists in satellite communications, software-defined radio,
+                  network optimization, and artificial intelligence to address the most complex challenges in
+                  non-terrestrial networks.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -89,31 +96,50 @@
           0 0 20px rgba(255, 107, 0, 0.15);
       }
 
-      .glass-card {
-        background-color: rgba(0, 0, 18, 0.2);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 0.75rem;
-        padding: 2rem;
-        transition: all 0.3s ease;
+      /* Animation classes */
+      .reveal-element {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .reveal-element.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+        animation: slideInFromRight 1.2s forwards;
+        animation-delay: 0.2s;
+      }
+
+      @keyframes slideInFromRight {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
     </style>
 
     <script>
-      // This script assumes the modal and its functions (openModal) are globally available (moved to Layout.astro)
       document.addEventListener('DOMContentLoaded', () => {
-        // Add click handlers for team cards on this page
+        // Add click handlers for team cards
         document.querySelectorAll('.team-card').forEach(card => {
           card.addEventListener('click', () => {
             const memberData = card.getAttribute('data-member');
             if (memberData) {
               try {
                 const member = JSON.parse(memberData);
-                // Check if the global openModal function exists before calling
                 if (typeof window.openModal === 'function') {
                   window.openModal(member);
                 } else {
-                  console.error('openModal function not found. Ensure modal logic is in Layout.astro.');
+                  console.error('openModal function not found.');
                 }
               } catch (e) {
                 console.error('Failed to parse member data:', e);
@@ -122,7 +148,7 @@
           });
         });
 
-        // Reveal animations (keep this page-specific logic)
+        // Reveal animations
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {

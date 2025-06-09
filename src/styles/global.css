@@ -1,136 +1,250 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Enhanced font loading for better performance */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+/* Global responsive base styles */
 :root {
-  /* Adjusted primary accent to match Tailwind orange-500 */
-  --accent-primary: 249, 115, 22;  /* Orange (#f97316) */
-  --accent-secondary: 233, 69, 96;  /* Red/Pink (#E94560) */
-  --accent-tertiary: 28, 130, 173;  /* Blue (#1C82AD) */
-  --accent-quaternary: 83, 52, 131; /* Purple (#533483) */
-
-  /* Removed old orange CSS variables - Use Tailwind's orange palette directly */
-  /* --orange-light: 255, 178, 102; */
-  /* --orange-medium: 255, 140, 0; */
-  /* --orange-dark: 204, 85, 0; */
-  /* --orange-deep: 153, 76, 0; */
-  /* --orange-burnt: 204, 85, 0; */
-  /* --orange-golden: 230, 190, 138; */
-
-  --dark-900: #030305;
-  --dark-800: #0D0F1A; /* Adjusted for consistency */
-  --dark-200: #1a1b2e;
+  /* Ultra dark space theme colors */
+  --color-dark-primary: #000012;
+  --color-dark-secondary: #000018;
+  --color-dark-tertiary: #000024;
+  --color-accent-orange: #FF6B00;
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
-}
-
-body {
-  color: rgba(255, 255, 255, 0.9);
-  min-height: 100vh;
-  background-color: black;
+  /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
 }
 
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-dark-primary);
+  color: white;
+  line-height: 1.6;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Enhanced responsive typography system */
+.heading-xl {
+  @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-wider leading-none;
+}
+
 .heading-lg {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  font-weight: 300;
-
-  @media (min-width: 768px) {
-    font-size: 3rem;
-  }
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight;
 }
 
+.heading-md {
+  @apply text-2xl sm:text-3xl md:text-4xl font-light tracking-wide;
+}
+
+.heading-sm {
+  @apply text-xl sm:text-2xl md:text-3xl font-light;
+}
+
+.text-body-lg {
+  @apply text-base sm:text-lg md:text-xl leading-relaxed;
+}
+
+.text-body {
+  @apply text-sm sm:text-base leading-relaxed;
+}
+
+/* Enhanced responsive container system */
 .container-custom {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-.section {
-  position: relative;
+.container-narrow {
+  @apply w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-.star {
-  position: absolute;
-  border-radius: 50%;
-  animation: twinkle 3s ease-in-out infinite;
+.container-wide {
+  @apply w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.4; }
+/* Enhanced responsive grid system */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.noise {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.05;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-/* Navigation sunrise effect - Using Tailwind orange */
-.nav-sunrise {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, rgba(249, 115, 22, 0.7), rgba(194, 65, 12, 0.7)); /* orange-500 to orange-700 */
+/* Responsive spacing utilities */
+.section-padding {
+  @apply py-16 sm:py-20 md:py-24 lg:py-32;
+}
+
+.section-padding-sm {
+  @apply py-12 sm:py-16 md:py-20;
+}
+
+/* Enhanced glass card responsive system */
+.glass-card {
+  background-color: rgba(0, 0, 24, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply p-4 sm:p-6 lg:p-8;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 107, 0, 0.25);
+  background-color: rgba(0, 0, 30, 0.5);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 24, 0.8),
+    0 0 20px rgba(255, 107, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Responsive button system */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-4 sm:px-6 lg:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium tracking-wider uppercase transition-all duration-300;
+  background: linear-gradient(135deg, rgba(0, 0, 24, 0.6), rgba(0, 0, 30, 0.4));
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(20px);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.5);
+}
+
+/* Enhanced responsive reveal animations */
+.reveal-element {
   opacity: 0;
-  z-index: 49;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-sunrise.sunriseActive {
+.reveal-element.revealed {
   opacity: 1;
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  animation: gradientShift 3s ease infinite;
+  transform: translateY(0);
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Mobile-first responsive utilities */
+.mobile-hidden {
+  @apply hidden sm:block;
 }
 
-/* Buttons with orange themes - Example classes */
-.btn-orange {
-  background-color: theme('colors.orange.500 / 10%');
-  color: theme('colors.orange.500');
-  border: 1px solid theme('colors.orange.500 / 30%');
+.mobile-only {
+  @apply block sm:hidden;
+}
+
+.tablet-hidden {
+  @apply hidden md:block;
+}
+
+.desktop-only {
+  @apply hidden lg:block;
+}
+
+/* Enhanced responsive form elements */
+.form-input {
+  @apply w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base;
+  background-color: rgba(0, 0, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: white;
   transition: all 0.3s ease;
 }
 
-.btn-orange:hover {
-  background-color: theme('colors.orange.500 / 20%');
-  border-color: theme('colors.orange.500 / 50%');
+.form-input:focus {
+  border-color: rgba(255, 107, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.1);
+  outline: none;
 }
 
-.btn-orange-dark {
-  background-color: theme('colors.orange.700 / 10%');
-  color: theme('colors.orange.700');
-  border: 1px solid theme('colors.orange.700 / 30%');
-  transition: all 0.3s ease;
+/* Fixed diagram sizes to prevent responsive scaling */
+.diagram-fixed {
+  width: 600px !important;
+  height: 400px !important;
+  max-width: none !important;
+  flex-shrink: 0;
 }
 
-.btn-orange-dark:hover {
-  background-color: theme('colors.orange.700 / 20%');
-  border-color: theme('colors.orange.700 / 50%');
+@media (max-width: 768px) {
+  .diagram-fixed {
+    width: 500px !important;
+    height: 350px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .diagram-fixed {
+    width: 400px !important;
+    height: 300px !important;
+  }
+}
+
+/* Responsive diagram container with overflow handling */
+.diagram-container {
+  @apply w-full overflow-x-auto flex justify-center items-center;
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .diagram-container {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 640px) {
+  .diagram-container {
+    min-height: 300px;
+  }
+}
+
+/* Enhanced responsive navigation */
+.nav-link {
+  @apply text-sm sm:text-base transition-colors duration-300;
+}
+
+/* Responsive modal system */
+.modal-content {
+  @apply w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-4xl mx-4;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Focus visible improvements for accessibility */
+*:focus-visible {
+  outline: 2px solid rgba(255, 107, 0, 0.6);
+  outline-offset: 2px;
 }

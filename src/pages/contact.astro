@@ -17,82 +17,83 @@ const getIcon = (iconName) => {
 ---
 
 <Layout title={`${contactPage.title} - ALBOR SPACE`} description={contactPage.description}>
-  <div class="pt-32 pb-24 relative">
+  <div class="section-padding relative">
     <!-- Background effects -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#000012]/90 via-[#000018]/50 to-[#000012]/90"></div>
 
     <!-- Minimalist accent effects -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[40vh] bg-gradient-radial from-[#FF6B00]/8 to-transparent opacity-50 blur-[100px]"></div>
-    <div class="absolute bottom-0 right-0 w-2/3 h-[50vh] bg-gradient-to-t from-[#FF6B00]/6 via-[#FF6B00]/4 to-transparent opacity-60 blur-[100px]"></div>
 
     <div class="container-custom relative z-10">
-      <!-- Page header with slide-in animation -->
-      <div class="text-center mb-16 reveal-element">
+      <!-- Page header - Responsive -->
+      <div class="text-center mb-12 sm:mb-16 reveal-element">
         <h1 class="heading-lg mb-4 slide-right">{contactPage.title}</h1>
-        <p class="text-white/60 max-w-2xl mx-auto">{contactPage.description}</p>
+        <p class="text-body text-white/60 max-w-2xl mx-auto">{contactPage.description}</p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-16">
-        <!-- Contact Info with minimalist design -->
+      <!-- Main content grid - Responsive -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
+        <!-- Contact Info - Full width on mobile, 1/3 on desktop -->
         <div class="lg:col-span-1">
           <div class="glass-card h-full reveal-element contact-info-card">
-            <h2 class="text-xl font-light mb-8 text-gradient-minimalist">{contactInfo.title}</h2>
+            <h2 class="heading-sm mb-6 sm:mb-8 text-gradient-minimalist">{contactInfo.title}</h2>
 
-            <div class="space-y-8">
+            <div class="space-y-6 sm:space-y-8">
               {contactInfo.items.map((item, index) => {
                 const IconComponent = getIcon(item.icon);
                 return (
                   <div class="flex items-start hover-glow-item" data-reveal-delay={index * 100}>
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-[#FF6B00]/60 shrink-0 mr-6 contact-icon-container">
-                      <IconComponent size={22} />
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-[#FF6B00]/60 shrink-0 mr-4 sm:mr-6 contact-icon-container">
+                      <IconComponent size={18} class="sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <h3 class="text-white text-lg mb-2">{item.title}</h3>
-                      <p class="text-white/70 whitespace-pre-line">{item.content}</p>
+                      <h3 class="text-white text-base sm:text-lg mb-2">{item.title}</h3>
+                      <p class="text-white/70 whitespace-pre-line text-sm sm:text-base">{item.content}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            <!-- Social links with minimalist design -->
-            <div class="mt-12 pt-8 border-t border-white/5">
-              <h3 class="text-white/70 text-sm font-medium mb-6">Connect With Us</h3>
-              <div class="flex space-x-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                </a>
+            <!-- Social links - Responsive -->
+            <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/5">
+              <h3 class="text-white/70 text-sm font-medium mb-4 sm:mb-6">Connect With Us</h3>
+              <div class="flex flex-wrap gap-3 sm:gap-4">
+                {[
+                  { name: 'LinkedIn', icon: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z' },
+                  { name: 'Twitter', icon: 'M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z' },
+                  { name: 'Instagram', icon: 'M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2z M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z M18.25 5.5a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z' },
+                  { name: 'Facebook', icon: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' }
+                ].map((social) => (
+                  <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d={social.icon}></path>
+                    </svg>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Contact Form with minimalist design -->
+        <!-- Contact Form - Full width on mobile, 2/3 on desktop -->
         <div class="lg:col-span-2">
           <div class="glass-card reveal-element contact-form-card">
-            <form id="contact-form" class="space-y-6">
-              <h2 class="text-xl font-light mb-8 text-gradient-minimalist">Send Us a Message</h2>
+            <form id="contact-form" class="space-y-4 sm:space-y-6">
+              <h2 class="heading-sm mb-6 sm:mb-8 text-gradient-minimalist">Send Us a Message</h2>
 
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Form fields - Responsive grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {contactForm.fields.slice(0, 2).map((field) => (
                   <div class="form-group">
-                    <label for={field.id} class="block text-white/70 mb-2 text-sm">{field.label}</label>
+                    <label for={field.id} class="block text-white/70 mb-2 text-sm sm:text-base">{field.label}</label>
                     <div class="relative">
                       <input
                         type={field.type}
                         id={field.id}
                         name={field.id}
                         required={field.required}
-                        class="w-full bg-[#000018]/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#FF6B00]/30 focus:outline-none transition-colors duration-200 form-input"
+                        class="form-input"
                       />
                       <div class="form-input-glow"></div>
                     </div>
@@ -102,7 +103,7 @@ const getIcon = (iconName) => {
 
               {contactForm.fields.slice(2).map((field) => (
                 <div class="form-group">
-                  <label for={field.id} class="block text-white/70 mb-2 text-sm">{field.label}</label>
+                  <label for={field.id} class="block text-white/70 mb-2 text-sm sm:text-base">{field.label}</label>
                   <div class="relative">
                     {field.type === 'textarea' ? (
                       <textarea
@@ -110,7 +111,7 @@ const getIcon = (iconName) => {
                         name={field.id}
                         rows={field.rows || 4}
                         required={field.required}
-                        class="w-full bg-[#000018]/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#FF6B00]/30 focus:outline-none transition-colors duration-200 form-input"
+                        class="form-input resize-none"
                       ></textarea>
                     ) : (
                       <input
@@ -118,7 +119,7 @@ const getIcon = (iconName) => {
                         id={field.id}
                         name={field.id}
                         required={field.required}
-                        class="w-full bg-[#000018]/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#FF6B00]/30 focus:outline-none transition-colors duration-200 form-input"
+                        class="form-input"
                       />
                     )}
                     <div class="form-input-glow"></div>
@@ -126,13 +127,13 @@ const getIcon = (iconName) => {
                 </div>
               ))}
 
-              <div class="mt-8">
+              <div class="mt-6 sm:mt-8">
                 <button
                   type="submit"
                   class="primary-button-minimalist group w-full"
                 >
-                  <span>{contactForm.submitButton}</span>
-                  <Send class="w-5 h-5 ml-2 transition-transform duration-500 ease-out transform group-hover:translate-x-1 group-hover:text-[#FF6B00]/80" />
+                  <span class="text-sm sm:text-base">{contactForm.submitButton}</span>
+                  <Send class="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform duration-500 ease-out transform group-hover:translate-x-1 group-hover:text-[#FF6B00]/80" />
                 </button>
               </div>
             </form>
@@ -140,9 +141,9 @@ const getIcon = (iconName) => {
         </div>
       </div>
 
-      <!-- Map section with minimalist overlay -->
-      <div class="mt-20 reveal-element">
-        <div class="relative rounded-xl overflow-hidden h-[400px]">
+      <!-- Map section - Responsive -->
+      <div class="mt-16 sm:mt-20 reveal-element">
+        <div class="relative rounded-xl overflow-hidden h-64 sm:h-80 lg:h-96">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.175530501069!2d-4.481998584349033!3d36.7154863799673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f73a33a5b81b%3A0xc29104bcdf67ee1d!2sUniversidad%20de%20M%C3%A1laga!5e0!3m2!1sen!2ses!4v1620236356746!5m2!1sen!2ses"
             width="100%"
@@ -153,16 +154,18 @@ const getIcon = (iconName) => {
             class="grayscale contrast-125 brightness-75"
           ></iframe>
 
-          <!-- Minimalist gradient overlay -->
+          <!-- Map overlays -->
           <div class="absolute inset-0 bg-gradient-to-t from-[#000012] via-transparent to-transparent opacity-90"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-[#FF6B00]/15 to-[#FF6B00]/10 mix-blend-overlay opacity-40"></div>
 
-          <!-- Map info card with minimalist design -->
-          <div class="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md bg-[#000018]/80 backdrop-blur-md p-6 rounded-xl border border-white/10">
-            <h3 class="text-xl font-light mb-3 text-gradient-minimalist">Visit Our Office</h3>
-            <p class="text-white/80 mb-1">E.T.S.I. Telecomunicación</p>
-            <p class="text-white/80 mb-1">Universidad de Málaga</p>
-            <p class="text-white/80">Málaga, Spain</p>
+          <!-- Map info card - Responsive positioning -->
+          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-sm lg:max-w-md bg-[#000018]/80 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10">
+            <h3 class="text-lg sm:text-xl font-light mb-3 text-gradient-minimalist">Visit Our Office</h3>
+            <div class="text-sm sm:text-base space-y-1">
+              <p class="text-white/80">E.T.S.I. Telecomunicación</p>
+              <p class="text-white/80">Universidad de Málaga</p>
+              <p class="text-white/80">Málaga, Spain</p>
+            </div>
           </div>
         </div>
       </div>
@@ -171,18 +174,7 @@ const getIcon = (iconName) => {
 </Layout>
 
 <style>
-  /* Base card styles with minimalist approach */
-  .glass-card {
-    background-color: rgba(0, 0, 18, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 0.75rem;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
-
-  /* Enhanced contact info card with minimalist orange accents */
+  /* Enhanced contact info card */
   .contact-info-card {
     position: relative;
     overflow: hidden;
@@ -199,7 +191,7 @@ const getIcon = (iconName) => {
     border-radius: 0.75rem 0.75rem 0 0;
   }
 
-  /* Contact icon containers with minimalist design */
+  /* Contact icon containers */
   .contact-icon-container {
     position: relative;
     transition: all 0.3s ease;
@@ -227,7 +219,7 @@ const getIcon = (iconName) => {
     box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
   }
 
-  /* Social icon links with minimalist design */
+  /* Social icon links */
   .social-icon-link {
     position: relative;
     overflow: hidden;
@@ -255,7 +247,7 @@ const getIcon = (iconName) => {
     opacity: 1;
   }
 
-  /* Enhanced form styling with minimalist approach */
+  /* Enhanced form styling */
   .contact-form-card {
     position: relative;
   }
@@ -273,16 +265,6 @@ const getIcon = (iconName) => {
 
   .form-group {
     position: relative;
-  }
-
-  .form-input {
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .form-input:focus {
-    border-color: rgba(255, 107, 0, 0.3);
-    box-shadow: 0 0 15px rgba(255, 107, 0, 0.1);
   }
 
   .form-input-glow {
@@ -332,64 +314,51 @@ const getIcon = (iconName) => {
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Form submission handler with client-side validation
+    // Form submission handler
     const form = document.getElementById('contact-form');
 
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Here you would normally send the form data to a server
-      // For demo purposes, we'll just show a success message
-
-      // Disable the submit button during submission
       const submitButton = form.querySelector('button[type="submit"]');
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.querySelector('span').textContent = "Sending...";
       }
 
-      // Simulate sending and show success
+      // Simulate sending
       setTimeout(() => {
-        // Create success notification with minimalist orange accent
         const notification = document.createElement('div');
-        notification.className = 'fixed top-6 right-6 bg-[#000018]/90 backdrop-blur-md px-6 py-4 rounded-lg border border-[#FF6B00]/20 text-white z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500';
+        notification.className = 'fixed top-4 sm:top-6 right-4 sm:right-6 bg-[#000018]/90 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-4 rounded-lg border border-[#FF6B00]/20 text-white z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500 max-w-sm';
         notification.innerHTML = `
           <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#FF6B00]/60 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 text-[#FF6B00]/60 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             <div>
-              <h4 class="font-medium">Message Sent!</h4>
-              <p class="text-sm text-white/70">We'll get back to you soon.</p>
+              <h4 class="font-medium text-sm sm:text-base">Message Sent!</h4>
+              <p class="text-xs sm:text-sm text-white/70">We'll get back to you soon.</p>
             </div>
           </div>
         `;
 
         document.body.appendChild(notification);
-
-        // Reset form
         form.reset();
 
-        // Re-enable button
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.querySelector('span').textContent = "${contactForm.submitButton}";
         }
 
-        // Show notification
         setTimeout(() => {
           notification.style.transform = 'translate(0)';
           notification.style.opacity = '1';
         }, 100);
 
-        // Hide and remove notification
         setTimeout(() => {
           notification.style.transform = 'translate-y-[-20px]';
           notification.style.opacity = '0';
-
-          setTimeout(() => {
-            notification.remove();
-          }, 500);
+          setTimeout(() => notification.remove(), 500);
         }, 5000);
       }, 1500);
     });

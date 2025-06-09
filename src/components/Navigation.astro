@@ -4,7 +4,7 @@ import Logo from './Logo.astro';
 import { navItems, solutionsDropdown } from '../content/navigation';
 ---
 
-<nav id="main-nav" class="px-6 py-4 fixed w-full z-50 transition-all duration-500 bg-transparent -translate-y-1">
+<nav id="main-nav" class="px-4 sm:px-6 py-4 fixed w-full z-50 transition-all duration-500 bg-transparent -translate-y-1">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <div class="flex-none">
       <a href="/" aria-label="Home">
@@ -12,20 +12,18 @@ import { navItems, solutionsDropdown } from '../content/navigation';
       </a>
     </div>
 
-    <div class="hidden md:flex items-center space-x-8">
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
       {navItems.map((item) => (
         item.dropdown ? (
           <div class="relative group">
-            {/* Solutions Dropdown Link with minimalist hover */}
             <a href={item.url} class="text-white/70 hover:text-white transition-colors duration-300 text-sm tracking-wider flex items-center group relative px-1 py-1">
-              {/* Minimalist Hover Dot */}
               <span class="absolute left-[-10px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#FF6B00]/50 rounded-full opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out origin-left"></span>
               <span class="relative z-10 pl-2">{item.title}</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-300 relative z-10">
                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
               </svg>
             </a>
-            {/* Dropdown Menu with minimalist styling */}
             <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
               <div class="bg-[#000018]/90 backdrop-blur-xl border border-white/8 rounded-lg py-2 min-w-[220px] shadow-lg shadow-[#000012]/50">
                 {solutionsDropdown.map((solution) => (
@@ -41,9 +39,7 @@ import { navItems, solutionsDropdown } from '../content/navigation';
             </div>
           </div>
         ) : (
-          /* Regular Links with minimalist hover */
           <a href={item.url} class="text-white/70 hover:text-white transition-colors duration-300 text-sm tracking-wider relative group px-1 py-1">
-            {/* Minimalist Hover Dot */}
             <span class="absolute left-[-10px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#FF6B00]/50 rounded-full opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out origin-left"></span>
             <span class="relative z-10 block pl-2">{item.title}</span>
           </a>
@@ -51,9 +47,10 @@ import { navItems, solutionsDropdown } from '../content/navigation';
       ))}
     </div>
 
+    <!-- Mobile/Tablet Menu Button -->
     <button
       id="mobile-menu-button"
-      class="md:hidden relative z-50 p-2 focus:outline-none"
+      class="lg:hidden relative z-50 p-2 focus:outline-none focus:ring-2 focus:ring-[#FF6B00]/50 rounded-lg"
       aria-label="Toggle menu"
     >
       <div class="relative w-6 h-6">
@@ -67,24 +64,22 @@ import { navItems, solutionsDropdown } from '../content/navigation';
     </button>
   </div>
 
-  <!-- Mobile menu with minimalist design -->
+  <!-- Enhanced Mobile/Tablet menu -->
   <div
     id="mobile-menu"
-    class="md:hidden fixed top-0 left-0 w-full h-screen transition-all duration-300 ease-out z-40 opacity-0 -translate-y-8 pointer-events-none flex items-center justify-center"
+    class="lg:hidden fixed top-0 left-0 w-full h-screen transition-all duration-300 ease-out z-40 opacity-0 -translate-y-8 pointer-events-none flex items-center justify-center"
   >
-    <!-- Ultra dark overlay -->
     <div class="absolute inset-0 bg-[#000012]/95 backdrop-blur-2xl"></div>
-
-    <!-- Minimalist bottom accent -->
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[30vh] bg-gradient-radial from-[#FF6B00]/8 to-transparent rounded-full blur-[100px] transform translate-y-1/2"></div>
 
-    <div class="h-full flex flex-col justify-center items-center space-y-10 p-6 relative z-10 max-w-md mx-auto w-full">
-      <div class="space-y-5 text-center border-b border-white/5 pb-8 mb-4 w-full">
-        <h3 class="text-sm font-medium text-white/50 uppercase tracking-wider mb-6">Solutions</h3>
+    <div class="h-full flex flex-col justify-center items-center space-y-8 sm:space-y-10 p-6 relative z-10 max-w-md mx-auto w-full">
+      <!-- Solutions section -->
+      <div class="space-y-4 sm:space-y-5 text-center border-b border-white/5 pb-6 sm:pb-8 mb-4 w-full">
+        <h3 class="text-sm font-medium text-white/50 uppercase tracking-wider mb-4 sm:mb-6">Solutions</h3>
         {solutionsDropdown.map((solution) => (
           <a
             href={solution.url}
-            class="block text-xl font-light tracking-wider text-white/70 hover:text-white transition-all duration-300 hover:scale-105 transform relative group"
+            class="block text-lg sm:text-xl font-light tracking-wider text-white/70 hover:text-white transition-all duration-300 hover:scale-105 transform relative group"
           >
             <span class="relative">
               {solution.title}
@@ -93,10 +88,12 @@ import { navItems, solutionsDropdown } from '../content/navigation';
           </a>
         ))}
       </div>
+      
+      <!-- Main navigation -->
       {navItems.filter(item => !item.dropdown).map((item) => (
         <a
           href={item.url}
-          class="text-2xl font-light tracking-wider text-white/70 hover:text-white transition-all duration-300 transform hover:scale-105 relative group"
+          class="text-xl sm:text-2xl font-light tracking-wider text-white/70 hover:text-white transition-all duration-300 transform hover:scale-105 relative group"
         >
           <span class="relative">
             {item.title}
@@ -117,7 +114,7 @@ import { navItems, solutionsDropdown } from '../content/navigation';
     const closeIcon = document.getElementById('close-icon');
     let isMenuOpen = false;
 
-    // Enhanced scroll handling with minimalist border
+    // Enhanced scroll handling with responsive behavior
     const handleScroll = () => {
       if (nav) {
         if (window.scrollY > 20) {
@@ -130,7 +127,7 @@ import { navItems, solutionsDropdown } from '../content/navigation';
       }
     };
 
-    // Enhanced toggle menu
+    // Enhanced toggle menu with improved mobile/tablet behavior
     const toggleMenu = () => {
       isMenuOpen = !isMenuOpen;
 
@@ -140,7 +137,6 @@ import { navItems, solutionsDropdown } from '../content/navigation';
         mobileMenu.classList.remove('opacity-0', '-translate-y-8', 'pointer-events-none');
         mobileMenu.classList.add('opacity-100', 'translate-y-0');
 
-        // Animate menu icons
         menuIcon.classList.remove('opacity-100', 'rotate-0', 'scale-100');
         menuIcon.classList.add('opacity-0', 'rotate-90', 'scale-95');
 
@@ -160,11 +156,23 @@ import { navItems, solutionsDropdown } from '../content/navigation';
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Enhanced event listeners with better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     mobileMenuButton?.addEventListener('click', toggleMenu);
 
-    // Initial check for scroll position
-    handleScroll();
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMenu();
+      }
+    });
+
+    // Close menu when clicking outside
+    mobileMenu?.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        toggleMenu();
+      }
+    });
 
     // Close mobile menu when clicking on a link
     const mobileLinks = mobileMenu?.querySelectorAll('a');
@@ -176,7 +184,13 @@ import { navItems, solutionsDropdown } from '../content/navigation';
       });
     });
 
-    // REMOVED ALL UNNECESSARY EVENT HANDLERS for maximum speed!
-    // Navigation is now handled entirely by the browser for instant response
+    // Handle window resize to close menu on desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && isMenuOpen) {
+        toggleMenu();
+      }
+    });
+
+    handleScroll();
   });
 </script>
