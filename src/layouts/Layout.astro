@@ -32,27 +32,22 @@
         <title>{title}</title>
       </head>
       <body class="bg-black text-white min-h-screen overflow-x-hidden">
-        <!-- Deep space background -->
+        <!-- UNIFORM Deep space background - NO variations -->
         <div class="fixed inset-0 bg-black z-[-10]"></div>
 
-        <!-- Planet horizon background with deep space overlay -->
+        <!-- Planet horizon background - ULTRA DARK and UNIFORM -->
         <div class="fixed inset-0 z-[-8] overflow-hidden">
           <div id="horizon-container" class="absolute inset-0 w-full h-full">
-            <!-- Planet horizon image - much darker -->
+            <!-- Planet horizon image - EXTREMELY dark and subtle -->
             <img 
               src={horizonImage.src} 
               alt="Planet horizon" 
-              class="w-full h-full object-cover object-bottom opacity-20" 
+              class="w-full h-full object-cover object-bottom opacity-5" 
               id="horizon-image"
             />
             
-            <!-- Deep space overlay layers - much darker -->
-            <div class="absolute inset-0 bg-black/80"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-black via-slate-900/90 to-black"></div>
-            <div class="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-orange-900/5 via-transparent to-transparent"></div>
-            
-            <!-- Minimal sunrise glow -->
-            <div id="sunrise-glow" class="absolute top-0 w-full h-full bg-gradient-to-b from-orange-500/5 via-transparent to-transparent opacity-0 transition-all duration-1000 ease-out"></div>
+            <!-- UNIFORM black overlay - NO gradients or variations -->
+            <div class="absolute inset-0 bg-black/95"></div>
           </div>
         </div>
 
@@ -141,7 +136,7 @@
         </div>
 
         <style is:global>
-          /* Deep space background */
+          /* UNIFORM deep space background - NO variations */
           #horizon-container {
             position: relative;
             overflow: hidden;
@@ -204,13 +199,6 @@
           .reveal-element.revealed {
             opacity: 1;
             transform: translateY(0);
-          }
-
-          /* Enhanced section styling */
-          .section {
-            position: relative;
-            transition: all 0.6s ease;
-            padding: 6rem 0;
           }
         </style>
 
@@ -322,7 +310,7 @@
               starField.innerHTML = '';
 
               const fragment = document.createDocumentFragment();
-              for (let i = 0; i < 400; i++) {
+              for (let i = 0; i < 300; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
 
@@ -330,16 +318,8 @@
                          Math.random() > 0.85 ? Math.random() * 1.2 + 0.4 :
                          Math.random() * 0.6 + 0.2;
 
-                // Mostly white stars with very few orange ones for space theme
-                let color;
-                const random = Math.random();
-                if (random > 0.99) {
-                  color = 'rgba(255, 140, 0, 0.6)'; // Extremely rare orange stars
-                } else if (random > 0.97) {
-                  color = 'rgba(255, 220, 180, 0.7)'; // Very rare warm white
-                } else {
-                  color = 'rgba(255, 255, 255, 0.8)'; // Mostly white stars
-                }
+                // Mostly white stars
+                let color = 'rgba(255, 255, 255, 0.8)';
 
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
@@ -359,30 +339,19 @@
               starField.appendChild(fragment);
             }
 
-            // Enhanced scroll effects with space theme
+            // Minimal scroll effects
             const horizonImage = document.getElementById('horizon-image');
-            const sunriseGlow = document.getElementById('sunrise-glow');
 
-            // Enhanced scroll effect for space atmosphere
             let ticking = false;
             window.addEventListener('scroll', () => {
               if (!ticking) {
                 requestAnimationFrame(() => {
                   const scrollY = window.scrollY;
 
-                  // Enhanced background effects
-                  if (horizonImage && sunriseGlow) {
-                    // Minimal sunrise glow appears when scrolled to top
-                    if (scrollY < 30) {
-                      const topIntensity = Math.max(1 - (scrollY / 30), 0);
-                      sunriseGlow.style.opacity = topIntensity * 0.15;
-                    } else {
-                      sunriseGlow.style.opacity = '0';
-                    }
-
-                    // Subtle parallax effect on background
-                    const parallaxOffset = scrollY * 0.2;
-                    horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.02)`;
+                  // Subtle parallax effect on background
+                  if (horizonImage) {
+                    const parallaxOffset = scrollY * 0.1;
+                    horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.01)`;
                   }
 
                   ticking = false;
@@ -390,16 +359,6 @@
                 ticking = true;
               }
             });
-
-            // Initial subtle sunrise effect for page load
-            if (sunriseGlow) {
-              setTimeout(() => {
-                sunriseGlow.style.opacity = '0.1';
-                setTimeout(() => {
-                  sunriseGlow.style.opacity = '0';
-                }, 4000);
-              }, 1500);
-            }
           });
         </script>
       </body>
