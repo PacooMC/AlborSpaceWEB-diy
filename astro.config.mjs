@@ -1,12 +1,21 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react()],
+  integrations: [react(), tailwind()],
+  output: 'static',
+  build: {
+    format: 'directory'
+  },
+  trailingSlash: 'never',
   server: {
-    port: 4320,
+    port: 4321,
     host: true
+  },
+  vite: {
+    optimizeDeps: {
+      exclude: ['@astrojs/react']
+    }
   }
 });

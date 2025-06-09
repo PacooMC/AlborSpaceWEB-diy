@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { solutionsPage } from '../../content/solutions';
-import { ArrowRight } from 'lucide-astro';
 
 // Import solution components - directly showing featured solutions
 import ChannelEmulator from '../../components/home/solutions/ChannelEmulator.astro';
@@ -15,7 +14,7 @@ import CustomDevelopment from '../../components/solutions/CustomDevelopment.astr
   <section class="pt-32 pb-24 relative">
   
     <!-- Background effects -->
-    <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90 z-0"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#000012]/90 via-[#000018]/50 to-[#000012]/90 z-0"></div>
     
     <div class="container-custom relative z-10">
       <!-- Page header -->
@@ -61,14 +60,14 @@ import CustomDevelopment from '../../components/solutions/CustomDevelopment.astr
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: rgba(26, 26, 46, 0.2);
+    background-color: rgba(0, 0, 18, 0.2);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
   }
   
   .solution-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 18, 0.6);
   }
   
   /* Slide animations */

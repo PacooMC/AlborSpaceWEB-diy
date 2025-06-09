@@ -169,22 +169,14 @@ import { navItems, solutionsDropdown } from '../content/navigation';
     // Close mobile menu when clicking on a link
     const mobileLinks = mobileMenu?.querySelectorAll('a');
     mobileLinks?.forEach(link => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener('click', () => {
         if (isMenuOpen) {
           toggleMenu();
         }
       });
     });
 
-    // INSTANT navigation - no artificial delays!
-    document.querySelectorAll('a[href^="/"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href && href !== '/' && href !== window.location.pathname) {
-          // Just navigate immediately - no delays or preventDefault
-          // The browser will handle this naturally and instantly
-        }
-      });
-    });
+    // REMOVED ALL UNNECESSARY EVENT HANDLERS for maximum speed!
+    // Navigation is now handled entirely by the browser for instant response
   });
 </script>
