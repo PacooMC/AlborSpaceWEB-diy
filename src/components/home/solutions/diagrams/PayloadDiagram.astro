@@ -9,71 +9,56 @@ const { className = '' } = Astro.props;
 <div class={`relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container ${className}`}>
   <div class="w-full max-w-xl mx-auto">
     <div class="payload-diagram">
-      <!-- Processing Flow (Top) -->
+      <!-- Processing Flow at the top -->
       <div class="processing-flow">
         <div class="flow-unit rf-unit">
-          <div class="unit-code">RF</div>
-          <div class="unit-name">Radio Unit</div>
-          <div class="unit-spec">1-6 GHz</div>
+          <div class="unit-header">RF</div>
+          <div class="unit-label">Radio Unit</div>
+          <div class="unit-sublabel">1-6 GHz</div>
         </div>
         
-        <div class="flow-arrow"></div>
+        <div class="flow-arrow arrow-1"></div>
         
         <div class="flow-unit bbp-unit">
-          <div class="unit-code">BBP</div>
-          <div class="unit-name">Baseband Processing</div>
-          <div class="unit-spec">5G NR DSP</div>
+          <div class="unit-header">BBP</div>
+          <div class="unit-label">Baseband Processing</div>
+          <div class="unit-sublabel">5G NR DSP</div>
         </div>
         
-        <div class="flow-arrow"></div>
+        <div class="flow-arrow arrow-2"></div>
         
         <div class="flow-unit pt-unit">
-          <div class="unit-code">PT</div>
-          <div class="unit-name">Protocol Stack</div>
-          <div class="unit-spec">Software Defined</div>
+          <div class="unit-header">PT</div>
+          <div class="unit-label">Protocol Stack</div>
+          <div class="unit-sublabel">Software Defined</div>
         </div>
       </div>
 
-      <!-- Satellite (Center) -->
-      <div class="satellite-container">
-        <div class="satellite">
-          <div class="sat-body"></div>
-          <div class="sat-panels left"></div>
-          <div class="sat-panels right"></div>
-        </div>
-
-        <!-- Coverage beams -->
-        <div class="coverage-beam beam-left"></div>
-        <div class="coverage-beam beam-right"></div>
+      <!-- Satellite in the center -->
+      <div class="satellite">
+        <div class="satellite-body"></div>
+        <div class="satellite-panels left"></div>
+        <div class="satellite-panels right"></div>
+        <div class="satellite-antenna"></div>
       </div>
 
-      <!-- Ground Stations (Bottom) -->
-      <div class="ground-stations">
-        <div class="station ground-station">
-          <div class="station-antenna"></div>
-          <div class="station-label">Ground Station</div>
-        </div>
-        
-        <div class="station user-terminal">
-          <div class="station-antenna"></div>
-          <div class="station-label">User Terminal</div>
-        </div>
+      <!-- Communication beams - centered and shifted right -->
+      <div class="beam-container">
+        <div class="beam uplink"></div>
+        <div class="beam downlink"></div>
       </div>
 
-      <!-- Technical Specifications -->
-      <div class="tech-overlay">
-        <div class="spec-item">
-          <div class="spec-label">Power</div>
-          <div class="spec-value">< 10W</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Weight</div>
-          <div class="spec-value">< 1.33kg</div>
-        </div>
-        <div class="spec-item">
-          <div class="spec-label">Bandwidth</div>
-          <div class="spec-value">200 MHz</div>
-        </div>
+      <!-- Ground stations at the bottom -->
+      <div class="ground-station left">
+        <div class="station-icon"></div>
+        <div class="station-antenna"></div>
+        <div class="station-label">Ground Station</div>
+      </div>
+
+      <div class="ground-station right">
+        <div class="station-icon"></div>
+        <div class="station-antenna"></div>
+        <div class="station-label">User Terminal</div>
       </div>
     </div>
   </div>
@@ -100,7 +85,7 @@ const { className = '' } = Astro.props;
     padding: 20px;
   }
 
-  /* Processing Flow (Top) */
+  /* Processing Flow at the top */
   .processing-flow {
     position: absolute;
     top: 8%;
@@ -113,96 +98,77 @@ const { className = '' } = Astro.props;
   }
 
   .flow-unit {
-    width: 100px;
-    height: 70px;
+    width: 80px;
+    height: 65px;
     border-radius: 8px;
     padding: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    position: relative;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .rf-unit {
-    background: rgba(233, 69, 96, 0.15);
-    border: 2px solid rgba(233, 69, 96, 0.4);
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.15), rgba(233, 69, 96, 0.08));
+    border-color: rgba(233, 69, 96, 0.3);
   }
 
   .bbp-unit {
-    background: rgba(34, 197, 94, 0.15);
-    border: 2px solid rgba(34, 197, 94, 0.4);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.08));
+    border-color: rgba(34, 197, 94, 0.3);
   }
 
   .pt-unit {
-    background: rgba(59, 130, 246, 0.15);
-    border: 2px solid rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.08));
+    border-color: rgba(59, 130, 246, 0.3);
   }
 
-  .flow-unit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  .rf-unit:hover {
-    border-color: rgba(233, 69, 96, 0.7);
-    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.2);
-  }
-
-  .bbp-unit:hover {
-    border-color: rgba(34, 197, 94, 0.7);
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
-  }
-
-  .pt-unit:hover {
-    border-color: rgba(59, 130, 246, 0.7);
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
-  }
-
-  .unit-code {
-    font-size: 16px;
-    font-weight: 600;
+  .unit-header {
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
     margin-bottom: 2px;
   }
 
-  .unit-name {
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.1;
-    margin-bottom: 2px;
-  }
-
-  .unit-spec {
+  .unit-label {
     font-size: 9px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 1px;
+  }
+
+  .unit-sublabel {
+    font-size: 8px;
     color: rgba(255, 255, 255, 0.5);
-    line-height: 1;
+    text-align: center;
   }
 
   .flow-arrow {
     width: 12px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(233, 69, 96, 0.6), rgba(34, 197, 94, 0.6));
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
     position: relative;
   }
 
   .flow-arrow::after {
     content: '';
     position: absolute;
-    right: -4px;
+    right: -3px;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 6px solid rgba(34, 197, 94, 0.6);
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
+    border-left: 4px solid rgba(255, 255, 255, 0.4);
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
   }
 
-  /* Satellite (Center) - Minimalist */
-  .satellite-container {
+  /* Satellite */
+  .satellite {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -210,155 +176,143 @@ const { className = '' } = Astro.props;
     z-index: 5;
   }
 
-  .satellite {
-    position: relative;
-  }
-
-  .sat-body {
+  .satellite-body {
     width: 40px;
     height: 20px;
     background: linear-gradient(135deg, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.6));
     border-radius: 4px;
-    border: 1px solid rgba(233, 69, 96, 0.7);
-    box-shadow: 0 0 12px rgba(233, 69, 96, 0.3);
     position: relative;
+    border: 1px solid rgba(233, 69, 96, 0.4);
   }
 
-  .sat-panels {
+  .satellite-panels {
     position: absolute;
     width: 25px;
-    height: 8px;
-    background: rgba(233, 69, 96, 0.4);
-    border: 1px solid rgba(233, 69, 96, 0.6);
-    top: 6px;
+    height: 10px;
+    background-color: rgba(233, 69, 96, 0.3);
+    border: 1px solid rgba(233, 69, 96, 0.5);
+    top: 5px;
   }
 
-  .sat-panels.left {
+  .satellite-panels.left {
     left: -30px;
   }
 
-  .sat-panels.right {
+  .satellite-panels.right {
     right: -30px;
   }
 
-  /* Coverage Beams - Beautiful illumination */
-  .coverage-beam {
+  .satellite-antenna {
     position: absolute;
-    top: 100%;
-    width: 180px;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 6px;
+    background-color: rgba(233, 69, 96, 0.8);
+  }
+
+  /* Communication beams - centered and shifted right */
+  .beam-container {
+    position: absolute;
+    top: 50%;
+    left: 55%; /* Shifted right from 50% */
+    transform: translate(-50%, -50%);
+    width: 140px;
     height: 200px;
-    background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.15) 0%, rgba(233, 69, 96, 0.08) 40%, transparent 70%);
-    clip-path: polygon(40% 0%, 60% 0%, 80% 100%, 20% 100%);
+    pointer-events: none;
     z-index: 1;
   }
 
-  .beam-left {
-    left: -120px;
-    transform: rotate(-15deg);
+  .beam {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 160px;
+    background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.2), transparent 70%);
+    clip-path: polygon(45% 0%, 55% 0%, 70% 100%, 30% 100%);
     animation: beamPulse 4s ease-in-out infinite;
   }
 
-  .beam-right {
-    left: -60px;
-    transform: rotate(15deg);
-    animation: beamPulse 4s ease-in-out infinite 2s;
+  .beam.uplink {
+    background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.25), transparent 70%);
+    animation-delay: 0s;
+  }
+
+  .beam.downlink {
+    background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.15), transparent 70%);
+    animation-delay: 2s;
   }
 
   @keyframes beamPulse {
     0%, 100% {
       opacity: 0.6;
+      transform: translateX(-50%) scale(1);
     }
     50% {
       opacity: 1;
+      transform: translateX(-50%) scale(1.05);
     }
   }
 
-  /* Ground Stations (Bottom) - Minimalist */
-  .ground-stations {
+  /* Ground stations */
+  .ground-station {
     position: absolute;
     bottom: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-    z-index: 10;
-  }
-
-  .station {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 5;
+  }
+
+  .ground-station.left {
+    left: 25%;
+  }
+
+  .ground-station.right {
+    right: 25%;
+  }
+
+  .station-icon {
+    width: 20px;
+    height: 15px;
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.6));
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid rgba(233, 69, 96, 0.4);
   }
 
   .station-antenna {
-    width: 20px;
-    height: 20px;
-    background: rgba(233, 69, 96, 0.6);
-    border-radius: 2px;
-    border: 1px solid rgba(233, 69, 96, 0.8);
-    position: relative;
-    margin-bottom: 8px;
-  }
-
-  .station-antenna::before {
-    content: '';
     position: absolute;
     top: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
+    width: 1px;
     height: 8px;
-    background: rgba(233, 69, 96, 0.8);
+    background-color: rgba(233, 69, 96, 0.8);
   }
 
   .station-antenna::after {
     content: '';
     position: absolute;
-    top: -12px;
+    top: -3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 12px;
-    height: 4px;
-    border: 1px solid rgba(233, 69, 96, 0.8);
-    border-bottom: none;
-    border-radius: 6px 6px 0 0;
+    width: 6px;
+    height: 3px;
+    border-top: 1px solid rgba(233, 69, 96, 0.8);
+    border-left: 1px solid rgba(233, 69, 96, 0.8);
+    border-right: 1px solid rgba(233, 69, 96, 0.8);
+    border-radius: 3px 3px 0 0;
   }
 
   .station-label {
+    margin-top: 8px;
     font-size: 11px;
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
-  }
-
-  /* Technical Specifications */
-  .tech-overlay {
-    position: absolute;
-    top: 25%;
-    right: 8%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 10;
-  }
-
-  .spec-item {
-    background: rgba(26, 26, 46, 0.8);
-    border: 1px solid rgba(233, 69, 96, 0.3);
-    border-radius: 6px;
-    padding: 6px 10px;
-    backdrop-filter: blur(10px);
-  }
-
-  .spec-label {
-    font-size: 9px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1;
-  }
-
-  .spec-value {
-    font-size: 11px;
-    color: rgba(233, 69, 96, 0.9);
-    font-weight: 500;
+    white-space: nowrap;
   }
 </style>
