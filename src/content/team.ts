@@ -5,10 +5,10 @@ export const teamPage = {
 
 export const teamMembers = [
   {
-    name: "Francisco Muro",
+    name: "Paco Muro",
     role: "Co-CEO",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400",
-    bio: "Dr. Francisco Muro co-leads Albor Space as CEO, bringing over 15 years of experience in satellite communications and aerospace engineering. He drives the company's strategic vision and technological innovation while overseeing business operations and partnerships. His research in adaptive beamforming and quantum communications has been published in leading journals and has resulted in multiple patents.",
+    bio: "Dr. Paco Muro co-leads Albor Space as CEO, bringing over 15 years of experience in satellite communications and aerospace engineering. He drives the company's strategic vision and technological innovation while overseeing business operations and partnerships. His research in adaptive beamforming and quantum communications has been published in leading journals and has resulted in multiple patents.",
     education: [
       "Ph.D. in Telecommunications Engineering, Universidad de Málaga",
       "M.Sc. in Space Science and Technology, TU Delft"
@@ -22,13 +22,13 @@ export const teamMembers = [
     ],
     publications: 3,
     patents: 5,
-    email: "francisco.muro@alborspace.com"
+    email: "paco.muro@alborspace.com"
   },
   {
-    name: "José Pulido",
+    name: "Pepe Pulido",
     role: "Co-CEO",
     image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&q=80&w=400&h=400",
-    bio: "Dr. José Pulido co-leads Albor Space as CEO, pioneering expert in Software Defined Radio and satellite payload systems. He oversees strategic partnerships, market development, and ensures the commercial viability of the company's technological innovations. His innovative work in SDR technology has revolutionized satellite communication testing and validation approaches.",
+    bio: "Dr. Pepe Pulido co-leads Albor Space as CEO, pioneering expert in Software Defined Radio and satellite payload systems. He oversees strategic partnerships, market development, and ensures the commercial viability of the company's technological innovations. His innovative work in SDR technology has revolutionized satellite communication testing and validation approaches.",
     education: [
       "Ph.D. in Electronic Engineering, Universidad de Málaga",
       "M.Eng. in Telecommunications, Universidad Politécnica de Madrid"
@@ -42,7 +42,7 @@ export const teamMembers = [
     ],
     publications: 4,
     patents: 3,
-    email: "jose.pulido@alborspace.com"
+    email: "pepe.pulido@alborspace.com"
   },
   {
     name: "Raquel Barco",

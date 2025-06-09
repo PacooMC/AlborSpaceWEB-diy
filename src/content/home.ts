@@ -110,12 +110,12 @@ export const team = {
   title: "Our Leadership",
   members: [
     { 
-      name: "Francisco Muro", 
+      name: "Paco Muro", 
       role: "Co-CEO", 
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400" 
     },
     { 
-      name: "José Pulido", 
+      name: "Pepe Pulido", 
       role: "Co-CEO", 
       image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&q=80&w=400&h=400" 
     },
