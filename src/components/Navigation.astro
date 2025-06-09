@@ -176,24 +176,15 @@ import { navItems, solutionsDropdown } from '../content/navigation';
       });
     });
 
-    // Handle page navigation clicks
+    // INSTANT navigation - no artificial delays!
     document.querySelectorAll('a[href^="/"]').forEach(link => {
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
         if (href && href !== '/' && href !== window.location.pathname) {
-          e.preventDefault();
-          link.classList.add('opacity-50');
-          setTimeout(() => {
-            window.location.href = href;
-          }, 100);
+          // Just navigate immediately - no delays or preventDefault
+          // The browser will handle this naturally and instantly
         }
       });
     });
-
-    // Cleanup event listeners
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      mobileMenuButton?.removeEventListener('click', toggleMenu);
-    };
   });
 </script>
