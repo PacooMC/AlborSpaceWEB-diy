@@ -9,77 +9,71 @@ const { className = '' } = Astro.props;
 <div class={`relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container ${className}`}>
   <div class="w-full max-w-xl mx-auto">
     <div class="payload-diagram">
-      <!-- Satellite with enhanced connectivity -->
-      <div class="satellite-system">
-        <div class="satellite">
-          <div class="satellite-body"></div>
-          <div class="satellite-panels left"></div>
-          <div class="satellite-panels right"></div>
-          <div class="satellite-antenna"></div>
-        </div>
-
-        <!-- Active communication links -->
-        <div class="comm-link left-link"></div>
-        <div class="comm-link right-link"></div>
-        
-        <!-- Data flow indicators -->
-        <div class="data-flow flow-left"></div>
-        <div class="data-flow flow-right"></div>
+      <!-- Satellite representation -->
+      <div class="satellite">
+        <div class="satellite-body"></div>
+        <div class="satellite-panels left"></div>
+        <div class="satellite-panels right"></div>
+        <div class="satellite-antenna"></div>
       </div>
 
-      <!-- Performance indicators -->
-      <div class="performance-metrics">
-        <div class="metric-card power">
-          <div class="metric-label">Power</div>
-          <div class="metric-value">&lt; 10W</div>
-        </div>
-        <div class="metric-card weight">
-          <div class="metric-label">Weight</div>
-          <div class="metric-value">&lt; 1.33kg</div>
-        </div>
-        <div class="metric-card bandwidth">
-          <div class="metric-label">Bandwidth</div>
-          <div class="metric-value">200 MHz</div>
+      <!-- Communication beams -->
+      <div class="beam-container">
+        <div class="beam uplink"></div>
+        <div class="beam downlink"></div>
+      </div>
+
+      <!-- Ground stations - positioned symmetrically -->
+      <div class="ground-station left">
+        <div class="station-icon"></div>
+        <div class="station-label">Ground Station</div>
+      </div>
+
+      <div class="ground-station right">
+        <div class="station-icon"></div>
+        <div class="station-label">User Terminal</div>
+      </div>
+
+      <!-- SDR Processing Components - centered below satellite -->
+      <div class="sdr-processing">
+        <div class="processing-chain">
+          <div class="sdr-component rf-component">
+            <div class="component-label">RF</div>
+            <div class="component-sublabel">Radio Unit</div>
+            <div class="component-detail">1-6 GHz</div>
+          </div>
+          
+          <div class="signal-flow-arrow"></div>
+          
+          <div class="sdr-component bb-component">
+            <div class="component-label">BB</div>
+            <div class="component-sublabel">Baseband Processing</div>
+            <div class="component-detail">5G NR DSP</div>
+          </div>
+          
+          <div class="signal-flow-arrow"></div>
+          
+          <div class="sdr-component pt-component">
+            <div class="component-label">PT</div>
+            <div class="component-sublabel">Protocol Stack</div>
+            <div class="component-detail">Software Defined</div>
+          </div>
         </div>
       </div>
 
-      <!-- Ground stations with better spacing -->
-      <div class="ground-stations">
-        <div class="ground-station left">
-          <div class="station-dish"></div>
-          <div class="station-base"></div>
-          <div class="station-label">Ground Station</div>
+      <!-- Technical specifications overlay -->
+      <div class="tech-overlay">
+        <div class="spec-item">
+          <div class="spec-label">Power</div>
+          <div class="spec-value">< 10W</div>
         </div>
-
-        <div class="ground-station right">
-          <div class="station-dish"></div>
-          <div class="station-base"></div>
-          <div class="station-label">User Terminal</div>
+        <div class="spec-item">
+          <div class="spec-label">Weight</div>
+          <div class="spec-value">< 1.33kg</div>
         </div>
-      </div>
-
-      <!-- SDR Architecture -->
-      <div class="sdr-architecture">
-        <div class="sdr-component radio-unit">
-          <div class="component-icon">RF</div>
-          <div class="component-title">Radio Unit</div>
-          <div class="component-subtitle">1-6 GHz</div>
-        </div>
-
-        <div class="processing-arrow arrow-1"></div>
-
-        <div class="sdr-component baseband-unit">
-          <div class="component-icon">BB</div>
-          <div class="component-title">Baseband Processing</div>
-          <div class="component-subtitle">5G NR DSP</div>
-        </div>
-
-        <div class="processing-arrow arrow-2"></div>
-
-        <div class="sdr-component protocol-unit">
-          <div class="component-icon">PT</div>
-          <div class="component-title">Protocol Stack</div>
-          <div class="component-subtitle">Software Defined</div>
+        <div class="spec-item">
+          <div class="spec-label">Bandwidth</div>
+          <div class="spec-value">200 MHz</div>
         </div>
       </div>
     </div>
@@ -103,28 +97,21 @@ const { className = '' } = Astro.props;
   .payload-diagram {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 100%;
     padding: 20px;
-    overflow: hidden;
-  }
-
-  /* Satellite System */
-  .satellite-system {
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .satellite {
-    position: relative;
-    z-index: 10;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .satellite-body {
     width: 80px;
     height: 40px;
-    background: linear-gradient(135deg, rgba(233, 69, 96, 0.9), rgba(233, 69, 96, 0.7));
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.6));
     border-radius: 8px;
     position: relative;
     border: 2px solid rgba(233, 69, 96, 0.6);
@@ -135,278 +122,193 @@ const { className = '' } = Astro.props;
     position: absolute;
     width: 60px;
     height: 20px;
-    background-color: rgba(233, 69, 96, 0.5);
-    border: 1px solid rgba(233, 69, 96, 0.7);
-    top: 10px;
+    background-color: rgba(233, 69, 96, 0.4);
+    border: 1px solid rgba(233, 69, 96, 0.6);
   }
 
   .satellite-panels.left {
     left: -70px;
+    top: 10px;
   }
 
   .satellite-panels.right {
     right: -70px;
+    top: 10px;
   }
 
   .satellite-antenna {
     position: absolute;
-    bottom: -15px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     width: 4px;
-    height: 15px;
-    background-color: rgba(233, 69, 96, 0.9);
-    border-radius: 2px;
+    height: 20px;
+    background-color: rgba(233, 69, 96, 0.8);
   }
 
-  /* Communication Links */
-  .comm-link {
+  .beam-container {
     position: absolute;
-    top: 100%;
-    width: 2px;
-    height: 120px;
-    background: linear-gradient(to bottom, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.3));
-    z-index: 2;
-  }
-
-  .comm-link.left-link {
-    left: 20%;
-    transform: rotate(-15deg);
-    transform-origin: top;
-  }
-
-  .comm-link.right-link {
-    right: 20%;
-    transform: rotate(15deg);
-    transform-origin: top;
-  }
-
-  /* Data Flow */
-  .data-flow {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background-color: rgba(233, 69, 96, 0.9);
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(233, 69, 96, 0.6);
-  }
-
-  .data-flow.flow-left {
-    top: 80px;
-    left: 15%;
-    animation: flowDown 3s infinite linear;
-  }
-
-  .data-flow.flow-right {
-    top: 80px;
-    right: 15%;
-    animation: flowDown 3s infinite linear 1.5s;
-  }
-
-  @keyframes flowDown {
-    0% {
-      opacity: 0;
-      transform: translateY(0);
-    }
-    20% {
-      opacity: 1;
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(120px);
-    }
-  }
-
-  /* Performance Metrics */
-  .performance-metrics {
-    position: absolute;
-    top: 15%;
-    right: 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 5;
-  }
-
-  .metric-card {
-    background-color: rgba(26, 26, 46, 0.8);
-    border: 1px solid rgba(233, 69, 96, 0.3);
-    border-radius: 8px;
-    padding: 8px 12px;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-  }
-
-  .metric-card:hover {
-    border-color: rgba(233, 69, 96, 0.6);
-    box-shadow: 0 0 15px rgba(233, 69, 96, 0.2);
-  }
-
-  .metric-label {
-    font-size: 9px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1;
-    margin-bottom: 2px;
-  }
-
-  .metric-value {
-    font-size: 12px;
-    color: rgba(233, 69, 96, 0.9);
-    font-weight: 600;
-  }
-
-  /* Ground Stations with improved spacing */
-  .ground-stations {
-    position: absolute;
-    bottom: 12%; /* Increased from 5% to give more space */
+    top: 0;
     left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 15%; /* Added padding to move stations away from edges */
-    z-index: 5;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .beam {
+    position: absolute;
+    background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.2), transparent 70%);
+    width: 200px;
+    height: 300px;
+  }
+
+  .beam.uplink {
+    top: 25%;
+    left: 15%;
+    transform: rotate(-20deg);
+  }
+
+  .beam.downlink {
+    top: 25%;
+    right: 15%;
+    transform: rotate(20deg);
   }
 
   .ground-station {
+    position: absolute;
+    bottom: 18%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 10;
   }
 
-  .station-dish {
-    width: 24px;
-    height: 12px;
-    background: linear-gradient(to bottom, rgba(233, 69, 96, 0.7), rgba(233, 69, 96, 0.9));
-    border-radius: 12px 12px 4px 4px;
-    border: 1px solid rgba(233, 69, 96, 0.8);
+  .ground-station.left {
+    left: 15%;
+  }
+
+  .ground-station.right {
+    right: 15%;
+  }
+
+  .station-icon {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(233, 69, 96, 0.8);
+    border-radius: 4px;
     position: relative;
-    margin-bottom: 4px;
+    border: 1px solid rgba(233, 69, 96, 0.6);
   }
 
-  .station-dish::before {
+  .station-icon::before {
     content: '';
     position: absolute;
-    top: -3px;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: 6px;
-    background-color: rgba(233, 69, 96, 0.9);
+    height: 15px;
+    background-color: rgba(233, 69, 96, 0.8);
   }
 
-  .station-base {
-    width: 16px;
-    height: 8px;
-    background-color: rgba(233, 69, 96, 0.6);
-    border-radius: 2px;
-    margin-bottom: 6px;
+  .station-icon::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid rgba(233, 69, 96, 0.8);
+    border-right: 2px solid rgba(233, 69, 96, 0.8);
   }
 
   .station-label {
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    white-space: nowrap;
   }
 
-  /* SDR Architecture with better spacing */
-  .sdr-architecture {
+  /* SDR Processing Components - centered and clearly separated */
+  .sdr-processing {
     position: absolute;
-    bottom: 25%; /* Increased from 20% to create more space above ground stations */
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 15px;
     z-index: 5;
   }
 
-  .sdr-component {
-    width: 85px;
-    height: 70px;
+  .processing-chain {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(26, 26, 46, 0.8);
+    padding: 15px 20px;
     border-radius: 12px;
-    padding: 8px;
+    border: 1px solid rgba(233, 69, 96, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .sdr-component {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    padding: 8px 12px;
+    border-radius: 8px;
+    min-width: 70px;
     transition: all 0.3s ease;
-    border: 2px solid;
+  }
+
+  .rf-component {
+    background-color: rgba(233, 69, 96, 0.2);
+    border: 1px solid rgba(233, 69, 96, 0.4);
+  }
+
+  .bb-component {
+    background-color: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+  }
+
+  .pt-component {
+    background-color: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
   }
 
   .sdr-component:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
-  .radio-unit {
-    background: linear-gradient(135deg, rgba(139, 69, 19, 0.2), rgba(139, 69, 19, 0.1));
-    border-color: rgba(139, 69, 19, 0.5);
-  }
-
-  .radio-unit:hover {
-    border-color: rgba(139, 69, 19, 0.8);
-    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.2);
-  }
-
-  .baseband-unit {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
-    border-color: rgba(34, 197, 94, 0.5);
-  }
-
-  .baseband-unit:hover {
-    border-color: rgba(34, 197, 94, 0.8);
-    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
-  }
-
-  .protocol-unit {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
-    border-color: rgba(59, 130, 246, 0.5);
-  }
-
-  .protocol-unit:hover {
-    border-color: rgba(59, 130, 246, 0.8);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
-  }
-
-  .component-icon {
-    font-size: 16px;
-    font-weight: bold;
+  .component-label {
+    font-size: 14px;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
-  .component-title {
+  .component-sublabel {
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
     line-height: 1.2;
     margin-bottom: 2px;
   }
 
-  .component-subtitle {
+  .component-detail {
     font-size: 8px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     text-align: center;
   }
 
-  /* Processing Arrows */
-  .processing-arrow {
-    width: 12px;
+  .signal-flow-arrow {
+    width: 20px;
     height: 2px;
-    background: linear-gradient(90deg, 
-      rgba(139, 69, 19, 0.7), 
-      rgba(34, 197, 94, 0.7), 
-      rgba(59, 130, 246, 0.7));
+    background: linear-gradient(90deg, rgba(233, 69, 96, 0.6), rgba(34, 197, 94, 0.6));
     position: relative;
   }
 
-  .processing-arrow::after {
+  .signal-flow-arrow::after {
     content: '';
     position: absolute;
     right: -4px;
@@ -414,8 +316,36 @@ const { className = '' } = Astro.props;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 6px solid rgba(59, 130, 246, 0.7);
+    border-left: 6px solid rgba(34, 197, 94, 0.6);
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
+  }
+
+  .tech-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .spec-item {
+    background-color: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(233, 69, 96, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    backdrop-filter: blur(5px);
+  }
+
+  .spec-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .spec-value {
+    font-size: 12px;
+    color: rgba(233, 69, 96, 0.8);
+    font-weight: 500;
   }
 </style>
