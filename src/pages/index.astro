@@ -7,50 +7,50 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 ---
 
 <Layout title="ALBOR SPACE - Advanced Satellite Communication Systems">
-  <!-- Enhanced Home Page with sunrise theme and smooth transitions -->
-  <div class="sunrise-page">
-    <!-- Hero Section with enhanced sunrise atmosphere -->
+  <!-- Enhanced Home Page with space theme and smooth transitions -->
+  <div class="space-page">
+    <!-- Hero Section with deep space atmosphere -->
     <section class="section hero-section relative">
       <Hero />
-      <!-- Sunrise accent line -->
-      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent"></div>
+      <!-- Subtle section divider -->
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-slate-600/30 to-transparent"></div>
     </section>
 
     <!-- Technology Section with smooth transition -->
     <section class="section tech-section relative">
-      <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-orange-500/5 to-transparent"></div>
+      <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-900/20 via-slate-800/10 to-transparent"></div>
       <Technology />
-      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-orange-400/30 to-transparent"></div>
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-slate-600/20 to-transparent"></div>
     </section>
 
     <!-- Solutions Section with enhanced transitions -->
     <section class="section solutions-section relative">
-      <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-orange-500/3 to-transparent"></div>
+      <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-900/15 via-slate-800/8 to-transparent"></div>
       <Solutions />
-      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent"></div>
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-slate-600/25 to-transparent"></div>
     </section>
 
-    <!-- Team Preview Section with sunrise accent -->
+    <!-- Team Preview Section with space accent -->
     <section class="section team-section relative">
-      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-orange-500/2 to-transparent"></div>
+      <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-slate-900/10 via-slate-800/5 to-transparent"></div>
       <TeamPreview />
-      <!-- Final sunrise line -->
-      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
+      <!-- Final subtle divider -->
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-600/15 to-transparent"></div>
     </section>
   </div>
 </Layout>
 
 <style is:global>
-  /* Enhanced sunrise page styling */
-  .sunrise-page {
+  /* Enhanced space page styling */
+  .space-page {
     position: relative;
     background: transparent;
   }
 
-  /* Enhanced section styling with sunrise theme */
+  /* Enhanced section styling with space theme */
   .section {
     position: relative;
-    padding: 2rem 0;
+    padding: 3rem 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -59,38 +59,38 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: radial-gradient(ellipse 80% 50% at center bottom, 
-      rgba(255, 140, 0, 0.1) 0%, 
-      rgba(255, 165, 0, 0.05) 40%, 
+    background: radial-gradient(ellipse 80% 40% at center bottom, 
+      rgba(255, 140, 0, 0.02) 0%, 
+      rgba(255, 165, 0, 0.01) 40%, 
       transparent 80%);
   }
 
-  /* Technology section with subtle sunrise accent */
+  /* Technology section with subtle space accent */
   .tech-section {
     background: linear-gradient(to bottom, 
       transparent 0%, 
-      rgba(255, 140, 0, 0.02) 50%, 
+      rgba(51, 65, 85, 0.05) 50%, 
       transparent 100%);
   }
 
-  /* Solutions section with enhanced sunrise atmosphere */
+  /* Solutions section with enhanced space atmosphere */
   .solutions-section {
-    background: radial-gradient(ellipse 100% 60% at center, 
-      rgba(255, 140, 0, 0.03) 0%, 
-      rgba(255, 165, 0, 0.01) 60%, 
+    background: radial-gradient(ellipse 100% 50% at center, 
+      rgba(30, 41, 59, 0.08) 0%, 
+      rgba(51, 65, 85, 0.03) 60%, 
       transparent 100%);
   }
 
-  /* Team section with warm sunrise undertones */
+  /* Team section with subtle space undertones */
   .team-section {
     background: linear-gradient(to bottom, 
       transparent 0%, 
-      rgba(255, 140, 0, 0.02) 30%, 
-      rgba(255, 165, 0, 0.04) 70%, 
-      rgba(255, 140, 0, 0.02) 100%);
+      rgba(30, 41, 59, 0.05) 30%, 
+      rgba(51, 65, 85, 0.08) 70%, 
+      rgba(30, 41, 59, 0.05) 100%);
   }
 
-  /* Enhanced animations with sunrise theme */
+  /* Enhanced animations with space theme */
   .slide-left {
     animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.2s;
@@ -134,7 +134,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     }
   }
   
-  /* Enhanced reveal elements with sunrise touches */
+  /* Enhanced reveal elements with space touches */
   .heading-lg {
     font-weight: 300;
     letter-spacing: -0.03em;
@@ -152,7 +152,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.4), transparent);
     transition: width 1s ease 0.5s;
   }
   
@@ -176,10 +176,13 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateY(0);
   }
 
-  /* Enhanced glass effects with sunrise theme */
+  /* Enhanced glass effects with space theme */
   .glass-card {
     position: relative;
     overflow: hidden;
+    background-color: rgba(30, 41, 59, 0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .glass-card::before {
@@ -189,12 +192,16 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.4), transparent);
     transition: left 0.8s ease;
   }
 
   .glass-card:hover::before {
     left: 100%;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 140, 0, 0.1);
   }
 </style>
 
@@ -224,9 +231,9 @@ import TeamPreview from '../components/home/TeamPreview.astro';
       observer.observe(el);
     });
 
-    // Enhanced sunrise effect on page load
-    const sunriseElements = document.querySelectorAll('.section');
-    sunriseElements.forEach((section, index) => {
+    // Enhanced space effect on page load
+    const spaceElements = document.querySelectorAll('.section');
+    spaceElements.forEach((section, index) => {
       setTimeout(() => {
         section.classList.add('section-loaded');
       }, index * 200);
@@ -236,3 +243,4 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     document.documentElement.style.scrollBehavior = 'smooth';
   });
 </script>
+</Layout>
