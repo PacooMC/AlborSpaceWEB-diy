@@ -8,7 +8,7 @@
     <Layout title={`${teamPage.title} - ALBOR SPACE`} description={teamPage.description}>
       <div class="pt-32 pb-24 relative">
         <!-- Background effects -->
-        <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#000012]/90 via-[#000018]/50 to-[#000012]/90"></div>
 
         <div class="container-custom relative z-10">
           <!-- Page header -->
@@ -17,7 +17,7 @@
             <p class="text-white/60 max-w-2xl mx-auto">{teamPage.description}</p>
           </div>
 
-          <!-- Team grid with larger, more elegant cards -->
+          <!-- Team grid with minimalist cards -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
             {teamMembers.map((member, index) => (
               <div
@@ -26,27 +26,27 @@
                 data-reveal="fade-up"
                 data-reveal-delay={index * 100}
               >
-                <div class="rounded-xl overflow-hidden h-full bg-dark-800/40 border border-white/5 hover:border-orange-400/20 transition-all duration-300"> {/* Softer hover border */}
+                <div class="rounded-xl overflow-hidden h-full bg-[#000018]/40 border border-white/5 hover:border-[#FF6B00]/15 transition-all duration-300">
                   <div class="relative aspect-square overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
                       class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:filter group-hover:brightness-110"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/70 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-40"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#000012] via-[#000012]/70 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-40"></div>
                   </div>
 
                   <div class="p-6">
-                    <h3 class="text-xl font-light mb-2 text-white group-hover:text-orange-400 transition-colors duration-300">{member.name}</h3> {/* Hover name orange-400 */}
-                    <p class="text-orange-400/90 text-sm tracking-wider uppercase mb-4">{member.role}</p> {/* Role orange-400 */}
+                    <h3 class="text-xl font-light mb-2 text-white group-hover:text-[#FF6B00]/70 transition-colors duration-300">{member.name}</h3>
+                    <p class="text-[#FF6B00]/60 text-sm tracking-wider uppercase mb-4">{member.role}</p>
 
                     <div class="flex items-center text-white/50 text-sm mb-2">
-                      <Mail size={14} class="mr-2 text-orange-400/70" /> {/* Icon orange-400 */}
+                      <Mail size={14} class="mr-2 text-[#FF6B00]/40" />
                       <span class="truncate">{member.email}</span>
                     </div>
 
                     <div class="flex items-center text-white/50 text-sm">
-                      <MapPin size={14} class="mr-2 text-orange-400/70" /> {/* Icon orange-400 */}
+                      <MapPin size={14} class="mr-2 text-[#FF6B00]/40" />
                       <span>Universidad de Málaga</span>
                     </div>
                   </div>
@@ -75,57 +75,27 @@
           </div>
         </div>
       </div>
-
-      <!-- Modal for expanded member details - REMOVED FROM HERE, MOVED TO LAYOUT -->
-
     </Layout>
 
     <style>
       .team-card {
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 18, 0.4);
       }
 
       .team-card:hover {
         box-shadow:
-          0 20px 40px rgba(0, 0, 0, 0.3),
-          0 0 20px theme('colors.orange.400 / 20%'); /* Softer shadow */
+          0 20px 40px rgba(0, 0, 18, 0.6),
+          0 0 20px rgba(255, 107, 0, 0.15);
       }
 
       .glass-card {
-        background-color: rgba(13, 15, 26, 0.2); /* dark-800 base */
+        background-color: rgba(0, 0, 18, 0.2);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 0.75rem;
         padding: 2rem;
         transition: all 0.3s ease;
-      }
-
-      /* Expertise tag using softer orange - Style remains here as it's specific to the modal content, which is now in Layout */
-      /* This style will be applied globally via Layout.astro */
-      :global(.expertise-tag) {
-        background-color: theme('colors.orange.400 / 15%');
-        color: rgba(255, 255, 255, 0.8);
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        border: 1px solid theme('colors.orange.400 / 25%');
-        transition: all 0.3s ease;
-      }
-
-      :global(.expertise-tag:hover) {
-        background-color: theme('colors.orange.400 / 20%');
-        border-color: theme('colors.orange.400 / 35%');
-        transform: translateY(-1px);
-      }
-
-      /* Softer text gradient using orange - Style remains here as it's specific to the modal content */
-      /* This style will be applied globally via Layout.astro */
-      :global(.text-gradient-orange-soft) {
-        background: linear-gradient(to right, #fff, theme('colors.orange.300'));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
       }
     </style>
 

@@ -19,11 +19,11 @@ const getIcon = (iconName) => {
 <Layout title={`${contactPage.title} - ALBOR SPACE`} description={contactPage.description}>
   <div class="pt-32 pb-24 relative">
     <!-- Background effects -->
-    <div class="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-800/50 to-dark-900/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#000012]/90 via-[#000018]/50 to-[#000012]/90"></div>
 
-    <!-- Enhanced sunrise glow effects using orange palette -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[40vh] bg-gradient-radial from-orange-500/20 to-transparent opacity-50 blur-[100px]"></div>
-    <div class="absolute bottom-0 right-0 w-2/3 h-[50vh] bg-gradient-to-t from-orange-700/10 via-orange-500/10 to-transparent opacity-60 blur-[100px]"></div>
+    <!-- Minimalist accent effects -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[40vh] bg-gradient-radial from-[#FF6B00]/8 to-transparent opacity-50 blur-[100px]"></div>
+    <div class="absolute bottom-0 right-0 w-2/3 h-[50vh] bg-gradient-to-t from-[#FF6B00]/6 via-[#FF6B00]/4 to-transparent opacity-60 blur-[100px]"></div>
 
     <div class="container-custom relative z-10">
       <!-- Page header with slide-in animation -->
@@ -33,17 +33,17 @@ const getIcon = (iconName) => {
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-16">
-        <!-- Contact Info -->
+        <!-- Contact Info with minimalist design -->
         <div class="lg:col-span-1">
           <div class="glass-card h-full reveal-element contact-info-card">
-            <h2 class="text-xl font-light mb-8 text-gradient-orange">{contactInfo.title}</h2>
+            <h2 class="text-xl font-light mb-8 text-gradient-minimalist">{contactInfo.title}</h2>
 
             <div class="space-y-8">
               {contactInfo.items.map((item, index) => {
                 const IconComponent = getIcon(item.icon);
                 return (
                   <div class="flex items-start hover-glow-item" data-reveal-delay={index * 100}>
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-700/20 flex items-center justify-center text-orange-500 shrink-0 mr-6 contact-icon-container">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-[#FF6B00]/60 shrink-0 mr-6 contact-icon-container">
                       <IconComponent size={22} />
                     </div>
                     <div>
@@ -55,20 +55,20 @@ const getIcon = (iconName) => {
               })}
             </div>
 
-            <!-- Social links -->
+            <!-- Social links with minimalist design -->
             <div class="mt-12 pt-8 border-t border-white/5">
               <h3 class="text-white/70 text-sm font-medium mb-6">Connect With Us</h3>
               <div class="flex space-x-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-700/20 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
+                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-700/20 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
+                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-700/20 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
+                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
                 </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-700/20 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
+                <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-300 social-icon-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
               </div>
@@ -76,11 +76,11 @@ const getIcon = (iconName) => {
           </div>
         </div>
 
-        <!-- Contact Form -->
+        <!-- Contact Form with minimalist design -->
         <div class="lg:col-span-2">
           <div class="glass-card reveal-element contact-form-card">
             <form id="contact-form" class="space-y-6">
-              <h2 class="text-xl font-light mb-8 text-gradient-orange">Send Us a Message</h2>
+              <h2 class="text-xl font-light mb-8 text-gradient-minimalist">Send Us a Message</h2>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {contactForm.fields.slice(0, 2).map((field) => (
@@ -92,7 +92,7 @@ const getIcon = (iconName) => {
                         id={field.id}
                         name={field.id}
                         required={field.required}
-                        class="w-full bg-dark-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-orange-500/50 focus:outline-none transition-colors duration-200 form-input"
+                        class="w-full bg-[#000018]/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#FF6B00]/30 focus:outline-none transition-colors duration-200 form-input"
                       />
                       <div class="form-input-glow"></div>
                     </div>
@@ -110,7 +110,7 @@ const getIcon = (iconName) => {
                         name={field.id}
                         rows={field.rows || 4}
                         required={field.required}
-                        class="w-full bg-dark-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-orange-500/50 focus:outline-none transition-colors duration-200 form-input"
+                        class="w-full bg-[#000018]/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#FF6B00]/30 focus:outline-none transition-colors duration-200 form-input"
                       ></textarea>
                     ) : (
                       <input
@@ -118,7 +118,7 @@ const getIcon = (iconName) => {
                         id={field.id}
                         name={field.id}
                         required={field.required}
-                        class="w-full bg-dark-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-orange-500/50 focus:outline-none transition-colors duration-200 form-input"
+                        class="w-full bg-[#000018]/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-[#FF6B00]/30 focus:outline-none transition-colors duration-200 form-input"
                       />
                     )}
                     <div class="form-input-glow"></div>
@@ -129,13 +129,10 @@ const getIcon = (iconName) => {
               <div class="mt-8">
                 <button
                   type="submit"
-                  class="submit-button group w-full"
+                  class="primary-button-minimalist group w-full"
                 >
-                  <div class="submit-button-bg"></div>
-                  <div class="submit-button-content">
-                    <span>{contactForm.submitButton}</span>
-                    <Send class="w-5 h-5 ml-2 transition-transform duration-500 ease-out transform group-hover:translate-x-1" />
-                  </div>
+                  <span>{contactForm.submitButton}</span>
+                  <Send class="w-5 h-5 ml-2 transition-transform duration-500 ease-out transform group-hover:translate-x-1 group-hover:text-[#FF6B00]/80" />
                 </button>
               </div>
             </form>
@@ -143,7 +140,7 @@ const getIcon = (iconName) => {
         </div>
       </div>
 
-      <!-- Map section with sunrise gradient overlay -->
+      <!-- Map section with minimalist overlay -->
       <div class="mt-20 reveal-element">
         <div class="relative rounded-xl overflow-hidden h-[400px]">
           <iframe
@@ -156,13 +153,13 @@ const getIcon = (iconName) => {
             class="grayscale contrast-125 brightness-75"
           ></iframe>
 
-          <!-- Sunrise gradient overlay using orange -->
-          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-90"></div>
-          <div class="absolute inset-0 bg-gradient-to-r from-orange-500/30 to-orange-700/30 mix-blend-overlay opacity-40"></div>
+          <!-- Minimalist gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#000012] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#FF6B00]/15 to-[#FF6B00]/10 mix-blend-overlay opacity-40"></div>
 
-          <!-- Map info card -->
-          <div class="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md bg-dark-800/80 backdrop-blur-md p-6 rounded-xl border border-white/10">
-            <h3 class="text-xl font-light mb-3 text-gradient-orange">Visit Our Office</h3>
+          <!-- Map info card with minimalist design -->
+          <div class="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md bg-[#000018]/80 backdrop-blur-md p-6 rounded-xl border border-white/10">
+            <h3 class="text-xl font-light mb-3 text-gradient-minimalist">Visit Our Office</h3>
             <p class="text-white/80 mb-1">E.T.S.I. Telecomunicación</p>
             <p class="text-white/80 mb-1">Universidad de Málaga</p>
             <p class="text-white/80">Málaga, Spain</p>
@@ -174,9 +171,9 @@ const getIcon = (iconName) => {
 </Layout>
 
 <style>
-  /* Base card styles */
+  /* Base card styles with minimalist approach */
   .glass-card {
-    background-color: rgba(13, 15, 26, 0.2); /* Use dark-800 base */
+    background-color: rgba(0, 0, 18, 0.2);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 0.75rem;
@@ -185,7 +182,7 @@ const getIcon = (iconName) => {
     overflow: hidden;
   }
 
-  /* Enhanced contact info card with orange gradient */
+  /* Enhanced contact info card with minimalist orange accents */
   .contact-info-card {
     position: relative;
     overflow: hidden;
@@ -197,41 +194,16 @@ const getIcon = (iconName) => {
     top: 0;
     left: 0;
     width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, theme('colors.orange.500 / 70%'), theme('colors.orange.700 / 70%'));
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255, 107, 0, 0.3), rgba(255, 107, 0, 0.1));
     border-radius: 0.75rem 0.75rem 0 0;
   }
 
-  .contact-info-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 0.75rem;
-    padding: 1px;
-    background: linear-gradient(60deg,
-      theme('colors.orange.500 / 0%') 25%,
-      theme('colors.orange.500 / 30%') 50%,
-      theme('colors.orange.700 / 30%') 75%,
-      theme('colors.orange.700 / 0%') 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  .contact-info-card:hover::after {
-    opacity: 1;
-  }
-
-  /* Contact icon containers with orange gradient */
+  /* Contact icon containers with minimalist design */
   .contact-icon-container {
     position: relative;
     transition: all 0.3s ease;
     overflow: hidden;
-    background: linear-gradient(135deg, theme('colors.orange.500 / 20%'), theme('colors.orange.700 / 20%'));
-    color: theme('colors.orange.400'); /* Lighter orange for icon */
   }
 
   .contact-icon-container::before {
@@ -239,33 +211,32 @@ const getIcon = (iconName) => {
     position: absolute;
     inset: 0;
     background: linear-gradient(45deg,
-      theme('colors.orange.500 / 50%'),
-      theme('colors.orange.700 / 50%')
+      rgba(255, 107, 0, 0.2),
+      rgba(255, 107, 0, 0.1)
     );
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
   .hover-glow-item:hover .contact-icon-container::before {
-    opacity: 0.3;
+    opacity: 0.8;
   }
 
   .hover-glow-item:hover .contact-icon-container {
     transform: scale(1.05);
-    box-shadow: 0 0 15px theme('colors.orange.500 / 50%');
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
   }
 
-  /* Social icon links with orange gradient */
+  /* Social icon links with minimalist design */
   .social-icon-link {
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    background: linear-gradient(135deg, theme('colors.orange.500 / 20%'), theme('colors.orange.700 / 20%'));
   }
 
   .social-icon-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px theme('colors.orange.500 / 40%');
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.15);
   }
 
   .social-icon-link::before {
@@ -273,18 +244,18 @@ const getIcon = (iconName) => {
     position: absolute;
     inset: 0;
     background: linear-gradient(45deg,
-      theme('colors.orange.500 / 50%'),
-      theme('colors.orange.700 / 50%')
+      rgba(255, 107, 0, 0.2),
+      rgba(255, 107, 0, 0.1)
     );
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
   .social-icon-link:hover::before {
-    opacity: 0.8;
+    opacity: 1;
   }
 
-  /* Enhanced form styling with orange gradient */
+  /* Enhanced form styling with minimalist approach */
   .contact-form-card {
     position: relative;
   }
@@ -295,8 +266,8 @@ const getIcon = (iconName) => {
     top: 0;
     right: 0;
     width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, theme('colors.orange.700 / 70%'), theme('colors.orange.500 / 70%'));
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255, 107, 0, 0.1), rgba(255, 107, 0, 0.3));
     border-radius: 0.75rem 0.75rem 0 0;
   }
 
@@ -306,13 +277,12 @@ const getIcon = (iconName) => {
 
   .form-input {
     position: relative;
-    background-color: theme('colors.dark.800 / 50%'); /* Use dark-800 */
     transition: all 0.3s ease;
   }
 
   .form-input:focus {
-    border-color: theme('colors.orange.500 / 50%');
-    box-shadow: 0 0 15px theme('colors.orange.500 / 20%');
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.1);
   }
 
   .form-input-glow {
@@ -322,70 +292,11 @@ const getIcon = (iconName) => {
     pointer-events: none;
     transition: opacity 0.3s ease;
     opacity: 0;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), theme('colors.orange.500 / 20%') 0%, transparent 75%);
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 107, 0, 0.1) 0%, transparent 75%);
   }
 
   .form-input:focus + .form-input-glow {
     opacity: 1;
-  }
-
-  /* Submit button styling with orange gradient */
-  .submit-button {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.875rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 400;
-    color: white;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .submit-button-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,
-      theme('colors.orange.600 / 90%'),
-      theme('colors.orange.800 / 90%'),
-      theme('colors.orange.600 / 90%')
-    );
-    background-size: 200% 100%;
-    transition: all 0.5s ease;
-  }
-
-  .submit-button:hover .submit-button-bg {
-    background-position: 100% 0;
-  }
-
-  .submit-button-content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
-
-  .submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px theme('colors.orange.500 / 40%');
-  }
-
-  .submit-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 10px theme('colors.orange.500 / 30%');
-  }
-
-  /* Text gradient using orange */
-  .text-gradient-orange {
-    background: linear-gradient(90deg, theme('colors.orange.400'), theme('colors.orange.600'));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   /* Animation classes */
@@ -439,12 +350,12 @@ const getIcon = (iconName) => {
 
       // Simulate sending and show success
       setTimeout(() => {
-        // Create success notification with orange accent
+        // Create success notification with minimalist orange accent
         const notification = document.createElement('div');
-        notification.className = 'fixed top-6 right-6 bg-dark-800/90 backdrop-blur-md px-6 py-4 rounded-lg border border-orange-500/30 text-white z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500';
+        notification.className = 'fixed top-6 right-6 bg-[#000018]/90 backdrop-blur-md px-6 py-4 rounded-lg border border-[#FF6B00]/20 text-white z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500';
         notification.innerHTML = `
           <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#FF6B00]/60 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             <div>
@@ -462,7 +373,6 @@ const getIcon = (iconName) => {
         // Re-enable button
         if (submitButton) {
           submitButton.disabled = false;
-          // Use the original button text from the content file
           submitButton.querySelector('span').textContent = "${contactForm.submitButton}";
         }
 
