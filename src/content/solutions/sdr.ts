@@ -1,69 +1,75 @@
 export const sdrSolution = {
-  title: "Emuladores de Canal SDR",
-  description: "Advanced channel emulation solutions powered by Software Defined Radio technology, delivering high-precision testing at reduced costs.",
-  cta: "Request Demo",
+  title: "Emulador de Canal SDR Multi-órbita",
+  description: "Soluciones avanzadas de emulación de canal basadas en tecnología Radio Definida por Software, proporcionando testing de alta precisión a costos reducidos con soporte completo para modelos ITU y 3GPP.",
+  cta: "Solicitar Demo",
   color: "purple",
   image: "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&q=80&w=2070&h=1200",
-  imageAlt: "SDR Technology"
+  imageAlt: "Tecnología SDR"
 };
 
 export const features = {
-  title: "Advanced SDR Technology",
-  description: "Our SDR-based channel emulators provide high-precision testing capabilities while significantly reducing costs compared to traditional hardware solutions.",
+  title: "Tecnología SDR Avanzada",
+  description: "Nuestros emuladores de canal basados en SDR proporcionan capacidades de testing de alta precisión con soporte completo para estándares ITU y 3GPP, interfaz web moderna y configurabilidad excepcional.",
   items: [
     {
       icon: "Radio",
-      title: "Software-Defined Flexibility",
-      description: "Adaptable radio configurations for diverse testing scenarios"
+      title: "Flexibilidad Definida por Software",
+      description: "Configuraciones de radio adaptables para diversos escenarios de testing con soporte completo ITU/3GPP"
     },
     {
       icon: "Waves",
-      title: "High-Precision Emulation",
-      description: "Accurate channel modeling for reliable test results"
+      title: "Emulación de Alta Precisión",
+      description: "Modelado preciso de canal hasta 200MHz con propagadores de órbitas visuales integrados"
     },
     {
       icon: "Cpu",
-      title: "Cost-Effective Solution",
-      description: "Reduced hardware costs without compromising quality"
+      title: "Interfaz Web Moderna",
+      description: "Interfaz atractiva, intuitiva y altamente configurable para máxima facilidad de uso"
     }
   ],
   image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000&h=800",
-  imageAlt: "SDR Equipment"
+  imageAlt: "Equipamiento SDR"
 };
 
 export const specifications = {
-  title: "Technical Specifications",
-  description: "Our SDR channel emulators are designed to meet the most demanding requirements of modern satellite testing.",
+  title: "Especificaciones Técnicas",
+  description: "Nuestros emuladores de canal SDR están diseñados para cumplir los requisitos más exigentes del testing satelital moderno con soporte completo para estándares internacionales.",
   sections: [
     {
-      title: "Emulation Capabilities",
+      title: "Capacidades de Emulación",
       specs: [
-        "Multi-channel support",
-        "Real-time processing",
-        "Configurable scenarios"
+        "Soporte multi-canal avanzado",
+        "Procesado en tiempo real",
+        "Hasta 200MHz de ancho de banda",
+        "Modelos ITU y 3GPP completos",
+        "Propagadores de órbitas visuales"
       ]
     },
     {
-      title: "Performance Metrics",
+      title: "Métricas de Rendimiento",
       specs: [
-        "Low latency: < 1ms",
-        "High bandwidth: 100MHz",
-        "Precision: 0.1dB"
+        "Baja latencia: < 1ms",
+        "Alta precisión: 0.1dB",
+        "Configuración flexible",
+        "Interfaz web moderna",
+        "Escenarios configurables"
       ]
     },
     {
-      title: "Integration Features",
+      title: "Características de Integración",
       specs: [
-        "API Support",
-        "Custom protocols",
-        "Data logging"
+        "Soporte API completo",
+        "Protocolos personalizados",
+        "Registro de datos",
+        "Testing automatizado",
+        "Integración con sistemas existentes"
       ]
     }
   ]
 };
 
 export const cta = {
-  title: "Ready to Transform Your Testing?",
-  description: "Contact our team to learn more about how our SDR channel emulators can revolutionize your satellite testing capabilities.",
-  buttonText: "Get Started"
+  title: "¿Listo para Transformar tu Testing?",
+  description: "Contacta con nuestro equipo para conocer más sobre cómo nuestros emuladores de canal SDR pueden revolucionar tus capacidades de testing satelital.",
+  buttonText: "Comenzar"
 };
