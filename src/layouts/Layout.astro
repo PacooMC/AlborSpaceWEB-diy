@@ -32,25 +32,25 @@
         <title>{title}</title>
       </head>
       <body class="text-white min-h-screen overflow-x-hidden">
-        <!-- Deep navy space background with subtle gradients -->
-        <div class="fixed inset-0 z-[-10] deep-navy-bg"></div>
+        <!-- Ultra dark navy background - almost black with subtle blue tint -->
+        <div class="fixed inset-0 z-[-10] ultra-dark-navy-bg"></div>
 
-        <!-- Additional gradient layers for depth -->
-        <div class="fixed inset-0 z-[-9] navy-gradient-overlay"></div>
+        <!-- Very subtle gradient overlay for minimal depth -->
+        <div class="fixed inset-0 z-[-9] ultra-dark-overlay"></div>
 
         <!-- Enhanced planet horizon background -->
         <div class="fixed inset-0 z-[-8] overflow-hidden">
           <div id="horizon-container" class="absolute inset-0 w-full h-full">
-            <!-- Planet horizon image with better visibility on navy background -->
+            <!-- Planet horizon image with better visibility on ultra dark background -->
             <img 
               src={horizonImage.src} 
               alt="Planet horizon" 
-              class="w-full h-full object-cover object-bottom opacity-30" 
+              class="w-full h-full object-cover object-bottom opacity-25" 
               id="horizon-image"
             />
             
-            <!-- Navy-tinted overlay for seamless integration -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#000033]/90 via-[#000044]/60 to-transparent"></div>
+            <!-- Ultra dark overlay for seamless integration -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#000012]/95 via-[#000018]/70 to-transparent"></div>
           </div>
         </div>
 
@@ -67,8 +67,8 @@
 
         <!-- Modal for expanded member details -->
         <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
-          <div class="absolute inset-0 bg-[#000033]/95 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
-          <div class="relative bg-[#000044]/90 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
+          <div class="absolute inset-0 bg-[#000012]/98 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
+          <div class="relative bg-[#000018]/95 rounded-2xl border border-white/8 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
             <button id="close-modal" class="absolute top-4 right-4 text-white/50 hover:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -82,7 +82,7 @@
                 </div>
 
                 <!-- Contact info -->
-                <div class="space-y-4 p-4 bg-[#000033]/50 rounded-xl border border-white/5">
+                <div class="space-y-4 p-4 bg-[#000012]/70 rounded-xl border border-white/5">
                   <h4 class="text-sm uppercase tracking-wider text-white/50 mb-3">Contact Information</h4>
 
                   <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white group">
@@ -139,28 +139,28 @@
         </div>
 
         <style is:global>
-          /* Deep navy background with subtle gradients */
-          .deep-navy-bg {
+          /* Ultra dark navy background - almost black with very subtle blue tint */
+          .ultra-dark-navy-bg {
             background: linear-gradient(135deg, 
-              #000033 0%, 
-              #000044 25%, 
-              #001122 50%, 
-              #000055 75%, 
-              #000033 100%);
+              #000012 0%, 
+              #000018 25%, 
+              #000024 50%, 
+              #000030 75%, 
+              #000012 100%);
           }
 
-          /* Additional gradient overlay for depth */
-          .navy-gradient-overlay {
+          /* Very subtle gradient overlay for minimal depth */
+          .ultra-dark-overlay {
             background: radial-gradient(ellipse at center, 
               transparent 0%, 
-              rgba(0, 0, 51, 0.3) 50%, 
-              rgba(0, 0, 68, 0.5) 100%);
-            animation: navyPulse 8s ease-in-out infinite alternate;
+              rgba(0, 0, 24, 0.1) 50%, 
+              rgba(0, 0, 36, 0.2) 100%);
+            animation: subtlePulse 12s ease-in-out infinite alternate;
           }
 
-          @keyframes navyPulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.7; }
+          @keyframes subtlePulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.3; }
           }
 
           /* Enhanced planet horizon background */
@@ -171,19 +171,19 @@
 
           #horizon-image {
             transition: opacity 0.3s ease, transform 0.3s ease;
-            filter: contrast(1.1) brightness(0.9);
+            filter: contrast(1.2) brightness(0.8);
           }
 
-          /* Enhanced star animations with navy background */
+          /* Enhanced star animations with ultra dark background */
           .star {
             position: absolute;
             border-radius: 50%;
-            animation: twinkleOnNavy 5s infinite;
+            animation: twinkleOnUltraDark 6s infinite;
           }
 
-          @keyframes twinkleOnNavy {
+          @keyframes twinkleOnUltraDark {
             0%, 100% { 
-              opacity: 0.4; 
+              opacity: 0.5; 
               transform: scale(1);
             }
             50% { 
@@ -192,7 +192,7 @@
             }
           }
 
-          /* Modal styles with navy theme */
+          /* Modal styles with ultra dark theme */
           .expertise-tag {
             background-color: rgba(255, 107, 0, 0.15);
             color: rgba(255, 255, 255, 0.8);
@@ -330,31 +330,31 @@
             }
           });
 
-          // Enhanced page initialization with navy theme
+          // Enhanced page initialization with ultra dark theme
           document.addEventListener('DOMContentLoaded', () => {
-            // Enhanced stars background with better visibility on navy
+            // Enhanced stars background with better visibility on ultra dark
             const starField = document.getElementById('star-field');
             if (starField) {
               starField.innerHTML = '';
 
               const fragment = document.createDocumentFragment();
-              for (let i = 0; i < 180; i++) {
+              for (let i = 0; i < 200; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
 
-                // Enhanced star sizing for navy background
-                const size = Math.random() > 0.93 ? Math.random() * 2 + 1.5 :
+                // Enhanced star sizing for ultra dark background
+                const size = Math.random() > 0.92 ? Math.random() * 2.5 + 1.5 :
                          Math.random() > 0.8 ? Math.random() * 1.5 + 0.8 :
-                         Math.random() * 0.8 + 0.3;
+                         Math.random() * 0.8 + 0.4;
 
-                // Enhanced star coloring for navy background
+                // Enhanced star coloring for ultra dark background
                 let color;
                 const random = Math.random();
-                if (random > 0.97) {
+                if (random > 0.96) {
                   color = 'rgba(255, 107, 0, 0.9)'; // Orange stars for accents
-                } else if (random > 0.92) {
+                } else if (random > 0.90) {
                   color = 'rgba(255, 255, 255, 1)'; // Bright white stars
-                } else if (random > 0.85) {
+                } else if (random > 0.75) {
                   color = 'rgba(200, 220, 255, 0.9)'; // Slightly blue-tinted stars
                 } else {
                   color = 'rgba(255, 255, 255, 0.7)'; // Regular white stars
@@ -366,11 +366,11 @@
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.backgroundColor = color;
 
-                star.style.animationDelay = `${Math.random() * 8}s`;
-                star.style.animationDuration = `${Math.random() * 6 + 4}s`;
+                star.style.animationDelay = `${Math.random() * 10}s`;
+                star.style.animationDuration = `${Math.random() * 8 + 5}s`;
 
                 if (size > 1.5) {
-                  star.style.boxShadow = `0 0 ${size * 3}px ${color}`;
+                  star.style.boxShadow = `0 0 ${size * 4}px ${color}`;
                 }
 
                 fragment.appendChild(star);
@@ -378,7 +378,7 @@
               starField.appendChild(fragment);
             }
 
-            // Enhanced scroll effects with navy background
+            // Enhanced scroll effects with ultra dark background
             const horizonImage = document.getElementById('horizon-image');
 
             let ticking = false;
@@ -389,7 +389,7 @@
 
                   // Enhanced parallax effect
                   if (horizonImage) {
-                    const parallaxOffset = scrollY * 0.3;
+                    const parallaxOffset = scrollY * 0.2;
                     horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.05)`;
                   }
 
