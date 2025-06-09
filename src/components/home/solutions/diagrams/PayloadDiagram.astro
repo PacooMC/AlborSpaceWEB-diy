@@ -9,69 +9,75 @@ const { className = '' } = Astro.props;
 <div class={`relative flex items-center justify-center p-4 lg:p-0 overflow-hidden bg-dark-800/30 diagram-container ${className}`}>
   <div class="w-full max-w-xl mx-auto">
     <div class="payload-diagram">
-      <!-- Satellite representation -->
-      <div class="satellite">
-        <div class="satellite-body"></div>
-        <div class="satellite-panels left"></div>
-        <div class="satellite-panels right"></div>
-        <div class="satellite-antenna"></div>
-      </div>
-
-      <!-- Communication beams -->
-      <div class="beam-container">
-        <div class="beam uplink"></div>
-        <div class="beam downlink"></div>
-      </div>
-
-      <!-- Ground stations - positioned symmetrically -->
-      <div class="ground-station left">
-        <div class="station-icon"></div>
-        <div class="station-label">Ground Station</div>
-      </div>
-
-      <div class="ground-station right">
-        <div class="station-icon"></div>
-        <div class="station-label">User Terminal</div>
-      </div>
-
-      <!-- SDR Processing Components - centered below satellite -->
-      <div class="sdr-processing">
-        <div class="processing-chain">
-          <div class="sdr-component rf-component">
-            <div class="component-label">RF</div>
-            <div class="component-sublabel">Radio Unit</div>
-            <div class="component-detail">1-6 GHz</div>
-          </div>
-          
-          <div class="signal-flow-arrow"></div>
-          
-          <div class="sdr-component bb-component">
-            <div class="component-label">BB</div>
-            <div class="component-sublabel">Baseband Processing</div>
-            <div class="component-detail">5G NR DSP</div>
-          </div>
-          
-          <div class="signal-flow-arrow"></div>
-          
-          <div class="sdr-component pt-component">
-            <div class="component-label">PT</div>
-            <div class="component-sublabel">Protocol Stack</div>
-            <div class="component-detail">Software Defined</div>
-          </div>
+      <!-- SDR Processing Chain - Top -->
+      <div class="sdr-chain-top">
+        <div class="sdr-unit radio-unit">
+          <div class="unit-code">RF</div>
+          <div class="unit-label">Radio Unit</div>
+          <div class="unit-sublabel">1-6 GHz</div>
+        </div>
+        
+        <div class="signal-arrow arrow-1">
+          <div class="arrow-line"></div>
+          <div class="arrow-head"></div>
+        </div>
+        
+        <div class="sdr-unit baseband-unit">
+          <div class="unit-code">BB</div>
+          <div class="unit-label">Baseband Processing</div>
+          <div class="unit-sublabel">5G NR DSP</div>
+        </div>
+        
+        <div class="signal-arrow arrow-2">
+          <div class="arrow-line"></div>
+          <div class="arrow-head"></div>
+        </div>
+        
+        <div class="sdr-unit protocol-unit">
+          <div class="unit-code">PT</div>
+          <div class="unit-label">Protocol Stack</div>
+          <div class="unit-sublabel">Software Defined</div>
         </div>
       </div>
 
-      <!-- Technical specifications overlay -->
-      <div class="tech-overlay">
-        <div class="spec-item">
+      <!-- Satellite - Center -->
+      <div class="satellite-center">
+        <div class="satellite">
+          <div class="satellite-body"></div>
+          <div class="satellite-panels left"></div>
+          <div class="satellite-panels right"></div>
+          <div class="satellite-antenna"></div>
+        </div>
+        
+        <!-- Coverage beams going down -->
+        <div class="coverage-beam left-beam"></div>
+        <div class="coverage-beam right-beam"></div>
+      </div>
+
+      <!-- Ground Stations - Bottom -->
+      <div class="ground-stations">
+        <div class="station ground-station">
+          <div class="station-icon"></div>
+          <div class="station-label">Ground Station</div>
+        </div>
+        
+        <div class="station user-terminal">
+          <div class="station-icon"></div>
+          <div class="station-label">User Terminal</div>
+        </div>
+      </div>
+
+      <!-- Technical Specifications - Right side -->
+      <div class="tech-specs">
+        <div class="spec-group">
           <div class="spec-label">Power</div>
           <div class="spec-value">< 10W</div>
         </div>
-        <div class="spec-item">
+        <div class="spec-group">
           <div class="spec-label">Weight</div>
           <div class="spec-value">< 1.33kg</div>
         </div>
-        <div class="spec-item">
+        <div class="spec-group">
           <div class="spec-label">Bandwidth</div>
           <div class="spec-value">200 MHz</div>
         </div>
@@ -97,21 +103,113 @@ const { className = '' } = Astro.props;
   .payload-diagram {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 500px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* SDR Processing Chain - Top */
+  .sdr-chain-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .sdr-unit {
+    width: 80px;
+    height: 70px;
+    background-color: rgba(26, 26, 46, 0.9);
+    border: 2px solid rgba(233, 69, 96, 0.4);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .radio-unit {
+    border-color: rgba(233, 69, 96, 0.5);
+    background-color: rgba(233, 69, 96, 0.1);
+  }
+
+  .baseband-unit {
+    border-color: rgba(34, 197, 94, 0.5);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+
+  .protocol-unit {
+    border-color: rgba(59, 130, 246, 0.5);
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+
+  .unit-code {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .unit-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+
+  .unit-sublabel {
+    font-size: 7px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+  }
+
+  /* Signal Arrows */
+  .signal-arrow {
+    display: flex;
+    align-items: center;
+    z-index: 5;
+  }
+
+  .arrow-line {
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(233, 69, 96, 0.7), rgba(34, 197, 94, 0.7));
+  }
+
+  .arrow-head {
+    width: 0;
+    height: 0;
+    border-left: 6px solid rgba(34, 197, 94, 0.7);
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+  /* Satellite - Center */
+  .satellite-center {
+    position: relative;
+    z-index: 8;
+    margin: 20px 0;
   }
 
   .satellite {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
   }
 
   .satellite-body {
     width: 80px;
     height: 40px;
-    background: linear-gradient(135deg, rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.6));
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.9), rgba(233, 69, 96, 0.7));
     border-radius: 8px;
     position: relative;
     border: 2px solid rgba(233, 69, 96, 0.6);
@@ -120,82 +218,73 @@ const { className = '' } = Astro.props;
 
   .satellite-panels {
     position: absolute;
-    width: 60px;
+    width: 50px;
     height: 20px;
-    background-color: rgba(233, 69, 96, 0.4);
-    border: 1px solid rgba(233, 69, 96, 0.6);
+    background-color: rgba(233, 69, 96, 0.6);
+    border: 1px solid rgba(233, 69, 96, 0.8);
+    top: 10px;
   }
 
   .satellite-panels.left {
-    left: -70px;
-    top: 10px;
+    left: -55px;
   }
 
   .satellite-panels.right {
-    right: -70px;
-    top: 10px;
+    right: -55px;
   }
 
   .satellite-antenna {
     position: absolute;
-    bottom: -20px;
+    bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
     width: 4px;
-    height: 20px;
-    background-color: rgba(233, 69, 96, 0.8);
+    height: 12px;
+    background-color: rgba(233, 69, 96, 0.9);
   }
 
-  .beam-container {
+  /* Coverage Beams */
+  .coverage-beam {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .beam {
-    position: absolute;
+    top: 100%;
+    width: 100px;
+    height: 120px;
     background: radial-gradient(ellipse at top, rgba(233, 69, 96, 0.2), transparent 70%);
-    width: 200px;
-    height: 300px;
+    clip-path: polygon(40% 0%, 60% 0%, 80% 100%, 20% 100%);
+    z-index: 2;
   }
 
-  .beam.uplink {
-    top: 25%;
-    left: 15%;
-    transform: rotate(-20deg);
+  .left-beam {
+    left: -30px;
+    transform: rotate(-10deg);
   }
 
-  .beam.downlink {
-    top: 25%;
-    right: 15%;
-    transform: rotate(20deg);
+  .right-beam {
+    right: -30px;
+    transform: rotate(10deg);
   }
 
-  .ground-station {
-    position: absolute;
-    bottom: 18%;
+  /* Ground Stations - Bottom */
+  .ground-stations {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    z-index: 7;
+  }
+
+  .station {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 10;
-  }
-
-  .ground-station.left {
-    left: 15%;
-  }
-
-  .ground-station.right {
-    right: 15%;
+    gap: 8px;
   }
 
   .station-icon {
-    width: 30px;
+    width: 40px;
     height: 30px;
     background-color: rgba(233, 69, 96, 0.8);
-    border-radius: 4px;
+    border-radius: 6px;
     position: relative;
     border: 1px solid rgba(233, 69, 96, 0.6);
   }
@@ -203,149 +292,74 @@ const { className = '' } = Astro.props;
   .station-icon::before {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
-    height: 15px;
+    width: 3px;
+    height: 12px;
     background-color: rgba(233, 69, 96, 0.8);
   }
 
   .station-icon::after {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-top: 2px solid rgba(233, 69, 96, 0.8);
     border-right: 2px solid rgba(233, 69, 96, 0.8);
   }
 
   .station-label {
-    margin-top: 10px;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
     text-align: center;
   }
 
-  /* SDR Processing Components - centered and clearly separated */
-  .sdr-processing {
+  /* Technical Specifications - Right side */
+  .tech-specs {
     position: absolute;
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     z-index: 5;
   }
 
-  .processing-chain {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: rgba(26, 26, 46, 0.8);
-    padding: 15px 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(233, 69, 96, 0.3);
-    backdrop-filter: blur(10px);
-  }
-
-  .sdr-component {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 8px;
-    min-width: 70px;
-    transition: all 0.3s ease;
-  }
-
-  .rf-component {
-    background-color: rgba(233, 69, 96, 0.2);
-    border: 1px solid rgba(233, 69, 96, 0.4);
-  }
-
-  .bb-component {
-    background-color: rgba(34, 197, 94, 0.2);
-    border: 1px solid rgba(34, 197, 94, 0.4);
-  }
-
-  .pt-component {
-    background-color: rgba(59, 130, 246, 0.2);
-    border: 1px solid rgba(59, 130, 246, 0.4);
-  }
-
-  .sdr-component:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .component-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2px;
-  }
-
-  .component-sublabel {
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.7);
-    text-align: center;
-    line-height: 1.2;
-    margin-bottom: 2px;
-  }
-
-  .component-detail {
-    font-size: 8px;
-    color: rgba(255, 255, 255, 0.5);
-    text-align: center;
-  }
-
-  .signal-flow-arrow {
-    width: 20px;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(233, 69, 96, 0.6), rgba(34, 197, 94, 0.6));
-    position: relative;
-  }
-
-  .signal-flow-arrow::after {
-    content: '';
-    position: absolute;
-    right: -4px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 6px solid rgba(34, 197, 94, 0.6);
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-  }
-
-  .tech-overlay {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .spec-item {
-    background-color: rgba(26, 26, 46, 0.8);
+  .spec-group {
+    background-color: rgba(26, 26, 46, 0.9);
     border: 1px solid rgba(233, 69, 96, 0.3);
     border-radius: 6px;
-    padding: 6px 10px;
-    backdrop-filter: blur(5px);
+    padding: 8px 12px;
+    backdrop-filter: blur(10px);
+    min-width: 80px;
   }
 
   .spec-label {
-    font-size: 10px;
+    font-size: 9px;
     color: rgba(255, 255, 255, 0.6);
+    line-height: 1;
+    margin-bottom: 2px;
   }
 
   .spec-value {
     font-size: 12px;
-    color: rgba(233, 69, 96, 0.8);
-    font-weight: 500;
+    color: rgba(233, 69, 96, 0.9);
+    font-weight: 600;
+  }
+
+  /* Hover effects */
+  .sdr-unit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+  }
+
+  .station:hover .station-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(233, 69, 96, 0.4);
   }
 </style>
