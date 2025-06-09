@@ -7,22 +7,97 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 ---
 
 <Layout title="ALBOR SPACE - Advanced Satellite Communication Systems">
-  <!-- Home Page Sections -->
-  <Hero />
-  <Technology />
-  <Solutions />
-  <TeamPreview />
+  <!-- Enhanced Home Page with sunrise theme and smooth transitions -->
+  <div class="sunrise-page">
+    <!-- Hero Section with enhanced sunrise atmosphere -->
+    <section class="section hero-section relative">
+      <Hero />
+      <!-- Sunrise accent line -->
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent"></div>
+    </section>
+
+    <!-- Technology Section with smooth transition -->
+    <section class="section tech-section relative">
+      <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-orange-500/5 to-transparent"></div>
+      <Technology />
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-orange-400/30 to-transparent"></div>
+    </section>
+
+    <!-- Solutions Section with enhanced transitions -->
+    <section class="section solutions-section relative">
+      <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-orange-500/3 to-transparent"></div>
+      <Solutions />
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent"></div>
+    </section>
+
+    <!-- Team Preview Section with sunrise accent -->
+    <section class="section team-section relative">
+      <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-orange-500/2 to-transparent"></div>
+      <TeamPreview />
+      <!-- Final sunrise line -->
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
+    </section>
+  </div>
 </Layout>
 
 <style is:global>
-  /* Direct animation approach that will always work */
+  /* Enhanced sunrise page styling */
+  .sunrise-page {
+    position: relative;
+    background: transparent;
+  }
+
+  /* Enhanced section styling with sunrise theme */
+  .section {
+    position: relative;
+    padding: 2rem 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hero section specific styling */
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(ellipse 80% 50% at center bottom, 
+      rgba(255, 140, 0, 0.1) 0%, 
+      rgba(255, 165, 0, 0.05) 40%, 
+      transparent 80%);
+  }
+
+  /* Technology section with subtle sunrise accent */
+  .tech-section {
+    background: linear-gradient(to bottom, 
+      transparent 0%, 
+      rgba(255, 140, 0, 0.02) 50%, 
+      transparent 100%);
+  }
+
+  /* Solutions section with enhanced sunrise atmosphere */
+  .solutions-section {
+    background: radial-gradient(ellipse 100% 60% at center, 
+      rgba(255, 140, 0, 0.03) 0%, 
+      rgba(255, 165, 0, 0.01) 60%, 
+      transparent 100%);
+  }
+
+  /* Team section with warm sunrise undertones */
+  .team-section {
+    background: linear-gradient(to bottom, 
+      transparent 0%, 
+      rgba(255, 140, 0, 0.02) 30%, 
+      rgba(255, 165, 0, 0.04) 70%, 
+      rgba(255, 140, 0, 0.02) 100%);
+  }
+
+  /* Enhanced animations with sunrise theme */
   .slide-left {
-    animation: slideInLeft 1.2s forwards;
+    animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.2s;
   }
   
   .slide-right {
-    animation: slideInRight 1.2s forwards;
+    animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.2s;
   }
   
@@ -59,47 +134,105 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     }
   }
   
-  /* Always ensure content is visible with fallback */
+  /* Enhanced reveal elements with sunrise touches */
   .heading-lg {
     font-weight: 300;
     letter-spacing: -0.03em;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .heading-lg::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.6), transparent);
+    transition: width 1s ease 0.5s;
   }
   
   .heading-lg.revealed {
     opacity: 1;
     transform: translateY(0);
   }
+
+  .heading-lg.revealed::after {
+    width: 60px;
+  }
   
   .reveal-element {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .reveal-element.revealed {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Enhanced glass effects with sunrise theme */
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.6), transparent);
+    transition: left 0.8s ease;
+  }
+
+  .glass-card:hover::before {
+    left: 100%;
+  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Immediately reveal all elements for better initial page load experience
-    document.querySelectorAll('.reveal-element').forEach(el => {
-      const delay = el.getAttribute('data-reveal-delay') || 100;
-      setTimeout(() => {
-        el.classList.add('revealed');
-      }, parseInt(delay));
-    });
+    // Enhanced reveal animation with staggered delays
+    const revealElements = document.querySelectorAll('.reveal-element');
+    const headings = document.querySelectorAll('.heading-lg');
     
-    // Reveal heading elements
-    document.querySelectorAll('.heading-lg').forEach(el => {
-      setTimeout(() => {
-        el.classList.add('revealed');
-      }, 100);
+    // Create intersection observer for smoother animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-reveal-delay') || (index * 100);
+          setTimeout(() => {
+            entry.target.classList.add('revealed');
+          }, parseInt(delay));
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
+
+    // Observe all reveal elements
+    [...revealElements, ...headings].forEach(el => {
+      observer.observe(el);
+    });
+
+    // Enhanced sunrise effect on page load
+    const sunriseElements = document.querySelectorAll('.section');
+    sunriseElements.forEach((section, index) => {
+      setTimeout(() => {
+        section.classList.add('section-loaded');
+      }, index * 200);
+    });
+
+    // Add smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
   });
 </script>

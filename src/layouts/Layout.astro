@@ -4,6 +4,8 @@
     import '../styles/global.css';
     // Import icons needed for the modal
     import { Mail, MapPin } from 'lucide-astro';
+    // Import the new image
+    import horizonImage from '../assets/Planet-horizon.jpeg';
 
     interface Props {
       title?: string;
@@ -30,36 +32,50 @@
         <title>{title}</title>
       </head>
       <body class="bg-black text-white min-h-screen overflow-x-hidden">
-        <!-- Fixed background that will remain on all pages -->
+        <!-- Fixed background with the new planet horizon image -->
         <div class="fixed inset-0 bg-black z-[-10]"></div>
 
-        <!-- CSS-based horizon background instead of corrupted image -->
+        <!-- Planet horizon background with enhanced sunrise effect -->
         <div class="fixed inset-0 z-[-8] overflow-hidden">
           <div id="horizon-container" class="absolute inset-0 w-full h-full">
-            <!-- Gradient-based horizon effect -->
-            <div class="w-full h-full bg-gradient-to-b from-slate-900 via-slate-800 to-orange-900/20" id="horizon-background"></div>
+            <!-- Planet horizon image -->
+            <img 
+              src={horizonImage.src} 
+              alt="Planet horizon" 
+              class="w-full h-full object-cover object-bottom opacity-80" 
+              id="horizon-image"
+            />
             
-            <!-- Additional atmospheric layers -->
-            <div class="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-orange-500/10 via-orange-600/5 to-transparent"></div>
-            <div class="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-yellow-500/5 to-transparent"></div>
+            <!-- Enhanced sunrise overlay layers -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-800/70 to-orange-900/30"></div>
+            <div class="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-orange-500/20 via-orange-600/10 to-transparent"></div>
+            <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-yellow-500/10 to-transparent"></div>
+            
+            <!-- Dynamic sunrise glow that appears on scroll to top -->
+            <div id="sunrise-glow" class="absolute top-0 w-full h-full bg-gradient-to-b from-orange-400/30 via-orange-500/15 to-transparent opacity-0 transition-all duration-1000 ease-out blur-sm"></div>
           </div>
         </div>
 
-        <!-- Star field background -->
+        <!-- Enhanced star field background -->
         <div id="star-field" class="fixed inset-0 z-[-5]"></div>
 
-        <!-- Sunrise effect for navigation -->
+        <!-- Sunrise effect for navigation and sections -->
         <div id="nav-sunrise" class="nav-sunrise"></div>
+
+        <!-- Smooth section transitions overlay -->
+        <div id="section-transitions" class="fixed inset-0 z-[-6] pointer-events-none">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-orange-500/5 to-transparent opacity-0 transition-opacity duration-1000" id="transition-glow"></div>
+        </div>
 
         <Navigation />
 
-        <main>
+        <main class="relative z-10">
           <slot />
         </main>
 
         <Footer />
 
-        <!-- Modal for expanded member details - MOVED HERE FROM team.astro -->
+        <!-- Modal for expanded member details -->
         <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
           <div class="absolute inset-0 bg-dark-900/98 backdrop-blur-2xl opacity-0 transition-opacity duration-500"></div>
           <div class="relative bg-dark-800/70 rounded-2xl border border-white/10 p-8 max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-500 backdrop-blur-xl shadow-2xl">
@@ -80,12 +96,12 @@
                   <h4 class="text-sm uppercase tracking-wider text-white/50 mb-3">Contact Information</h4>
 
                   <a id="modal-email" href="" class="flex items-center text-white/50 hover:text-white group">
-                    <Mail size={20} class="mr-2 text-orange-400/70" /> {/* Icon orange-400 */}
-                    <span class="text-sm group-hover:text-orange-400 transition-colors duration-200"></span> {/* Hover text orange-400 */}
+                    <Mail size={20} class="mr-2 text-orange-400/70" />
+                    <span class="text-sm group-hover:text-orange-400 transition-colors duration-200"></span>
                   </a>
 
                   <div class="flex items-start text-white/50">
-                    <MapPin size={20} class="mr-2 shrink-0 text-orange-400/70 mt-0.5" /> {/* Icon orange-400 */}
+                    <MapPin size={20} class="mr-2 shrink-0 text-orange-400/70 mt-0.5" />
                     <div>
                       <p class="text-sm">Departamento de Ingeniería de Comunicaciones</p>
                       <p class="text-sm">ETSI Telecomunicación</p>
@@ -97,8 +113,8 @@
               </div>
 
               <div class="w-full md:w-2/3">
-                <h3 id="modal-name" class="text-2xl font-light mb-2 text-gradient-orange-soft"></h3> {/* Softer gradient */}
-                <p id="modal-role" class="text-orange-400/90 text-sm tracking-wider uppercase mb-6"></p> {/* Role orange-400 */}
+                <h3 id="modal-name" class="text-2xl font-light mb-2 text-gradient-orange-soft"></h3>
+                <p id="modal-role" class="text-orange-400/90 text-sm tracking-wider uppercase mb-6"></p>
 
                 <div class="prose prose-invert prose-sm max-w-none">
                   <p id="modal-bio" class="text-white/70 leading-relaxed mb-8"></p>
@@ -117,12 +133,12 @@
 
                   <!-- Stats -->
                   <div class="grid grid-cols-2 gap-4 text-center">
-                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10"> {/* Background/border orange-400 */}
-                      <div id="modal-publications" class="text-2xl font-light text-orange-400 mb-2"></div> {/* Text orange-400 */}
+                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10">
+                      <div id="modal-publications" class="text-2xl font-light text-orange-400 mb-2"></div>
                       <div class="text-sm text-white/50">Publications</div>
                     </div>
-                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10"> {/* Background/border orange-400 */}
-                      <div id="modal-patents" class="text-2xl font-light text-orange-400 mb-2"></div> {/* Text orange-400 */}
+                    <div class="bg-orange-400/5 rounded-lg p-4 border border-orange-400/10">
+                      <div id="modal-patents" class="text-2xl font-light text-orange-400 mb-2"></div>
                       <div class="text-sm text-white/50">Patents</div>
                     </div>
                   </div>
@@ -132,18 +148,86 @@
           </div>
         </div>
 
-        <style is:global> /* Make modal styles global */
-          /* Background container with CSS-based horizon */
+        <style is:global>
+          /* Enhanced background with sunrise theme */
           #horizon-container {
             position: relative;
             overflow: hidden;
           }
 
-          #horizon-background {
-            transition: opacity 0.3s ease;
+          #horizon-image {
+            transition: opacity 0.3s ease, transform 0.3s ease;
           }
 
-          /* Modal specific styles - now global */
+          /* Sunrise effect that appears at the top of the page */
+          .nav-sunrise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25vh;
+            background: radial-gradient(ellipse 100% 60% at center top, 
+              rgba(255, 140, 0, 0.4) 0%, 
+              rgba(255, 165, 0, 0.2) 30%, 
+              rgba(255, 69, 0, 0.1) 60%, 
+              transparent 100%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 1s ease-out;
+            filter: blur(1px);
+          }
+
+          .nav-sunrise.sunriseActive {
+            opacity: 1;
+          }
+
+          /* Smooth section transitions */
+          .section-transition {
+            position: relative;
+            z-index: 10;
+          }
+
+          .section-transition::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, 
+              transparent 0%, 
+              rgba(255, 140, 0, 0.05) 50%, 
+              transparent 100%);
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            pointer-events: none;
+          }
+
+          .section-transition.in-view::before {
+            opacity: 1;
+          }
+
+          /* Enhanced star animations */
+          .star {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+          }
+
+          @keyframes twinkle {
+            0%, 100% { 
+              opacity: 0.3; 
+              transform: scale(1);
+            }
+            50% { 
+              opacity: 1; 
+              transform: scale(1.2);
+            }
+          }
+
+          /* Modal styles */
           .expertise-tag {
             background-color: theme('colors.orange.400 / 15%');
             color: rgba(255, 255, 255, 0.8);
@@ -166,10 +250,50 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
           }
+
+          /* Smooth reveal animations */
+          .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          /* Enhanced section styling */
+          .section {
+            position: relative;
+            transition: all 0.6s ease;
+          }
+
+          /* Sunrise gradient borders for sections */
+          .section-border {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, 
+              transparent 0%, 
+              rgba(255, 140, 0, 0.3) 20%, 
+              rgba(255, 165, 0, 0.5) 50%, 
+              rgba(255, 140, 0, 0.3) 80%, 
+              transparent 100%);
+            opacity: 0;
+            transition: opacity 0.8s ease;
+          }
+
+          .section.in-view .section-border {
+            opacity: 1;
+          }
         </style>
 
         <script>
-          // Global Modal Logic - MOVED HERE FROM team.astro
+          // Global Modal Logic
           const modal = document.getElementById('member-modal');
           const modalOverlay = modal?.querySelector('div');
           const modalContent = modal?.querySelector('div:nth-child(2)');
@@ -189,12 +313,12 @@
           window.openModal = function(member) {
             if (modal && modalOverlay && modalContent) {
               modal.classList.remove('hidden');
-              document.body.style.overflow = 'hidden'; // Prevent background scroll
+              document.body.style.overflow = 'hidden';
               setTimeout(() => {
                 modalOverlay.classList.add('opacity-100');
                 modalContent.classList.remove('scale-95', 'opacity-0');
                 modalContent.classList.add('scale-100', 'opacity-100');
-              }, 10); // Short delay for transition
+              }, 10);
 
               if (modalImage) {
                 modalImage.src = member.image;
@@ -202,7 +326,7 @@
               }
               if (modalName) modalName.textContent = member.name;
               if (modalRole) modalRole.textContent = member.role;
-              if (modalBio) modalBio.textContent = member.bio || 'No bio available.'; // Add fallback
+              if (modalBio) modalBio.textContent = member.bio || 'No bio available.';
 
               // Email
               if (modalEmail) {
@@ -210,30 +334,30 @@
                 if (member.email) {
                   modalEmail.href = `mailto:${member.email}`;
                   if (emailSpan) emailSpan.textContent = member.email;
-                  modalEmail.style.display = 'flex'; // Show email link
+                  modalEmail.style.display = 'flex';
                 } else {
-                  modalEmail.style.display = 'none'; // Hide if no email
+                  modalEmail.style.display = 'none';
                 }
               }
 
-              // Education - Comment removed again
+              // Education
               if (modalEducation) {
-                modalEducation.innerHTML = member.education?.map(edu => // Use optional chaining
+                modalEducation.innerHTML = member.education?.map(edu =>
                   `<li class="flex items-start">
                     <span class="w-1.5 h-1.5 rounded-full bg-orange-400/60 mt-1.5 mr-3 shrink-0"></span>
                     ${edu}
                   </li>`
-                ).join('') || '<li>No education information available.</li>'; // Fallback
+                ).join('') || '<li>No education information available.</li>';
               }
 
               // Expertise
               if (modalExpertise) {
-                modalExpertise.innerHTML = member.expertise?.map(exp => // Use optional chaining
-                  `<span class="expertise-tag">${exp}</span>` // Uses softer orange from style tag
-                ).join('') || '<span class="text-white/50 text-sm">No expertise listed.</span>'; // Fallback
+                modalExpertise.innerHTML = member.expertise?.map(exp =>
+                  `<span class="expertise-tag">${exp}</span>`
+                ).join('') || '<span class="text-white/50 text-sm">No expertise listed.</span>';
               }
 
-              // Stats - Use optional chaining and provide defaults
+              // Stats
               if (modalPublications) modalPublications.textContent = member.publications?.toString() || '0';
               if (modalPatents) modalPatents.textContent = member.patents?.toString() || '0';
             }
@@ -245,11 +369,11 @@
               modalOverlay.classList.remove('opacity-100');
               modalContent.classList.remove('scale-100', 'opacity-100');
               modalContent.classList.add('scale-95', 'opacity-0');
-              document.body.style.overflow = ''; // Restore background scroll
+              document.body.style.overflow = '';
 
               setTimeout(() => {
                 modal.classList.add('hidden');
-              }, 300); // Match transition duration
+              }, 300);
             }
           }
 
@@ -268,29 +392,32 @@
             }
           });
 
-          // --- Rest of the Layout.astro script ---
+          // Enhanced page initialization
           document.addEventListener('DOMContentLoaded', () => {
-            // Create stars background animation
+            // Enhanced stars background with sunrise colors
             const starField = document.getElementById('star-field');
             if (starField) {
-              // Clear existing stars
               starField.innerHTML = '';
 
-              // Create stars with document fragment for better performance
               const fragment = document.createDocumentFragment();
-              for (let i = 0; i < 150; i++) {
+              for (let i = 0; i < 200; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
 
-                // Random star size with a few larger ones
-                const size = Math.random() > 0.9 ? Math.random() * 2 + 1.5 :
-                         Math.random() > 0.7 ? Math.random() * 1.5 + 0.8 :
-                         Math.random() * 0.8 + 0.2;
+                const size = Math.random() > 0.85 ? Math.random() * 3 + 1.5 :
+                         Math.random() > 0.7 ? Math.random() * 2 + 0.8 :
+                         Math.random() * 1 + 0.3;
 
-                // Star coloring - most stars are white, with occasional orange tint
-                const color = Math.random() > 0.90 ?
-                  'rgba(255, 180, 120, 0.8)' :
-                  'rgba(255, 255, 255, 0.8)';
+                // Enhanced star coloring with sunrise theme
+                let color;
+                const random = Math.random();
+                if (random > 0.95) {
+                  color = 'rgba(255, 140, 0, 0.9)'; // Orange stars
+                } else if (random > 0.90) {
+                  color = 'rgba(255, 180, 120, 0.8)'; // Warm white
+                } else {
+                  color = 'rgba(255, 255, 255, 0.7)'; // Regular white
+                }
 
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
@@ -301,9 +428,8 @@
                 star.style.animationDelay = `${Math.random() * 5}s`;
                 star.style.animationDuration = `${Math.random() * 3 + 2}s`;
 
-                // Add occasional glow to larger stars
-                if (size > 1.5) {
-                  star.style.boxShadow = `0 0 ${size}px ${color}`;
+                if (size > 2) {
+                  star.style.boxShadow = `0 0 ${size * 2}px ${color}`;
                 }
 
                 fragment.appendChild(star);
@@ -311,33 +437,38 @@
               starField.appendChild(fragment);
             }
 
-            // Scroll effect to fade background on scroll
-            const horizonBackground = document.getElementById('horizon-background');
-            const horizonContainer = document.getElementById('horizon-container');
+            // Enhanced scroll effects with sunrise theme
+            const horizonImage = document.getElementById('horizon-image');
+            const sunriseGlow = document.getElementById('sunrise-glow');
             const navSunrise = document.getElementById('nav-sunrise');
-            const nav = document.getElementById('main-nav');
+            const transitionGlow = document.getElementById('transition-glow');
 
-            // Create section observers for sunrise effect
+            // Enhanced section observers for sunrise effects
             const sectionObserver = new IntersectionObserver((entries) => {
               entries.forEach(entry => {
-                // Add class to track intersecting state for sunrise logic
                 if (entry.isIntersecting) {
-                  entry.target.classList.add('isIntersecting');
+                  entry.target.classList.add('isIntersecting', 'in-view');
+                  
+                  // Add section border if it doesn't exist
+                  if (!entry.target.querySelector('.section-border')) {
+                    const border = document.createElement('div');
+                    border.className = 'section-border';
+                    entry.target.appendChild(border);
+                  }
                 } else {
-                  entry.target.classList.remove('isIntersecting');
+                  entry.target.classList.remove('isIntersecting', 'in-view');
                 }
 
-                // Update sunrise effect based on intersecting sections
-                if (navSunrise && nav) {
+                // Enhanced sunrise effect
+                if (navSunrise && transitionGlow) {
                   const intersectingSections = document.querySelectorAll('.section.isIntersecting');
                   let maxIntensity = 0;
 
-                  intersectingSections.forEach(intersectingEntry => {
-                    const boundingRect = intersectingEntry.getBoundingClientRect();
+                  intersectingSections.forEach(intersectingSection => {
+                    const boundingRect = intersectingSection.getBoundingClientRect();
                     const viewportHeight = window.innerHeight;
                     let intensity = 0;
 
-                    // Calculate intensity based on visibility percentage
                     if (boundingRect.top < viewportHeight && boundingRect.bottom > 0) {
                        const visibleHeight = Math.min(boundingRect.bottom, viewportHeight) - Math.max(boundingRect.top, 0);
                        intensity = visibleHeight / viewportHeight;
@@ -345,45 +476,71 @@
                     maxIntensity = Math.max(maxIntensity, intensity);
                   });
 
-                  navSunrise.style.opacity = Math.min(maxIntensity * 0.7, 0.7); // Adjust multiplier as needed
+                  navSunrise.style.opacity = Math.min(maxIntensity * 0.8, 0.8);
+                  transitionGlow.style.opacity = Math.min(maxIntensity * 0.6, 0.6);
 
                   if (intersectingSections.length > 0) {
                      navSunrise.classList.add('sunriseActive');
                   } else {
                      navSunrise.classList.remove('sunriseActive');
-                     // Only fully hide if no sections are intersecting after a delay
                      setTimeout(() => {
                        if (document.querySelectorAll('.section.isIntersecting').length === 0) {
                          navSunrise.style.opacity = '0';
+                         transitionGlow.style.opacity = '0';
                        }
                      }, 300);
                   }
                 }
               });
             }, {
-              threshold: Array.from({ length: 21 }, (_, i) => i * 0.05), // More thresholds for smoother effect
-              rootMargin: "-10% 0px -10% 0px"
+              threshold: Array.from({ length: 21 }, (_, i) => i * 0.05),
+              rootMargin: "-5% 0px -5% 0px"
             });
 
-
-            // Observe all sections for the sunrise effect
-            document.querySelectorAll('section').forEach(section => {
-              section.classList.add('section'); // Ensure all sections have the class
+            // Observe all sections
+            document.querySelectorAll('section, .section').forEach(section => {
+              section.classList.add('section', 'section-transition');
               sectionObserver.observe(section);
             });
 
-            // Enhanced scroll effect for background
+            // Enhanced scroll effect for dynamic sunrise
+            let ticking = false;
             window.addEventListener('scroll', () => {
-              const scrollY = window.scrollY;
-              const scrollPercentage = Math.min(scrollY / (window.innerHeight * 0.4), 1);
+              if (!ticking) {
+                requestAnimationFrame(() => {
+                  const scrollY = window.scrollY;
+                  const scrollPercentage = Math.min(scrollY / (window.innerHeight * 0.5), 1);
 
-              // Fade background elements as user scrolls down
-              if (horizonBackground && horizonContainer) {
-                // Full intensity at top, fades as you scroll down
-                const fadeOpacity = Math.max(1 - scrollPercentage * 0.7, 0.3);
-                horizonBackground.style.opacity = fadeOpacity;
+                  // Enhanced background effects
+                  if (horizonImage && sunriseGlow) {
+                    // Sunrise glow appears when scrolled to top
+                    if (scrollY < 100) {
+                      const topIntensity = Math.max(1 - (scrollY / 100), 0);
+                      sunriseGlow.style.opacity = topIntensity * 0.7;
+                    } else {
+                      sunriseGlow.style.opacity = '0';
+                    }
+
+                    // Subtle parallax effect on background
+                    const parallaxOffset = scrollY * 0.5;
+                    horizonImage.style.transform = `translateY(${parallaxOffset}px) scale(1.1)`;
+                  }
+
+                  ticking = false;
+                });
+                ticking = true;
               }
             });
+
+            // Initial sunrise effect for page load
+            if (sunriseGlow) {
+              setTimeout(() => {
+                sunriseGlow.style.opacity = '0.7';
+                setTimeout(() => {
+                  sunriseGlow.style.opacity = '0';
+                }, 2000);
+              }, 500);
+            }
           });
         </script>
       </body>
