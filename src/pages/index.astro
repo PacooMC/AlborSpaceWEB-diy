@@ -7,8 +7,8 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 ---
 
 <Layout title="ALBOR SPACE - Advanced Satellite Communication Systems">
-  <!-- Beautiful navy space page with seamless transitions -->
-  <div class="navy-space-page">
+  <!-- Minimal black space page with seamless transitions -->
+  <div class="minimal-space-page">
     <!-- Hero Section - perfect centering, no padding -->
     <Hero />
 
@@ -30,13 +30,13 @@ import TeamPreview from '../components/home/TeamPreview.astro';
 </Layout>
 
 <style is:global>
-  /* Beautiful navy space page with smooth transitions */
-  .navy-space-page {
+  /* Minimal black space page with smooth transitions */
+  .minimal-space-page {
     position: relative;
     background: transparent;
   }
 
-  /* Enhanced animations with navy space theme */
+  /* Enhanced animations with minimal space theme */
   .slide-left {
     animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.2s;
@@ -80,7 +80,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     }
   }
   
-  /* Enhanced reveal elements with navy space theme */
+  /* Enhanced reveal elements with minimal space theme */
   .heading-lg {
     font-weight: 300;
     letter-spacing: -0.03em;
@@ -98,7 +98,7 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateX(-50%);
     width: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: width 1s ease 0.5s;
   }
   
@@ -122,19 +122,19 @@ import TeamPreview from '../components/home/TeamPreview.astro';
     transform: translateY(0);
   }
 
-  /* Enhanced glass effects with navy space theme */
+  /* Enhanced glass effects with minimal space theme */
   .glass-card {
     position: relative;
     overflow: hidden;
-    background-color: rgba(30, 41, 59, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .glass-card:hover {
     border-color: rgba(255, 140, 0, 0.15);
-    background-color: rgba(30, 41, 59, 0.4);
-    box-shadow: 0 8px 32px rgba(30, 41, 59, 0.3);
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   }
 </style>
 
